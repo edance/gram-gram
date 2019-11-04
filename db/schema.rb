@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_003155) do
+ActiveRecord::Schema.define(version: 2019_11_04_004904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(version: 2019_11_04_003155) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_photos_on_user_id"
+  end
+
+  create_table "postcards", force: :cascade do |t|
+    t.bigint "recipient_id", null: false
+    t.bigint "photo_id", null: false
+    t.integer "status"
+    t.date "delivery_date"
+    t.string "lob_id"
+    t.text "caption"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["photo_id"], name: "index_postcards_on_photo_id"
+    t.index ["recipient_id"], name: "index_postcards_on_recipient_id"
   end
 
   create_table "recipients", force: :cascade do |t|
@@ -48,5 +61,7 @@ ActiveRecord::Schema.define(version: 2019_11_04_003155) do
   end
 
   add_foreign_key "photos", "users"
+  add_foreign_key "postcards", "photos"
+  add_foreign_key "postcards", "recipients"
   add_foreign_key "recipients", "users"
 end

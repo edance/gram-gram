@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-# A photo object from Instagram
+# A photo that could be featured on a Postcard
 class Photo < ApplicationRecord
+  has_many :postcards
   belongs_to :user
 end
