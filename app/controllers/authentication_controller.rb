@@ -18,6 +18,8 @@ class AuthenticationController < ApplicationController
     user = User.find_or_initialize_by(instagram_uid: attrs['user_id'])
     user.update!(instagram_access_token: attrs['access_token'])
     session[:current_user_id] = user.id
+
+    redirect_to root_path
   end
 
   private
