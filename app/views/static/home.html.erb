@@ -1,1 +1,7 @@
 Welcome to <%= company_name %>!
+
+<% if current_user.present? %>
+  Hello <%= current_user.id %>?
+<% else %>
+  <%= link_to 'Login', login_path %>
+<% end %>
