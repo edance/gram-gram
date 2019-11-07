@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get 'login', to: redirect('/auth/instagram'), as: 'login'
   get '/auth/:provider', to: 'authentication#authorize'
   get '/auth/:provider/callback', to: 'authentication#callback'
+  delete 'logout', to: 'authentication#logout'
 end
