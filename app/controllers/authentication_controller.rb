@@ -13,7 +13,8 @@ class AuthenticationController < ApplicationController
   end
 
   def callback
-    attrs = fetch_access_token
+    resp = fetch_access_token
+    attrs = JSON.parse(resp.body)
     user = User.find_or_initialize_by(instagram_uid: attrs['user_id'])
     user.update!(instagram_access_token: attrs['access_token'])
     session[:current_user_id] = user.id
@@ -28,22 +29,12 @@ class AuthenticationController < ApplicationController
   end
 
   def fetch_access_token
-    faraday_conn.post(
-      'oauth/access_token',
-      app_id: ENV['INSTAGRAM_ID'],
-      app_secret: ENV['INSTAGRAM_SECRET'],
-      grant_type: 'authorization_code',
-      redirect_uri: 'https://gramgram.app/auth/instagram/callback',
-      code: code
-    ).body
-  end
-
-  def faraday_conn
     url = 'https://api.instagram.com/oauth/access_token'
-    Faraday.new(url: url) do |f|
-      f.response :json
-
-      f.adapter Faraday.default_adapter
-    end
+    Faraday.post(url,
+                 app_id: ENV['INSTAGRAM_ID'],
+                 app_secret: ENV['INSTAGRAM_SECRET'],
+                 grant_type: 'authorization_code',
+                 redirect_uri: 'https://gramgram.app/auth/instagram/callback',
+                 code: code)
   end
 end
