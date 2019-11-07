@@ -22,6 +22,11 @@ class AuthenticationController < ApplicationController
     redirect_to root_path
   end
 
+  def logout
+    reset_session
+    redirect_to root_path
+  end
+
   private
 
   def code
