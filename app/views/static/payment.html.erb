@@ -1,0 +1,12 @@
+<%= form_with url: '/charge', method: 'post', class: 'payment-form' do %>
+  <div class="form-group card-input-group">
+    <label class="form-control-label">Credit or Debit Card</label>
+    <div class="credit-card-input form-control form-control-alternative">
+    </div>
+    <div class="invalid-feedback"></div>
+  </div>
+
+  <%= hidden_field_tag(:token, '', class: 'stripe-token-input') %>
+
+  <button>Submit Payment</button>
+<% end %>
