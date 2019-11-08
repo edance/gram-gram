@@ -62,6 +62,12 @@ document.addEventListener("turbolinks:load", function() {
     return;
   }
 
+  // prevent form submits without a stripe token
+  $form.on('ajax:beforeSend', (e) => {
+    const token = $form.find('.stripe-token-input').attr('value');
+    if (!token) e.preventDefault();
+  });
+
   loadScript('//js.stripe.com/v3/').then(() => {
     $form.each(element => {
       const cardContainer = u(element).find('.card-input-group');
