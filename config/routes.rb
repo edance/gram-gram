@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   get '/auth/:provider', to: 'authentication#authorize'
   get '/auth/:provider/callback', to: 'authentication#callback'
   delete 'logout', to: 'authentication#logout'
+
+  # Payment routes
+  get '/payment' => 'static#payment'
 end
