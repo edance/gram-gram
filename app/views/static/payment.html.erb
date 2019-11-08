@@ -6,7 +6,8 @@
     <div class="invalid-feedback"></div>
   </div>
 
+  <!-- <input class="stripe-token-input" name="token" type="hidden" value=""/> -->
   <%= hidden_field_tag(:token, '', class: 'stripe-token-input') %>
 
-  <button>Submit Payment</button>
+  <button type="submit">Submit Payment</button>
 <% end %>

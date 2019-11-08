@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
   # Payment routes
   get '/payment' => 'static#payment'
+  post '/charge' => 'payments#charge'
 end
