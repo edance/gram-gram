@@ -19,7 +19,7 @@ class AuthenticationController < ApplicationController
     user.update!(instagram_access_token: attrs['access_token'])
     session[:current_user_id] = user.id
 
-    redirect_to root_path
+    redirect_to photos_path
   end
 
   def logout
