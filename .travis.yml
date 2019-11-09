@@ -1,8 +1,9 @@
 language: ruby
+before_script:
+  - gem install bundler
 env:
-- RAILS_ENV=test
+  - RAILS_ENV=test
 script:
 — bundle exec rspec
 notifications:
   email: false
-
