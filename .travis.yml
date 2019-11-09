@@ -1,0 +1,7 @@
+language: ruby
+env:
+- RAILS_ENV=test
+script:
+— bundle exec rspec
+notifications:
+  email: false
