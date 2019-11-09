@@ -5,3 +5,4 @@ script:
 — bundle exec rspec
 notifications:
   email: false
+
