@@ -1,0 +1,10 @@
+<h1>My Photos</h1>
+
+<% if @photos.empty? %>
+  <p>You have no posts</p>
+<% end %>
+
+<% @photos.each do |p| %>
+  <%= image_tag(p.ig_permalink) %>
+  <br/>
+<% end %>
