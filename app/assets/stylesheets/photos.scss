@@ -1,3 +1,56 @@
 // Place all the styles related to the photos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.photos-page {
+  background-image: url(cork.jpg);
+}
+
+.photo-card {
+  width: 12rem;
+}
+
+/* Rotate all even images 2 degrees */
+.polaroids .card:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+/* Don't rotate every third image, but offset its position */
+.polaroids .card:nth-child(3n) {
+  transform: none;
+  position: relative;
+  top: -5px;
+}
+
+/* Rotate every fifth image by 5 degrees and offset it */
+.polaroids .card:nth-child(5n) {
+  transform: rotate(5deg);
+  position: relative;
+  right: 5px;
+}
+
+/* Keep defat rotate for every eighth, but offset it */
+.polaroids .card:nth-child(8n) {
+  position: relative;
+  top: 8px;
+  right: 5px;
+}
+
+/* Keep defat rotate for every eleventh, but offset it */
+.polaroids .card:nth-child(11n) {
+  position: relative;
+  top: 3px;
+  left: -5px;
+}
+
+.polaroids .card {
+  transform: rotate(-2deg);
+  transition: transform 400ms;
+
+  &:hover {
+    transform: scale(1.25);
+    box-shadow: 0 3px 6px rgba(0,0,0,.5);
+    position: relative;
+    z-index: 5;
+  }
+}
