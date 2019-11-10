@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 class AuthenticationController < ApplicationController
+  # Change this to localhost to sign in
+  REDIRECT_URI = 'https://gramgram.app/auth/instagram/callback'
+
   def authorize
     base_url = 'https://api.instagram.com/oauth/authorize'
     query = {
       app_id: ENV['INSTAGRAM_ID'],
-      redirect_uri: 'https://gramgram.app/auth/instagram/callback',
+      redirect_uri: REDIRECT_URI,
       scope: 'user_profile,user_media',
       response_type: 'code'
     }
@@ -39,7 +42,7 @@ class AuthenticationController < ApplicationController
                  app_id: ENV['INSTAGRAM_ID'],
                  app_secret: ENV['INSTAGRAM_SECRET'],
                  grant_type: 'authorization_code',
-                 redirect_uri: 'https://gramgram.app/auth/instagram/callback',
+                 redirect_uri: REDIRECT_URI,
                  code: code)
   end
 end
