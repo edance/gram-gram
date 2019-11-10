@@ -31,20 +31,20 @@ class User < ApplicationRecord
     ).body
   end
 
-  def photos
+  def instagram_photos
     return unless media['error'].nil?
 
-    photos = []
+    ig_photos = []
     media['data'].each do |m|
       case m['media_type']
       when MEDIA_TYPE_IMAGE
-        photos.push(m)
+        ig_photos.push(m)
       when MEDIA_TYPE_CAROUSEL
-        photos += photos_from_carousel(m['id'])
+        ig_photos += photos_from_carousel(m['id'])
       end
     end
 
-    photos
+    ig_photos
   end
 
   private
