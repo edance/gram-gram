@@ -1,0 +1,16 @@
+<div class="photos-page">
+  <div class="container py-4">
+
+    <%= form_with model: @postcard, url: update_caption_path(@postcard), local: true do |form| %>
+      <div class="card large-photo-card">
+        <%= image_tag(@postcard.photo.ig_media_url, class: 'card-img-top p-2') %>
+
+        <div class="card-body">
+          <%= form.text_field :caption, class: 'w-100' %>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Next</button>
+    <% end %>
+  </div>
+</div>

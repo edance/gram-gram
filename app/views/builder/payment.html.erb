@@ -1,0 +1,19 @@
+<div class="photos-page">
+  <div class="container py-4">
+    <%= form_with model: @postcard, url: update_payment_path(@postcard), class: 'payment-form' do |form| %>
+      <div class="form-group card-input-group">
+        <label class="form-control-label">Credit or Debit Card</label>
+        <div class="credit-card-input form-control form-control-alternative">
+        </div>
+        <div class="invalid-feedback"></div>
+      </div>
+
+      <!-- <input class="stripe-token-input" name="token" type="hidden" value=""/> -->
+      <%= hidden_field_tag(:token, '', class: 'stripe-token-input') %>
+
+      <button type="submit" class="btn btn-primary">
+        Submit Payment
+      </button>
+    <% end %>
+  </div>
+</div>

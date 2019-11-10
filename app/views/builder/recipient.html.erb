@@ -1,0 +1,38 @@
+<div class="photos-page">
+  <div class="container py-4">
+    <%= form_with model: @postcard, url: update_recipient_path(@postcard), local: true do |form| %>
+      <%= form.fields_for :recipient do |recipient| %>
+        <div class="form-group">
+          <label>Name</label>
+          <%= recipient.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Address</label>
+          <%= recipient.text_field :address_line1, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress2">Address 2</label>
+          <%= recipient.text_field :address_line2, class: 'form-control' %>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputCity">City</label>
+            <%= recipient.text_field :address_city, class: 'form-control' %>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">State</label>
+            <%= recipient.text_field :address_state, class: 'form-control' %>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputZip">Zip</label>
+            <%= recipient.text_field :address_zip, class: 'form-control' %>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          Next
+        </button>
+      <% end %>
+    <% end %>
+  </div>
+</div>

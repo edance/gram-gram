@@ -7,7 +7,7 @@
 
     <div class="polaroids d-flex flex-wrap justify-content-between">
       <% @photos.each do |p| %>
-        <%= link_to(photo_path(p), class: 'card photo-card m-4 mb-5') do %>
+        <%= link_to(build_new_path(p), class: 'card photo-card m-4 mb-5') do %>
           <%= image_tag(p.ig_media_url, class: 'card-img-top p-2 pb-5') %>
         <% end %>
       <% end %>
