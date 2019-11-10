@@ -19,7 +19,8 @@ class AuthenticationController < ApplicationController
     resp = fetch_access_token
     attrs = JSON.parse(resp.body)
     user = User.find_or_initialize_by(instagram_uid: attrs['user_id'])
-    user.update!(instagram_access_token: attrs['access_token'])
+    user.instagram_access_token = attrs['access_token']
+    update_user_information!(user)
     session[:current_user_id] = user.id
 
     redirect_to photos_path
@@ -34,6 +35,11 @@ class AuthenticationController < ApplicationController
 
   def code
     params.require(:code)
+  end
+
+  def update_user_information!(user)
+    info = user.user_information
+    user.update!(ig_username: info['username'])
   end
 
   def fetch_access_token

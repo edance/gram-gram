@@ -8,6 +8,6 @@ class StaticController < ApplicationController
   def redirect_users
     return if current_user.nil?
 
-    redirect_to photos_path
+    redirect_to login_path
   end
 end
