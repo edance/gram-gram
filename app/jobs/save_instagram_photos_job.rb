@@ -2,7 +2,7 @@ class SaveInstagramPhotosJob < ApplicationJob
   queue_as :default
 
   def perform(user)
-    user.instagram_photos&.each do |photo|
+    user&.instagram_photos&.each do |photo|
       Photo.create(
         user: user,
         ig_id: photo['id'],
