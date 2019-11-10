@@ -6,7 +6,7 @@
 
 <% @photos.each do |p| %>
   <%= link_to(photo_path(p)) do %>
-    <%= image_tag(p.ig_permalink) %>
+    <%= image_tag(p.ig_media_url) %>
   <% end %>
   <br/>
 <% end %>
