@@ -1,0 +1,5 @@
+<%= form_with model: @postcard, local: true do |form| %>
+  <%= form.text_field :caption %>
+
+  <%= submit_tag('Save') %>
+<% end %>
