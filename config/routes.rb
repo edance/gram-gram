@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   get '/payment' => 'static#payment'
   post '/charge' => 'payments#charge'
 
-  get '/photos', to: 'photos#index'
+  resources :photos, only: %i[index show]
 end
