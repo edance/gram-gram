@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   post '/charge' => 'payments#charge'
 
   resources :photos, only: %i[index show]
+  resources :postcards, except: %i[edit update destroy]
 end

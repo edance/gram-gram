@@ -1,0 +1,11 @@
+<h1>My Postcards</h1>
+
+<% if @postcards.empty? %>
+  <p>You have no posts</p>
+<% end %>
+
+<% @postcards.each do |p| %>
+  <%= link_to(p.id postcard_path(p)) %>
+  <br/>
+<% end %>
+

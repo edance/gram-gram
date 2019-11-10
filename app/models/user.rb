@@ -4,6 +4,7 @@
 class User < ApplicationRecord
   has_many :photos
   has_many :recipients
+  has_many :postcards, through: :photos
 
   INSTAGRAM_BASE_URL = 'https://graph.instagram.com'
   USER_FIELDS = %w[id username media_count account_type].freeze
