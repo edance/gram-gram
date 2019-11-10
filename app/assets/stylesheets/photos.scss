@@ -7,7 +7,11 @@
 }
 
 .photo-card {
-  width: 12rem;
+  max-width: 12rem;
+}
+
+.large-photo-card {
+  max-width: 20rem;
 }
 
 /* Rotate all even images 2 degrees */
