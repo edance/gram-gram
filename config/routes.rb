@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   post '/charge' => 'payments#charge'
 
   resources :photos, only: %i[index show]
-  resources :postcards, except: %i[edit update destroy]
+  get '/photos/:photo_id/send', to: 'postcards#new', as: 'postcard_send'
+  post '/photos/:photo_id/send', to: 'postcards#create', as: 'postcard_create'
+  resources :postcards, only: %i[index show]
 end
