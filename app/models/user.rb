@@ -10,6 +10,10 @@ class User < ApplicationRecord
   USER_FIELDS = %w[id username media_count account_type].freeze
   MEDIA_FIELDS = %w[caption id media_type media_url permalink thumbnail_url
                     timestamp username].freeze
+  CAROUSEL_CHILDREN_FIELDS = (MEDIA_FIELDS - %w[caption]).freeze
+
+  MEDIA_TYPE_IMAGE = 'IMAGE'
+  MEDIA_TYPE_CAROUSEL = 'CAROUSEL_ALBUM'
 
   def user_information
     instagram_client.get(
@@ -27,6 +31,22 @@ class User < ApplicationRecord
     ).body
   end
 
+  def photos
+    return unless media['error'].nil?
+
+    photos = []
+    media['data'].each do |m|
+      case m['media_type']
+      when MEDIA_TYPE_IMAGE
+        photos.push(m)
+      when MEDIA_TYPE_CAROUSEL
+        photos += photos_from_carousel(m['id'])
+      end
+    end
+
+    photos
+  end
+
   private
 
   def instagram_client
@@ -35,5 +55,15 @@ class User < ApplicationRecord
 
       f.adapter Faraday.default_adapter
     end
+  end
+
+  def photos_from_carousel(media_id)
+    media = instagram_client.get(
+      "#{media_id}/children",
+      fields: CAROUSEL_CHILDREN_FIELDS.join(','),
+      access_token: instagram_access_token
+    ).body
+
+    media['data'].select { |m| m['media_type'] == MEDIA_TYPE_IMAGE }
   end
 end
