@@ -19,6 +19,7 @@ class AuthenticationController < ApplicationController
     user.instagram_access_token = attrs['access_token']
     update_user_information!(user)
     session[:current_user_id] = user.id
+    cookies.encrypted[:user_id] = current_user.id
 
     redirect_to photos_path
   end

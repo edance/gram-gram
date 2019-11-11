@@ -23,8 +23,8 @@ class SaveInstagramPhotosJob < ApplicationJob
   end
 
   def broadcast_photo_count
-    PhotosChannel.broadcast_to(
-      user,
+    ActionCable.server.broadcast(
+      "photos_for_#{user.id}",
       total_photo_count: instagram_photos.size,
       processed_photo_count: Photo.where(user: user).count
     )
