@@ -7,7 +7,6 @@ class SaveInstagramPhotosJob < ApplicationJob
     @instagram_photos = user&.instagram_photos
     instagram_photos&.each do |photo|
       create_photo(photo)
-      broadcast_photo_count
     end
   end
 
@@ -19,14 +18,6 @@ class SaveInstagramPhotosJob < ApplicationJob
       ig_permalink: photo['permalink'],
       ig_caption: photo['caption'],
       ig_timestamp: photo['timestamp']
-    )
-  end
-
-  def broadcast_photo_count
-    ActionCable.server.broadcast(
-      "photos_for_#{user.id}",
-      total_photo_count: instagram_photos.size,
-      processed_photo_count: Photo.where(user: user).count
     )
   end
 end

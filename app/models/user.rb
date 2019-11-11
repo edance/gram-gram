@@ -32,16 +32,20 @@ class User < ApplicationRecord
   end
 
   def instagram_photos
-    return unless media['error'].nil?
+    _media = media
+    return unless _media['error'].nil?
 
+    media_count = _media['data'].size
     ig_photos = []
-    media['data'].each do |m|
+    media['data'].each_with_index do |m, i|
       case m['media_type']
       when MEDIA_TYPE_IMAGE
         ig_photos.push(m)
       when MEDIA_TYPE_CAROUSEL
         ig_photos += photos_from_carousel(m['id'])
       end
+
+      broadcast_photo_count(media_count, i + 1)
     end
 
     ig_photos
@@ -65,5 +69,13 @@ class User < ApplicationRecord
     ).body
 
     media['data'].select { |m| m['media_type'] == MEDIA_TYPE_IMAGE }
+  end
+
+  def broadcast_photo_count(media_count, processed_media_count)
+    ActionCable.server.broadcast(
+      "photos_for_#{id}",
+      total_media_count: media_count,
+      processed_media_count: processed_media_count
+    )
   end
 end
