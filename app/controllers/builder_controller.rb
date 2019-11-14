@@ -75,7 +75,12 @@ class BuilderController < ApplicationController
       amount: Postcard::PRICE,
       currency: 'usd',
       description: STRIPE_CHARGE_DESCRIPTION,
-      source: token
+      source: token,
+      metadata: {
+        postcard_id: @postcard&.id,
+        user_id: current_user.id,
+        user_email: current_user.email
+      }
     )
   end
 
