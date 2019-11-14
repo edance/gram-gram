@@ -1,4 +1,6 @@
 class BuilderController < ApplicationController
+  include StaticHelper
+
   STRIPE_CHARGE_DESCRIPTION = 'GramGram Photo'.freeze
   RECIPIENT_PARAMS = %i[
     name
@@ -51,7 +53,6 @@ class BuilderController < ApplicationController
   # TODO: add saving of charge
   def update_payment
     create_charge
-    flash[:notice] = 'Your photo has been sent!'
 
     redirect_to root_path
   end
@@ -71,17 +72,30 @@ class BuilderController < ApplicationController
   end
 
   def create_charge
+    charge = process_stripe_charge
+    postcard.update_attribute(:stripe_charge_id, charge[:id])
+    flash[:notice] = 'Your photo has been sent!'
+  rescue StandardError
+    flash[:notice] = "We're having issues processing your payment. Please "\
+      "email us at #{help_email} if the problem persists."
+  end
+
+  def process_stripe_charge
     Stripe::Charge.create(
       amount: Postcard::PRICE,
       currency: 'usd',
       description: STRIPE_CHARGE_DESCRIPTION,
       source: token,
-      metadata: {
-        postcard_id: @postcard&.id,
-        user_id: current_user.id,
-        user_email: current_user.email
-      }
+      metadata: stripe_metadata
     )
+  end
+
+  def stripe_metadata
+    {
+      postcard_id: postcard.id,
+      user_id: current_user.id,
+      user_email: current_user.email
+    }
   end
 
   def token
