@@ -3,9 +3,11 @@ class SendPostcardJob < ApplicationJob
 
   attr_accessor :postcard
 
-  def perform(postcard_id)
-    @postcard = Postcard.find_by_id(postcard_id)
+  def perform(postcard)
+    @postcard = postcard
     return if postcard.nil?
+
+    return unless stripe_charge_successful?
 
     lob.postcards.create(
       description: postcard.lob_description,
@@ -21,6 +23,11 @@ class SendPostcardJob < ApplicationJob
       photo_url: postcard.photo.ig_permalink,
       caption: postcard.caption
     }
+  end
+
+  def stripe_charge_successful?
+    charge = Stripe::Charge.retrive(postcard.stripe_charge_id)
+    return charge['paid']
   end
 
   def lob
