@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_10_232302) do
+ActiveRecord::Schema.define(version: 2019_11_14_031533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_11_10_232302) do
     t.text "caption"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "stripe_charge_id"
     t.index ["photo_id"], name: "index_postcards_on_photo_id"
     t.index ["recipient_id"], name: "index_postcards_on_recipient_id"
   end
