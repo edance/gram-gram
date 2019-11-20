@@ -1,11 +1,32 @@
-Welcome to <%= company_name %>!
+<section id="home-section" class="hero">
+  <img src="images/blob-shape-3.svg" class="svg-blob" alt="Colorlib Free Template">
 
-<% if current_user.present? %>
-  Hello <%= current_user.id %>?
+  <div class="home-slider owl-carousel">
+    <div class="slider-item">
+      <div class="overlay"></div>
+      <div class="container-fluid p-0">
+        <div class="row d-md-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
+          <div class="one-third order-md-last">
+            <div class="img" style="background-image:url(images/bg_1.jpg);">
+              <div class="overlay"></div>
+            </div>
+          </div>
 
-  <br/>
-
-  <%= link_to 'Log Out', logout_path, method: :delete %>
-<% else %>
-  <%= link_to 'Login', login_path %>
-<% end %>
+          <div class="one-forth d-flex align-items-center" data-scrollax=" properties: { translateY: '70%' }">
+            <div class="text">
+              <h1 class="mb-4 mt-3">
+                Send Instagram Pictures to Grandma in the Mail
+              </h1>
+              <p>
+                Keep in touch with your relatives by sending them physical photos through the mail. Bring Instagram to your offline family.
+              </p>
+              <p>
+                <%= link_to 'Sign In with Instagram', login_path, class: 'btn btn-primary px-5 py-3 mt-3' %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
