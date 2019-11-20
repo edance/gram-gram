@@ -1169,45 +1169,6 @@ h1, h2, h3, h4, h5,
 	}
 }
 
-.table{
-	min-width: 1000px !important;
-	width: 100%;
-	text-align: center;
-	th{
-		font-weight: 500;
-	}
-	.thead-primary{
-		background: rgba(0,0,0,1);
-		tr{
-			th{
-				padding: 20px 10px;
-				color: $white !important;
-				border: 1px solid transparent !important;
-			}
-		}
-	}
-	tbody{
-		tr{
-			th{
-				border: 1px solid transparent !important;
-				border-bottom: 1px solid rgba(0,0,0,.05) !important;
-				color: $black;
-			}
-			th,td{
-				text-align: left !important;
-				vertical-align: middle;
-				padding: 20px 0;
-				border: 1px solid transparent !important;
-				border-bottom: 1px solid rgba(0,0,0,.05) !important;
-				ul{
-					width: 100%;
-				}
-			}
-		}
-	}
-}
-
-
 //HOTEL SINGLE
 .rate{
 	span{
