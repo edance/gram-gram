@@ -11,10 +11,14 @@
       <ul class="navbar-nav nav ml-auto">
         <% if current_user.present? %>
           <li class="nav-item">
-            <%= link_to 'Photos', photos_path, class: 'nav-link' %>
+            <%= link_to photos_path, class: 'nav-link' do %>
+              <span>Photos</span>
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Log Out', logout_path, method: :delete, class: 'nav-link' %>
+            <%= link_to logout_path, method: :delete, class: 'nav-link' do %>
+              <span>Log Out</span>
+            <% end %>
           </li>
         <% else %>
           <li class="nav-item">
@@ -24,7 +28,9 @@
             <a href="#services-section" class="nav-link"><span>Pricing</span></a>
           </li>
           <li class="nav-item">
-            <%= link_to 'Log In', login_path, class: 'nav-link' %>
+            <%= link_to login_path, class: 'nav-link' do %>
+              <span>Log In</span>
+            <% end %>
           </li>
         <% end %>
       </ul>
