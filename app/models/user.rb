@@ -44,8 +44,6 @@ class User < ApplicationRecord
       when MEDIA_TYPE_CAROUSEL
         ig_photos += photos_from_carousel(m['id'])
       end
-
-      broadcast_photo_count(media_count, i + 1)
     end
 
     ig_photos
@@ -69,13 +67,5 @@ class User < ApplicationRecord
     ).body
 
     media['data'].select { |m| m['media_type'] == MEDIA_TYPE_IMAGE }
-  end
-
-  def broadcast_photo_count(media_count, processed_media_count)
-    ActionCable.server.broadcast(
-      "photos_for_#{id}",
-      total_media_count: media_count,
-      processed_media_count: processed_media_count
-    )
   end
 end

@@ -21,6 +21,8 @@ class AuthenticationController < ApplicationController
     session[:current_user_id] = user.id
     cookies.encrypted[:user_id] = current_user.id
 
+    SaveInstagramPhotosJob.perform_later(current_user)
+
     redirect_to photos_path
   end
 
