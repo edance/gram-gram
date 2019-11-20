@@ -478,9 +478,7 @@ h1, h2, h3, h4, h5,
 						left: 0;
 						right: 0;
 						bottom: 0;
-						-webkit-box-shadow: 0px -5px 34px -27px rgba(0,0,0,0.33);
-						-moz-box-shadow: 0px -5px 34px -27px rgba(0,0,0,0.33);
-						box-shadow: 0px -5px 34px -27px rgba(0,0,0,0.33);
+
 						@include media-breakpoint-up(lg){
 							top: 80px;
 							left: 0;
