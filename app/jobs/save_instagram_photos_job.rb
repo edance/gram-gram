@@ -4,10 +4,14 @@ class SaveInstagramPhotosJob < ApplicationJob
 
   def perform(user)
     @user = user
+    broadcast_started
+
     @instagram_photos = user&.instagram_photos
     instagram_photos&.each do |photo|
       create_photo(photo)
     end
+
+    broadcast_ended
   end
 
   def create_photo(photo)
@@ -19,5 +23,13 @@ class SaveInstagramPhotosJob < ApplicationJob
       ig_caption: photo['caption'],
       ig_timestamp: photo['timestamp']
     )
+  end
+
+  def broadcast_started
+    ActionCable.server.broadcast("photos_for_#{user.id}", started: 1)
+  end
+
+  def broadcast_ended
+    ActionCable.server.broadcast("photos_for_#{user.id}", ended: 1)
   end
 end
