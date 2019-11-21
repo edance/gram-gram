@@ -27,21 +27,20 @@
                 </div>
 
                 <div class="text">
-                  <h4 class="price"><span class="old-price mr-2">$500</span>$400</h4>
-                  <span>3 nights</span>
-                  <h3><a href="hotel-single.html">Luxury Hotel in Greece</a></h3>
-                  <div class="star d-flex clearfix">
-                    <div class="mr-auto float-left">
-                      <span class="ion-ios-star"></span>
-                      <span class="ion-ios-star"></span>
-                      <span class="ion-ios-star"></span>
-                      <span class="ion-ios-star"></span>
-                      <span class="ion-ios-star"></span>
-                    </div>
-                    <div class="float-right">
-                      <span class="rate"><a href="#">(120)</a></span>
-                    </div>
-                  </div>
+                  <% if new?(p) %>
+                    <h4 class="price">
+                      New
+                    </h4>
+                  <% end %>
+
+                  <span>
+                    <%= time_ago_in_words(p.ig_timestamp) %>
+                  </span>
+                  <% if caption(p) %>
+                    <h3>
+                      <%= link_to(caption(p), build_new_path(p)) %>
+                    </h3>
+                  <% end %>
                 </div>
               </div>
             </div>
