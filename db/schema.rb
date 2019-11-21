@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_201208) do
+ActiveRecord::Schema.define(version: 2019_11_21_203610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "photos", force: :cascade do |t|
-    t.bigint "user_id", null: false
+  create_table "photos", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "ig_id"
     t.text "ig_permalink"
     t.text "ig_caption"
@@ -25,13 +24,12 @@ ActiveRecord::Schema.define(version: 2019_11_21_201208) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "ig_media_url"
+    t.uuid "user_id"
     t.index ["ig_id"], name: "index_photos_on_ig_id", unique: true
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
-  create_table "postcards", force: :cascade do |t|
-    t.integer "recipient_id"
-    t.bigint "photo_id", null: false
+  create_table "postcards", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "status"
     t.date "delivery_date"
     t.string "lob_id"
@@ -39,12 +37,13 @@ ActiveRecord::Schema.define(version: 2019_11_21_201208) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "stripe_charge_id"
+    t.uuid "photo_id"
+    t.uuid "recipient_id"
     t.index ["photo_id"], name: "index_postcards_on_photo_id"
     t.index ["recipient_id"], name: "index_postcards_on_recipient_id"
   end
 
-  create_table "recipients", force: :cascade do |t|
-    t.bigint "user_id", null: false
+  create_table "recipients", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "lob_address_id"
     t.string "name"
     t.string "address_line1"
@@ -54,10 +53,11 @@ ActiveRecord::Schema.define(version: 2019_11_21_201208) do
     t.string "address_zip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "user_id"
     t.index ["user_id"], name: "index_recipients_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
@@ -67,8 +67,4 @@ ActiveRecord::Schema.define(version: 2019_11_21_201208) do
     t.string "ig_username"
   end
 
-  add_foreign_key "photos", "users"
-  add_foreign_key "postcards", "photos"
-  add_foreign_key "postcards", "recipients"
-  add_foreign_key "recipients", "users"
 end
