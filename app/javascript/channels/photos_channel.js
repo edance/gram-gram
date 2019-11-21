@@ -8,6 +8,7 @@ function setLoaderWidth($bar) {
   $bar.attr('style', `width: ${width}%`);
 }
 
+// first 70% linear, then wait
 function incrementLoader($bar) {
   setTimeout(() => {
     if (width >= 70) {

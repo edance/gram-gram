@@ -18,16 +18,14 @@ class AuthenticationController < ApplicationController
     user = User.find_or_initialize_by(instagram_uid: attrs['user_id'])
     user.instagram_access_token = attrs['access_token']
     update_user_information!(user)
-    session[:current_user_id] = user.id
-    cookies.encrypted[:user_id] = current_user.id
-
-    SaveInstagramPhotosJob.perform_later(current_user)
+    sign_in_user(user)
+    load_recent_photos(user)
 
     redirect_to photos_path
   end
 
   def logout
-    reset_session
+    cookies.delete(:user_id)
     redirect_to root_path
   end
 
@@ -35,6 +33,14 @@ class AuthenticationController < ApplicationController
 
   def code
     params.require(:code)
+  end
+
+  def sign_in_user(user)
+    cookies.permanent.encrypted[:user_id] = user.id
+  end
+
+  def load_recent_photos(user)
+    SaveInstagramPhotosJob.set(wait: 5.seconds).perform_later(user)
   end
 
   def update_user_information!(user)
