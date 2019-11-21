@@ -1,15 +1,39 @@
 import { u } from 'umbrellajs';
 import { loadScript } from '../utils';
-
-const FONT_SIZE = 16;
+import { colors, fonts } from '../variables';
 
 function createCardElement(element, stripe) {
   // Create an instance of Elements.
-  const elements = stripe.elements();
+  const elements = stripe.elements({
+    fonts: [
+      {
+        cssSrc: 'https://fonts.googleapis.com/css?family=Poppins',
+      },
+    ],
+  });
 
-  const style = {};
+  const style = {
 
-  const classes = {};
+    base: {
+      color: colors.black,
+      lineHeight: '40px',
+      fontFamily: fonts.base,
+      fontSmoothing: 'antialiased',
+      fontSize: '15px',
+      '::placeholder': {
+        color: '#6c757d',
+      },
+    },
+    invalid: {
+      color: colors.theme['danger'],
+      iconColor: colors.theme['danger'],
+    }
+  };
+
+  const classes = {
+    base: 'form-control',
+    invalid: 'is-invalid',
+  };
 
   // Create an instance of the card Element.
   const card = elements.create('card', {classes, style});
