@@ -1,0 +1,15 @@
+language: ruby
+services:
+- postgresql
+addons:
+  postgresql: '9.4'
+before_script:
+- bundle exec rails db:create db:migrate
+script:
+- bundle exec rspec spec
+deploy:
+  provider: heroku
+  app: instagram-2-gram
+  run: bundle exec rails db:migrate
+  api_key:
+    secure: ip5nkqQFz3T4SquOMi4HzeV1vVd0JMloquPZvBcSm5VRDxZ59nJhkeVXWX6EGga8fynpbU7sn+SNFq65Py8Eo7eqGrdMOm3PcqGOehm/qwr2KCORf0/1wsj2FlXs6WA2OTYc6tL94uKDxQ6p632QzmNyP5fCt+DqJglAVTiJ6nZJFs7evv6Y7KmiynSp4Arsei+PLve2tRQrBXGDXxTd7U06qo9on013KrRR0Jw1zasMrmhOzffP2qoiVbrkv/HozsT+gIxyfKNamKZqIpiJUCZB6c2X/QP/JYHMMlav4Rr0Dei6rXqtlpjxFYNSBCFhQ4NCfKxQbRwDCxXQ+7MtDudrvFIEkP2U15gsd6WxivQ18UMMP7CXNoXFMstYx8hdz2smZ7nT+E5MJa3YOq98T3s3ezWsAoGC93pe5S0qQ2YETncxqduovojErBTF4P+k1PDmvir1ovMYhYnZnBvK8QUfpbatFtHRzfHn2Hym5JD19VfFCh8x/5FVAwJTg1hde35riBCMARuRhenBi/QeyBGrHDHzuu3NiHBDUZ4TT9wN/cgD9OKl+uBG99r+HLH2zl0EKQw5FlhX1tLv7aEz+tTuu+s7dp/lIWGLStQPwkTSc/DQjN5SwGoReu0lTEuTZStMHfgLqPEJFLjih6NWo9yOtYuRtrrPZziHxfaJEGU=
