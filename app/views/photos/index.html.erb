@@ -36,11 +36,6 @@
                   <span>
                     <%= time_ago_in_words(p.ig_timestamp) %>
                   </span>
-                  <% if caption(p) %>
-                    <h3>
-                      <%= link_to(caption(p), build_new_path(p)) %>
-                    </h3>
-                  <% end %>
                 </div>
               </div>
             </div>
