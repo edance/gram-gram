@@ -5,4 +5,6 @@ class Photo < ApplicationRecord
   has_many :postcards
   belongs_to :user
   validates_uniqueness_of :ig_id
+
+  self.per_page = 15
 end
