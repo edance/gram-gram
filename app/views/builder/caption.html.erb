@@ -18,9 +18,7 @@
       <div class="col-md-7 order-md-last d-flex">
         <%= form_with model: @postcard, class: 'bg-light p-4 p-md-5 contact-form', url: update_caption_path(@postcard), local: true do |form| %>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Your Name">
-          </div>
-          <div class="form-group">
+            <label>Caption</label>
             <%= form.text_area :caption, class: 'form-control', cols: 30, rows: 7, placeholder: 'Message' %>
           </div>
           <div class="form-group">
