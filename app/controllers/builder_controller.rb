@@ -38,9 +38,8 @@ class BuilderController < ApplicationController
   # TODO: select from dropdown
   def update_recipient
     recipient = current_user.recipients.new(recipient_params)
-    postcard.recipient = recipient
 
-    if recipient.save && postcard.save
+    if recipient.save && postcard.update(recipient: recipient)
       redirect_to build_payment_path
     else
       render 'recipient'

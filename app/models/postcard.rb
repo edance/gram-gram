@@ -22,8 +22,8 @@ class Postcard < ApplicationRecord
   end
 
   def sendable?
-    !recipient.nil? &&
-      !photo.nil? &&
-      !stripe_charge_id.nil?
+    recipient.present? &&
+      photo.present? &&
+      stripe_charge_id.present?
   end
 end
