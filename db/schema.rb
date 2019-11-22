@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_203610) do
+ActiveRecord::Schema.define(version: 2019_11_22_045430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2019_11_21_203610) do
     t.string "instagram_uid"
     t.string "instagram_access_token"
     t.string "ig_username"
+    t.string "payment_customer_id"
   end
 
 end
