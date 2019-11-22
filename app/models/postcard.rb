@@ -1,6 +1,9 @@
 class Postcard < ApplicationRecord
   belongs_to :photo
   belongs_to :recipient, optional: true
+
+  has_one :user, through: :photo
+
   after_commit :send_with_lob_if_sendable
 
   enum status: %i[in_transit in_local_area processed_for_delivery re_routed

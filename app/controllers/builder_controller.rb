@@ -2,6 +2,7 @@ class BuilderController < ApplicationController
   include StaticHelper
 
   STRIPE_CHARGE_DESCRIPTION = 'GramGram Photo'.freeze
+  USER_PARAMS = %i[name email].freeze
   RECIPIENT_PARAMS = %i[
     name
     address_line1
@@ -52,6 +53,7 @@ class BuilderController < ApplicationController
 
   # TODO: add saving of charge
   def update_payment
+    update_user
     create_charge
 
     redirect_to root_path
@@ -61,6 +63,10 @@ class BuilderController < ApplicationController
 
   def postcard
     @postcard = current_user.postcards.find(params[:id])
+  end
+
+  def user_params
+    params.permit(USER_PARAMS)
   end
 
   def recipient_params
@@ -78,6 +84,10 @@ class BuilderController < ApplicationController
   rescue StandardError
     flash[:notice] = "We're having issues processing your payment. Please "\
       "email us at #{help_email} if the problem persists."
+  end
+
+  def update_user
+    current_user.update(user_params)
   end
 
   def process_stripe_charge
