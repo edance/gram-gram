@@ -1,13 +1,12 @@
 class SaveInstagramPhotosJob < ApplicationJob
   queue_as :default
-  attr_accessor :user, :instagram_photos
+  attr_accessor :user
 
   def perform(user)
     @user = user
     broadcast_started
 
-    @instagram_photos = user&.instagram_photos
-    instagram_photos&.each do |photo|
+    InstagramService.new(user).photos.each do |photo|
       create_photo(photo)
     end
 
