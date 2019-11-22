@@ -44,7 +44,7 @@ class AuthenticationController < ApplicationController
   end
 
   def update_user_information!(user)
-    info = user.user_information
+    info = InstagramService.new(user).user_information
     user.update!(ig_username: info['username'])
   end
 
