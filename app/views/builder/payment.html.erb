@@ -15,6 +15,35 @@
     </div>
 
     <div class="row block-9">
+      <div class="col-md-5 order-md-last d-flex">
+        <table class="table w-100">
+          <thead>
+            <tr>
+              <th scope="col">Checkout</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 x Photo @ <%= formatted_price %></td>
+              <td><%= formatted_price %></td>
+            </tr>
+            <tr>
+              <td>Tax</td>
+              <td>$0.00</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Total</strong>
+              </td>
+              <td>
+                <strong><%= formatted_price %></strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <div class="col-md-7 d-flex">
         <%= form_with method: :patch, url: update_payment_path(@postcard), class: 'bg-light p-4 p-md-5 contact-form payment-form' do |form| %>
           <div class="form-group">
@@ -55,34 +84,6 @@
         <% end %>
       </div>
 
-      <div class="col-md-5 d-flex">
-        <table class="table w-100">
-          <thead>
-            <tr>
-              <th scope="col">Checkout</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1 x Photo @ <%= formatted_price %></td>
-              <td><%= formatted_price %></td>
-            </tr>
-            <tr>
-              <td>Tax</td>
-              <td>$0.00</td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Total</strong>
-              </td>
-              <td>
-                <strong><%= formatted_price %></strong>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
   </div>
 </section>
