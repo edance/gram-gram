@@ -6,8 +6,7 @@ class Postcard < ApplicationRecord
 
   after_commit :send_with_lob_if_sendable
 
-  enum status: %i[in_transit in_local_area processed_for_delivery re_routed
-                  returned_to_sender]
+  enum status: %i[pending processing mailed in_transit delivered]
 
   PRICE = 295
 
@@ -18,7 +17,7 @@ class Postcard < ApplicationRecord
   private
 
   def send_with_lob_if_sendable
-    SendPostcardJob.perform_async(self) if sendable?
+    SendPostcardJob.perform_later(self) if sendable?
   end
 
   def sendable?

@@ -5,16 +5,18 @@ class SendPostcardJob < ApplicationJob
 
   def perform(postcard)
     @postcard = postcard
-    return if postcard.nil?
+    return if postcard.nil? || !postcard.pending?
 
     return unless stripe_charge_successful?
 
-    lob.postcards.create(
+    lob_card = lob.postcards.create(
       description: postcard.lob_description,
       to: postcard.recipient.address,
       front: front_html,
       back: back_html
     )
+
+    postcard.update(lob_id: lob_card['id'], status: :processing)
   end
 
   def locals
@@ -37,7 +39,7 @@ class SendPostcardJob < ApplicationJob
   end
 
   def stripe_charge_successful?
-    charge = Stripe::Charge.retrive(postcard.stripe_charge_id)
+    charge = Stripe::Charge.retrieve(postcard.stripe_charge_id)
     charge['paid']
   end
 
