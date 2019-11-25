@@ -19,8 +19,8 @@ class SendPostcardJob < ApplicationJob
 
   def locals
     {
-      photo_url: postcard.photo.ig_permalink,
-      caption: postcard.caption
+      :@photo_url => postcard.photo.ig_media_url,
+      :@caption => postcard.caption
     }
   end
 
@@ -33,7 +33,7 @@ class SendPostcardJob < ApplicationJob
   end
 
   def controller
-    @controller ||= ApplicationController.new
+    @controller ||= ActionController::Base.new
   end
 
   def stripe_charge_successful?
