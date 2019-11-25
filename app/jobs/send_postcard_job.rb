@@ -12,22 +12,33 @@ class SendPostcardJob < ApplicationJob
     lob.postcards.create(
       description: postcard.lob_description,
       to: postcard.recipient.address,
-      front: ENV['POSTCARD_FRONT_TEMPLATE_ID'],
-      back: ENV['POSTCARD_BACK_TEMPLATE_ID'],
-      merge_variables: merge_variables
+      front: front_html,
+      back: back_html
     )
   end
 
-  def merge_variables
+  def locals
     {
       photo_url: postcard.photo.ig_permalink,
       caption: postcard.caption
     }
   end
 
+  def front_html
+    controller.render_to_string('postcard_template/front', locals: locals)
+  end
+
+  def back_html
+    controller.render_to_string('postcard_template/back', locals: locals)
+  end
+
+  def controller
+    @controller ||= ApplicationController.new
+  end
+
   def stripe_charge_successful?
     charge = Stripe::Charge.retrive(postcard.stripe_charge_id)
-    return charge['paid']
+    charge['paid']
   end
 
   def lob

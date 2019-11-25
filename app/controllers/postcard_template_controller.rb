@@ -1,3 +1,3 @@
 class PostcardTemplateController < ApplicationController
-  layout 'postcard'
+  layout false
 end
