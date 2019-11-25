@@ -30,4 +30,7 @@ Rails.application.routes.draw do
   get '/photos/:photo_id/send', to: 'postcards#new', as: 'postcard_send'
   post '/photos/:photo_id/send', to: 'postcards#create', as: 'postcard_create'
   resources :postcards, only: %i[index show]
+
+  get '/template/back', to: 'postcard_template#back'
+  get '/template/front', to: 'postcard_template#front'
 end

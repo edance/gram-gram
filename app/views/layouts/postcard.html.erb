@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+
+    <style>
+     *, *:before, *:after {
+       -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+       box-sizing: border-box;
+     }
+
+     body {
+       margin: 0;
+       padding: 0;
+       background: cornsilk;
+     }
+
+     .outer {
+       position: absolute;
+       left: -4.25in;
+
+       transform: rotate(-90deg);
+       transform-origin: top right;
+
+       overflow: hidden;
+
+       height: 6.25in;
+       width: 4.25in;
+
+       background: white;
+     }
+
+     img {
+       height: 3.875in;
+       width: 3.875in;
+
+       margin-top: 0.25in;
+     }
+
+     .caption {
+       margin-top: 0.25in;
+       font-size: 16px;
+       line-height: 20px;
+       font-family: 'PT Mono', monospace;
+     }
+
+     .safe-area {
+       position: absolute;
+       height: 5.875in;
+       width: 3.875in;
+       left: 0.1875in;
+       top: 0.1875in;
+     }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="outer">
+      <!-- do not put text outside of the safe area -->
+      <div class="safe-area">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
