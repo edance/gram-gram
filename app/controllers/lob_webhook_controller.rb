@@ -3,8 +3,42 @@ class LobWebhookController < ApplicationController
                                password: ENV['LOB_WEBHOOK_PASSWORD']
 
   def webhook
-    event = params.permit!.to_h
-    LobWebhookJob.perform_later(event)
+    send(method_name)
     render json: {}
+  rescue NoMethodError
+    logger.warn "LobWebhook: No method for #{method_name}"
+    render json: {}
+  end
+
+  private
+
+  def method_name
+    params[:event_type][:id].tr('.', '_')
+  end
+
+  def lob_id
+    params[:body][:id]
+  end
+
+  def postcard
+    @postcard ||= Postcard.find_by_lob_id(lob_id)
+  end
+
+  # Events from lob
+  # postcard.mailed
+  # postcard.in_transit
+  # postcard.processed_for_delivery
+  # postcard.returned_to_sender
+
+  def postcard_mailed
+    postcard.mailed!
+  end
+
+  def postcard_in_transit
+    postcard.in_transit!
+  end
+
+  def postcard_processed_for_delivery
+    postcard.delivered!
   end
 end
