@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_22_045430) do
+ActiveRecord::Schema.define(version: 2019_11_25_201756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "payment_methods", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "last4"
+    t.string "payment_processor_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_payment_methods_on_user_id"
+  end
 
   create_table "photos", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "ig_id"
@@ -30,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_11_22_045430) do
   end
 
   create_table "postcards", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.date "delivery_date"
     t.string "lob_id"
     t.text "caption"
