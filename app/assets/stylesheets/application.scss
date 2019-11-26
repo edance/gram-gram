@@ -15,6 +15,7 @@
 @import "bootstrap";
 
 @import "./photos";
+@import "./static";
 
 @import 'bootstrap/variables';
 
@@ -2381,4 +2382,8 @@ textarea.form-control {
 
 .alert {
   margin-top: 80px;
+}
+
+.price-card {
+  width: 250px;
 }

@@ -8,19 +8,19 @@
       <div class="container-fluid p-0">
         <div class="row d-md-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
           <div class="one-third order-md-last">
-            <%= image_tag('iphone.png', class: 'img h-100') %>
+            <%= image_tag('phone.png', class: 'img h-100') %>
           </div>
 
           <div class="one-forth d-flex align-items-center" data-scrollax=" properties: { translateY: '70%' }">
             <div class="text">
               <h1 class="mb-4 mt-3">
-                Send Instagram Pictures to Grandma in the Mail
+                Send Instagram photos to Grandma through the mail
               </h1>
               <p>
-                Keep in touch with your relatives by sending them physical photos through the mail. Bring Instagram to your offline family.
+                Share your memes, moments, and memories with your offline family. Because a picture’s worth a thousand words, but grandma’s smile is priceless.
               </p>
               <p>
-                <%= link_to 'Sign In with Instagram', login_path, class: 'btn btn-primary px-5 py-3 mt-3' %>
+                <%= link_to 'Get Started', login_path, class: 'btn btn-primary px-5 py-3 mt-3' %>
               </p>
             </div>
           </div>
@@ -29,3 +29,143 @@
     </div>
   </div>
 </section>
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <%= image_tag('picture.png', class: 'add-caption-img') %>
+      </div>
+      <div class="col-md-6 heading-section fadeInUpd">
+        <span class="subheading">
+          Step One
+        </span>
+        <h2 class="mb-4">
+          Choose a recent Instagram photo
+        </h2>
+        <p>
+          Pick a cherished memory, moment, or meme. Add a caption to the picture if you would like so Grandma has some context.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section bg-light">
+  <div class="container">
+    <div class="row align-items-center py-5">
+      <div class="col-md-6 order-md-last">
+        <%= image_tag('letter.jpg', class: 'add-address-img') %>
+      </div>
+      <div class="col-md-6 heading-section fadeInUpd">
+        <span class="subheading">
+          Step Two
+        </span>
+        <h2 class="mb-4">
+          Tell us where to mail it!
+        </h2>
+        <p>
+          What’s Grandma’s address? Don't worry if you don't have a grandmother, it still works for anyone.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row align-items-center py-4">
+      <div class="col-md-6">
+        <%= image_tag('mailbox.jpg', class: 'mailbox-img') %>
+      </div>
+      <div class="col-md-6 heading-section fadeInUpd">
+        <span class="subheading">
+          Step Three
+        </span>
+        <h2 class="mb-4">
+          Grandma receives your photo in the mail.
+        </h2>
+        <p>
+          Most pictures arrive within a week of your order date.
+        </p>
+
+        <%= link_to 'Get Started', login_path, class: 'btn btn-primary px-5 py-3 mt-3' %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-gallery">
+  <div class="container-fluid px-0">
+    <div class="row no-gutters">
+      <div class="col-md-4 col-lg-2 fadeInUp ftco-animated">
+        <a class="gallery image-popup img d-flex align-items-center" style="background-image: url(<%= image_url('gallery-1.jpg') %>);">
+        </a>
+      </div>
+      <div class="col-md-4 col-lg-2 fadeInUp ftco-animated">
+        <a class="gallery image-popup img d-flex align-items-center" style="background-image: url(<%= image_url('gallery-2.jpg') %>);">
+        </a>
+      </div>
+      <div class="col-md-4 col-lg-2 fadeInUp ftco-animated">
+        <a class="gallery image-popup img d-flex align-items-center" style="background-image: url(<%= image_url('gallery-3.jpg') %>);">
+        </a>
+      </div>
+      <div class="col-md-4 col-lg-2 fadeInUp ftco-animated">
+        <a class="gallery image-popup img d-flex align-items-center" style="background-image: url(<%= image_url('gallery-4.jpg') %>);">
+        </a>
+      </div>
+      <div class="col-md-4 col-lg-2 fadeInUp ftco-animated">
+        <a class="gallery image-popup img d-flex align-items-center" style="background-image: url(<%= image_url('gallery-5.jpg') %>);">
+        </a>
+      </div>
+      <div class="col-md-4 col-lg-2 fadeInUp ftco-animated">
+        <a class="gallery image-popup img d-flex align-items-center" style="background-image: url(<%= image_url('gallery-6.jpg') %>);">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section testimony-section">
+  <%= image_tag('blob-shape-2.svg', class: 'svg-blob') %>
+  <%= image_tag('blob-shape-2.svg', class: 'svg-blob-2') %>
+
+  <div class="container">
+    <div class="row justify-content-center pb-3">
+      <div class="col-md-7 text-center heading-section heading-section-white fadeInUpd">
+        <span class="subheading">
+          Simple Pricing
+        </span>
+        <h2 class="mb-4">
+          Pricing
+        </h2>
+      </div>
+    </div>
+    <div class="row justify-content-center fadeInUpd">
+      <div class="price-card card mb-4 shadow-sm">
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">$2.95 <small class="text-muted">/ photo</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Flat rate anywhere in the world</li>
+            <li>First Class Mail</li>
+            <li>Unlimited Smiles for Grandma</li>
+          </ul>
+
+          <%= link_to 'Get Started', login_path, class: 'btn btn-lg btn-block btn-primary' %>
+
+          <p class="small text-muted text-center">Put a smile on Grandma's face today.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="ftco-footer ftco-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        Copyright ©<script>document.write(new Date().getFullYear());</script> GramGram | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+      </div>
+    </div>
+  </div>
+</footer>
