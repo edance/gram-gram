@@ -2,7 +2,7 @@
 
 # A photo that could be featured on a Postcard
 class Photo < ApplicationRecord
-  has_many :postcards
+  has_many :postcards, dependent: :destroy
   belongs_to :user
   validates_uniqueness_of :ig_id
 
