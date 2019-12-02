@@ -2,8 +2,8 @@
 
 # User Model
 class User < ApplicationRecord
-  has_many :photos
-  has_many :recipients
+  has_many :photos, dependent: :destroy
+  has_many :recipients, dependent: :destroy
   has_many :postcards, through: :photos
 
   after_commit :save_customer
