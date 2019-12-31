@@ -24,11 +24,6 @@ class AuthenticationController < ApplicationController
     redirect_to photos_path
   end
 
-  def logout
-    cookies.delete(:user_id)
-    redirect_to root_path
-  end
-
   private
 
   def code
