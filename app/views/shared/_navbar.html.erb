@@ -9,7 +9,7 @@
 
     <div class="collapse navbar-collapse" id="ftco-nav">
       <ul class="navbar-nav nav ml-auto">
-        <% if current_user.present? %>
+        <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to photos_path, class: 'nav-link' do %>
               <span>Photos</span>
@@ -21,12 +21,6 @@
             <% end %>
           </li>
         <% else %>
-          <li class="nav-item">
-            <a href="#home-section" class="nav-link"><span>How It Works</span></a>
-          </li>
-          <li class="nav-item">
-            <a href="#services-section" class="nav-link"><span>Pricing</span></a>
-          </li>
           <li class="nav-item">
             <%= link_to new_user_session_path, class: 'nav-link' do %>
               <span>Log In</span>
