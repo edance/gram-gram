@@ -1,5 +1,5 @@
 class BuilderController < ApplicationController
-  include StaticHelper
+  before_action :authenticate_user!
 
   STRIPE_CHARGE_DESCRIPTION = 'GramGram Photo'.freeze
   USER_PARAMS = %i[name email].freeze
