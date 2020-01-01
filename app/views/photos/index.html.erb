@@ -1,5 +1,6 @@
-<section class="hero-wrap hero-wrap-2" style="background-image: url(<%= image_path('bg.jpg') %>); background-position: 50% 50%;" data-stellar-background-ratio="0.5">
+<section class="py-5" style="background-image: url(<%= image_path('bg.jpg') %>); background-position: 50% 50%;" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
+
   <div class="container">
     <div class="row no-gutters slider-text align-items-end justify-content-start">
       <div class="col-md-9 pb-4 fadeInUp">
@@ -12,51 +13,52 @@
   </div>
 </section>
 
-<section class="ftco-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9 pr-lg-4">
-        <div class="row">
-          <% if current_user.instagram? %>
-            <%= link_to 'Load Recent Images', authentication_path('instagram') %>
-          <% else %>
-            <%= link_to 'Connect to Instagram', authentication_path('instagram') %>
-          <% end %>
 
-          <% @photos.each do |p| %>
-            <div class="col-md-6 col-lg-4 fadeInUp">
-              <div class="project">
-                <div class="img">
-                  <%= link_to(build_new_path(p), class: 'd-block') do %>
-                    <%= image_tag(p.ig_media_url, class: 'img-fluid') %>
-                  <% end %>
-                </div>
+<div class="container">
+  <div class="row">
+    <% if current_user.instagram? %>
+      <%= link_to 'Load Recent Images', authentication_path('instagram') %>
+    <% else %>
+      <%= link_to 'Connect to Instagram', authentication_path('instagram') %>
+    <% end %>
+  </div>
 
-                <div class="text">
-                  <% if new?(p) %>
-                    <h4 class="price">
-                      New
-                    </h4>
-                  <% end %>
+  <div class="row">
+    <div class="col-lg-9 pr-lg-4">
+      <div class="row">
+        <% @photos.each do |p| %>
+          <div class="col-md-6 col-lg-4 fadeInUp">
+            <div class="project">
+              <div class="img">
+                <%= link_to(build_new_path(p), class: 'd-block') do %>
+                  <%= image_tag(p.ig_media_url, class: 'img-fluid') %>
+                <% end %>
+              </div>
 
-                  <span>
-                    <%= time_ago_in_words(p.ig_timestamp) %>
-                  </span>
-                </div>
+              <div class="text">
+                <% if new?(p) %>
+                  <h4 class="price">
+                    New
+                  </h4>
+                <% end %>
+
+                <span>
+                  <%= time_ago_in_words(p.ig_timestamp) %>
+                </span>
               </div>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
+      </div>
 
 
-        <div class="row mt-5">
-          <div class="col text-center">
-            <div class="pagination">
-              <%= will_paginate @photos %>
-            </div>
+      <div class="row mt-5">
+        <div class="col text-center">
+          <div class="pagination">
+            <%= will_paginate @photos %>
           </div>
         </div>
-      </div> <!-- end -->
-    </div>
+      </div>
+    </div> <!-- end -->
   </div>
-</section>
+</div>

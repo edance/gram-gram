@@ -1,89 +1,65 @@
-<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
-  <div class="container">
-    <div class="row justify-content-center mb-5 pb-3">
-      <div class="col-md-7 heading-section text-center fadeInUp">
-        <span class="subheading">
-          Payment
-        </span>
-        <h2 class="mb-4">
-          Send Your Photo
-        </h2>
-        <p>
-          Far far away, behind the word mountains, far from the countries Vokalia and Consonantia
-        </p>
-      </div>
-    </div>
-
-    <div class="row block-9">
-      <div class="col-md-5 order-md-last d-flex">
-        <table class="table w-100">
-          <thead>
-            <tr>
-              <th scope="col">Checkout</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1 x Photo @ <%= formatted_price %></td>
-              <td><%= formatted_price %></td>
-            </tr>
-            <tr>
-              <td>Tax</td>
-              <td>$0.00</td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Total</strong>
-              </td>
-              <td>
-                <strong><%= formatted_price %></strong>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="col-md-7 d-flex">
-        <%= form_with method: :patch, url: update_payment_path(@postcard), class: 'bg-light p-4 p-md-5 contact-form payment-form' do |form| %>
-          <div class="form-group">
-            <label>Your Name</label>
-            <% if @current_user.name %>
-              <p>
-                <strong><%= @current_user.name %></strong>
-              </p>
-            <% else %>
-              <%= form.text_field :name, class: 'form-control', placeholder: 'Full Name' %>
-            <% end %>
-          </div>
-
-          <div class="form-group">
-            <label>Your Email</label>
-            <% if @current_user.email %>
-              <p>
-                <strong><%= @current_user.email %></strong>
-              </p>
-            <% else %>
-              <%= form.text_field :email, type: 'email', class: 'form-control', placeholder: 'Email Address' %>
-            <% end %>
-          </div>
-
-          <div class="form-group card-input-group">
-            <label class="form-control-label">Credit or Debit Card</label>
-            <div class="credit-card-input form-control">
-            </div>
-            <div class="invalid-feedback"></div>
-          </div>
-
-          <%= hidden_field_tag(:token, '', class: 'stripe-token-input') %>
-
-          <div class="form-group">
-            <input type="submit" value="Pay and Send" class="btn btn-primary py-3 px-5">
-          </div>
-
-        <% end %>
-      </div>
-
+<div class="container">
+  <div class="row justify-content-center mb-5 pb-3">
+    <div class="col-md-7 heading-section text-center fadeInUp">
+      <span class="subheading">
+        Payment
+      </span>
+      <h2 class="mb-4">
+        Send Your Photo
+      </h2>
+      <p>
+        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia
+      </p>
     </div>
   </div>
-</section>
+
+  <div class="row block-9">
+    <div class="col-md-5 order-md-last">
+      <table class="table w-100">
+        <thead>
+          <tr>
+            <th scope="col">Checkout</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 x Photo @ <%= formatted_price %></td>
+            <td><%= formatted_price %></td>
+          </tr>
+          <tr>
+            <td>Tax</td>
+            <td>$0.00</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Total</strong>
+            </td>
+            <td>
+              <strong><%= formatted_price %></strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-7">
+      <%= form_with method: :patch, url: update_payment_path(@postcard), class: 'bg-light p-4 p-md-5 contact-form payment-form' do |form| %>
+        <div class="form-group card-input-group">
+          <label class="form-control-label">Credit or Debit Card</label>
+          <div class="credit-card-input form-control">
+          </div>
+          <div class="invalid-feedback"></div>
+        </div>
+
+        <%= hidden_field_tag(:token, '', class: 'stripe-token-input') %>
+
+        <div class="form-group">
+          <input type="submit" value="Pay and Send" class="btn btn-primary py-3 px-5">
+        </div>
+
+      <% end %>
+    </div>
+
+  </div>
+</div>
