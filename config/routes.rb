@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   get '/terms', to: 'static#terms'
 
   # Authentication routes
-  get 'login', to: redirect('/auth/instagram'), as: 'login'
-  get '/auth/:provider', to: 'authentication#authorize'
+  get '/auth/:provider', to: 'authentication#authorize', as: 'authentication'
   get '/auth/:provider/callback', to: 'authentication#callback'
 
   # Payment routes
