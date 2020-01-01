@@ -17,7 +17,11 @@
     <div class="row">
       <div class="col-lg-9 pr-lg-4">
         <div class="row">
-          <%= link_to 'Connect to Instagram', authentication_path('instagram') %>
+          <% if current_user.instagram? %>
+            <%= link_to 'Load Recent Images', authentication_path('instagram') %>
+          <% else %>
+            <%= link_to 'Connect to Instagram', authentication_path('instagram') %>
+          <% end %>
 
           <% @photos.each do |p| %>
             <div class="col-md-6 col-lg-4 fadeInUp">

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AuthenticationController < ApplicationController
+  before_action :authenticate_user!
+
   def authorize
     base_url = 'https://api.instagram.com/oauth/authorize'
     query = {
@@ -15,11 +17,10 @@ class AuthenticationController < ApplicationController
   def callback
     resp = fetch_access_token
     attrs = JSON.parse(resp.body)
-    user = User.find_or_initialize_by(instagram_uid: attrs['user_id'])
-    user.instagram_access_token = attrs['access_token']
-    update_user_information!(user)
-    sign_in_user(user)
-    load_recent_photos(user)
+    current_user.instagram_uid = attrs['user_id']
+    current_user.instagram_access_token = attrs['access_token']
+    update_user_information!
+    load_recent_photos
 
     redirect_to photos_path
   end
@@ -30,17 +31,13 @@ class AuthenticationController < ApplicationController
     params.require(:code)
   end
 
-  def sign_in_user(user)
-    cookies.permanent.encrypted[:user_id] = user.id
+  def load_recent_photos
+    SaveInstagramPhotosJob.set(wait: 5.seconds).perform_later(current_user)
   end
 
-  def load_recent_photos(user)
-    SaveInstagramPhotosJob.set(wait: 5.seconds).perform_later(user)
-  end
-
-  def update_user_information!(user)
-    info = InstagramService.new(user).user_information
-    user.update!(ig_username: info['username'])
+  def update_user_information!
+    info = InstagramService.new(current_user).user_information
+    current_user.update!(ig_username: info['username'])
   end
 
   def fetch_access_token

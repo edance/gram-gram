@@ -10,6 +10,10 @@ class User < ApplicationRecord
 
   after_commit :save_customer
 
+  def instagram?
+    instagram_uid.present?
+  end
+
   private
 
   def save_customer
