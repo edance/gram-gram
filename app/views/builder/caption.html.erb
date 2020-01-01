@@ -1,37 +1,35 @@
-<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
-  <div class="container">
-    <div class="row justify-content-center mb-5 pb-3">
-      <div class="col-md-7 heading-section text-center fadeInUp">
-        <span class="subheading">
-          Caption
-        </span>
-        <h2 class="mb-4">
-          Add a Caption
-        </h2>
-        <p>
-          Far far away, behind the word mountains, far from the countries Vokalia and Consonantia
-        </p>
-      </div>
-    </div>
-
-    <div class="row block-9">
-      <div class="col-md-5 d-flex">
-        <div class="row d-flex contact-info mb-5">
-        <%= image_tag(@postcard.photo.ig_media_url, class: 'img rounded') %>
-        </div>
-      </div>
-
-      <div class="col-md-7 d-flex">
-        <%= form_with model: @postcard, class: 'bg-light p-4 p-md-5 contact-form', url: update_caption_path(@postcard), local: true do |form| %>
-          <div class="form-group">
-            <label>Caption</label>
-            <%= form.text_area :caption, class: 'form-control', cols: 30, rows: 7, placeholder: 'Message' %>
-          </div>
-          <div class="form-group">
-            <input type="submit" value="Next" class="btn btn-primary py-3 px-5">
-          </div>
-        <% end %>
-      </div>
+<div class="container">
+  <div class="row justify-content-center mb-5 pb-3">
+    <div class="col-md-7 heading-section text-center fadeInUp">
+      <span class="subheading">
+        Caption
+      </span>
+      <h2 class="mb-4">
+        Add a Caption
+      </h2>
+      <p>
+        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia
+      </p>
     </div>
   </div>
-</section>
+
+  <div class="row block-9">
+    <div class="col-md-6">
+      <div class="row mb-5">
+        <%= image_tag(@postcard.photo.ig_media_url, class: 'img rounded w-100') %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <%= form_with model: @postcard, class: 'p-4', url: update_caption_path(@postcard), local: true do |form| %>
+        <div class="form-group">
+          <label>Caption</label>
+          <%= form.text_area :caption, class: 'form-control', cols: 30, rows: 7, placeholder: 'Message' %>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Next" class="btn btn-primary py-3 px-5">
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
