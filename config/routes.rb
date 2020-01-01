@@ -2,10 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  # Static routes
+  # Home route: redirects to login or photos
   root to: 'home#index'
-  get '/privacy', to: 'static#privacy'
-  get '/terms', to: 'static#terms'
 
   # Authentication routes
   get '/auth/:provider', to: 'authentication#authorize', as: 'authentication'
