@@ -13,7 +13,6 @@
   </div>
 </section>
 
-
 <div class="container">
   <div class="row">
     <% if current_user.instagram? %>
@@ -28,24 +27,20 @@
       <div class="row">
         <% @photos.each do |p| %>
           <div class="col-md-6 col-lg-4 fadeInUp">
-            <div class="project">
-              <div class="img">
-                <%= link_to(build_new_path(p), class: 'd-block') do %>
-                  <%= image_tag(p.ig_media_url, class: 'img-fluid') %>
-                <% end %>
-              </div>
+            <div class="overflow-hidden rounded">
+              <%= link_to(build_new_path(p), class: 'd-block') do %>
+                <%= image_tag(p.ig_media_url, class: 'img-fluid img-zoom') %>
+              <% end %>
+            </div>
 
-              <div class="text">
-                <% if new?(p) %>
-                  <h4 class="price">
-                    New
-                  </h4>
-                <% end %>
+            <div class="text-muted text-uppercase py-4 mb-2">
+              <% if new?(p) %>
+                <span class="badge badge-secondary">New</span>
+              <% end %>
 
-                <span>
-                  <%= time_ago_in_words(p.ig_timestamp) %>
-                </span>
-              </div>
+              <small>
+                <%= time_ago_in_words(p.ig_timestamp) %>
+              </small>
             </div>
           </div>
         <% end %>
