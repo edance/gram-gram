@@ -1,0 +1,179 @@
+// Global settings
+
+$enable-caret:              true !default;
+$enable-rounded:            true !default;
+$enable-shadows:            true !default;
+$enable-gradients:          false !default;
+$enable-transitions:        true !default;
+$enable-grid-classes:       true !default;
+$enable-print-styles:       true !default;
+
+
+// Color system
+
+$white:    #fff !default;
+$gray-100: #f6f9fc !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #8898aa !default;   // Line footer color
+$gray-700: #525f7f !default;   // Line p color
+$gray-800: #32325d !default;   // Line heading color
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$grays: () !default;
+$grays: map-merge((
+  "100": $gray-100,
+  "200": $gray-200,
+  "300": $gray-300,
+  "400": $gray-400,
+  "500": $gray-500,
+  "600": $gray-600,
+  "700": $gray-700,
+  "800": $gray-800,
+  "900": $gray-900
+), $grays);
+
+$blue:    #5e72e4 !default;
+$indigo:  #5603ad !default;
+$purple:  #8965e0 !default;
+$pink:    #f3a4b5 !default;
+$red:     #f5365c !default;
+$orange:  #fb6340 !default;
+$yellow:  #ffd600 !default;
+$green:   #2dce89 !default;
+$teal:    #11cdef !default;
+$cyan:    #2bffc6 !default;
+$waves:   #e7e6fa !default;
+
+$colors: () !default;
+$colors: map-merge((
+  "blue":       $blue,
+  "indigo":     $indigo,
+  "purple":     $purple,
+  "pink":       $pink,
+  "red":        $red,
+  "orange":     $orange,
+  "yellow":     $yellow,
+  "green":      $green,
+  "teal":       $teal,
+  "cyan":       $cyan,
+  "white":      $white,
+  "gray":       $gray-600,
+  "light":      $gray-400,
+  "lighter":    $gray-200,
+  "gray-dark":  $gray-800,
+  "waves":      $waves
+), $colors);
+
+$default:       #172b4d !default;
+$primary:       #e2c0bb !default;
+$secondary:     #b2bbc9 !default;
+$success:       $green !default;
+$info:          $teal !default;
+$warning:       $orange !default;
+$danger:        $red !default;
+$light:         $gray-500 !default;
+$dark:          $gray-900 !default;
+$darker:        darken($gray-900, 15%) !default;
+
+$facebook:      #3b5999 !default;
+$twitter:       #1da1f2 !default;
+$google-plus:   #dd4b39 !default;
+$instagram:     #e4405f !default;
+$pinterest:     #bd081c !default;
+$youtube:       #cd201f !default;
+$slack:         #3aaf85 !default;
+$dribbble:      #ea4c89 !default;
+$github:        #222222 !default;
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+  "default":      $default,
+  "primary":      $primary,
+  "secondary":    $secondary,
+  "success":      $success,
+  "info":         $info,
+  "warning":      $warning,
+  "danger":       $danger,
+  "white":        $white,
+  "neutral":      $white,
+  "dark":         $dark,
+  "darker":       $darker
+), $theme-colors);
+
+// Navs
+
+$nav-link-padding-y:                .25rem !default;
+$nav-link-padding-x:                .75rem !default;
+$nav-link-color:                    $gray-700 !default;
+$nav-link-hover-color:              theme-color("primary") !default;
+$nav-link-disabled-color:           $gray-600 !default;
+
+$nav-pills-padding-y:               .75rem !default;
+$nav-pills-padding-x:               1rem !default;
+
+$nav-pills-space-x:                 1rem !default;
+
+$nav-pills-bg:                      $white !default;
+$nav-pills-border-width:            1px !default;
+$nav-pills-border-color:            theme-color("primary") !default;
+// $nav-pills-border-radius:           $border-radius !default;
+
+// $nav-pills-link-color:              theme-color("primary") !default;
+// $nav-pills-link-hover-color:        darken(theme-color("primary"), 5%) !default;
+// $nav-pills-link-active-color:       color-yiq(theme-color("primary")) !default;
+// $nav-pills-link-active-bg:          theme-color("primary") !default;
+// $nav-pills-box-shadow:              $btn-box-shadow !default;
+
+// Navbar
+
+$navbar-transition:                 all .15s linear !default;
+$navbar-padding-y:                  1rem !default;
+$navbar-padding-x:                  1rem !default;
+
+$navbar-nav-link-padding-x:         1rem !default;
+$navbar-nav-link-padding-y:         1rem !default;
+
+$navbar-nav-link-font-size:         .9rem !default;
+$navbar-nav-link-font-weight:       400 !default;
+$navbar-nav-link-text-transform:    normal !default;
+$navbar-nav-link-letter-spacing:    0 !default;
+// $navbar-nav-link-border-radius:     $border-radius !default;
+
+$navbar-search-width:               270px !default;
+$navbar-search-bg:                  transparent !default;
+
+$navbar-search-border-radius:       2rem !default;
+$navbar-search-border-width:        2px !default;
+
+$navbar-dark-bg:                    transparent !default;
+$navbar-dark-hover-bg:              rgba(255, 255, 255, .1) !default;
+$navbar-dark-active-bg:             rgba(255, 255, 255, .1) !default;
+$navbar-dark-color:                 rgba($white, .95) !default;
+$navbar-dark-hover-color:           rgba($white, .65) !default;
+$navbar-dark-active-color:          rgba($white, .65) !default;
+$navbar-dark-disabled-color:        rgba($white, .25) !default;
+$navbar-dark-toggler-border-color:  transparent !default;
+
+$navbar-search-dark-border-color:   rgba(255, 255, 255, .6) !default;
+$navbar-search-dark-color:          rgba(255, 255, 255, .6) !default;
+$navbar-search-dark-focus-border-color: rgba(255, 255, 255, .9) !default;
+$navbar-search-dark-focus-color:    rgba(255, 255, 255, .9) !default;
+
+$navbar-light-bg:                   transparent !default;
+$navbar-light-hover-bg:             rgba(0, 0, 0, .1) !default;
+$navbar-light-active-bg:            rgba(0, 0, 0, .1) !default;
+$navbar-light-border-color:         $gray-100 !default;
+$navbar-light-color:                rgba($black, .5) !default;
+$navbar-light-hover-color:          rgba($black, .7) !default;
+$navbar-light-active-color:         rgba($black, .9) !default;
+$navbar-light-disabled-color:       rgba($black, .3) !default;
+$navbar-light-toggler-border-color: transparent !default;
+
+$navbar-search-light-border-color:  rgba(0, 0, 0, .6) !default;
+$navbar-search-light-color:          rgba(0, 0, 0, .6) !default;
+$navbar-search-light-focus-border-color: rgba(0, 0, 0, .9) !default;
+$navbar-search-light-focus-color:    rgba(0, 0, 0, .9) !default;
