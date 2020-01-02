@@ -79,3 +79,22 @@
     background: $white;
   }
 }
+
+.img-zoom {
+  transform: scale(1.2);
+  transition: all 0.6s ease;
+
+  &:hover {
+    transform: scale(1);
+  }
+}
+
+.navbar-light {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+
+  @media(min-width: map-get($grid-breakpoints, "sm")) {
+    background-color: transparent !important;
+  }
+}
