@@ -3,11 +3,11 @@
 
     <%= link_to 'GramGram', root_path, class: 'navbar-brand' %>
 
-    <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="oi oi-menu"></span> Menu
     </button>
 
-    <div class="collapse navbar-collapse" id="ftco-nav">
+    <div class="collapse navbar-collapse" id="nav">
       <ul class="navbar-nav nav ml-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
