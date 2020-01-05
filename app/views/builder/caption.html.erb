@@ -24,11 +24,11 @@
       <%= form_with model: @postcard, class: 'p-4', url: update_caption_path(@postcard), local: true do |f| %>
         <div class="form-group">
           <%= f.label :caption %>
-          <%= f.text_area :caption, class: 'form-control caption-input', cols: 30, rows: 7, placeholder: 'Message' %>
+          <%= f.text_area :caption, class: 'form-control caption-input', maxlength: 200, cols: 30, rows: 7, placeholder: 'Message' %>
           <div class="invalid-feedback">
             <%= @postcard.errors.full_messages.first %>
           </div>
-          <small class="form-text text-muted caption-input-msg">Maximum allow content is 200 characters.</small>
+          <small class="form-text text-muted caption-input-msg"></small>
         </div>
 
         <div class="form-group">
