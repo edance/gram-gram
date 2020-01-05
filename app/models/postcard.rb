@@ -8,6 +8,11 @@ class Postcard < ApplicationRecord
 
   enum status: %i[pending processing mailed in_transit delivered]
 
+  validates :caption, length: {
+    maximum: 200,
+    too_long: '200 characters is the maximum allowed'
+  }
+
   PRICE = 295
 
   def lob_description
