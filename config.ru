@@ -2,4 +2,6 @@
 
 require_relative 'config/environment'
 
-run Rails.application
+map Rails.env.production? ? '/app' : '/' do
+  run Rails.application
+end

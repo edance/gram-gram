@@ -30,4 +30,6 @@ Rails.application.routes.draw do
 
   get '/template/back', to: 'postcard_template#back'
   get '/template/front', to: 'postcard_template#front'
+
+  mount ActionCable.server => '/cable'
 end
