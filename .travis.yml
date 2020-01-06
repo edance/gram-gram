@@ -11,7 +11,7 @@ notifications:
   email: false
 deploy:
   provider: heroku
-  app: instagram-2-gram
+  app: gram-2-grandma
   run: bundle exec rails db:migrate
   api_key:
     secure: 2uHtKuqodeqep9V9aQZCwcBv3JglRFXqYcI7Y9nwwPLalImCbeTHtNkf3Iu5iEY83lEpEyz5btFkA3EjVxzrXQvhlrrdTtxMFKH12ucHXsCLg9sCBTVoZReMlPLpgkNUokxC+2mHSSLS2bOPHFwOIYcjh2TvERukIfqKXlmzw6SbN+V8suHCPkk8WfHXWmiDofut9enmgysUnB+psrT+v4AozN84SkDpwl35MJ9EOlonAGkA/4JnRkyUBC+QzIar2Wj0FYxFeOXU4hD5V80QpNxT2DUzrm3EaCPKq4QHJbk7zpmws9V8JKlKctjPU/h+F981fz3Zpro+19PpDLkv+HhJgaefWMjVW1RyHEfSMuxOJJHKNcjR/p6Y9/3V4D4GWihoFY8fQ7Up2sSUieD8xOXZeWZKrR+bcKoM/E8h8GESRXUz11Plx/6R8l5xZ6SYV2ixzCQWTU7AaXHXeam8Fdw5+sHdeA7H3YLoB1PIHdFUSmVo+D+ujy6AmFVZy9cMiYM+1D/uL+Cwc9qRhNwRlVgeaWbMrtLkoxcn2IlB7FsWRgkkEMHTrNtyQ5AXQIEj5cp/NHVU+4FKa/vWrVt+xBlHIyfPqOJAe+wa1KmIsIGOiBhAQjdCPDlGO2Vww4DEk2kiXA07LcDL41ZkXsNrgqLZUUaHSQVfaBJQgzRzE8M=
