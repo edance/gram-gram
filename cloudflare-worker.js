@@ -38,15 +38,6 @@ async function fetchResponse(request) {
     return Response.redirect(url, 301);
   }
 
-  // default to webflow for most pages
-  url.hostname = 'gramgram.webflow.io';
-
-  // Handle anything that is under the /app/ path (including /app)
-  if (/^\/app\/?.*$/.test(pathname)) {
-    url.pathname = url.pathname.replace('/app', '');
-    url.hostname = 'gram-2-grandma.herokuapp.com';
-  }
-
   // Synthetic response for robots.txt
   if (url.pathname === '/robots.txt') {
     return new Response(SITEMAP_CONTENT, {
@@ -55,6 +46,16 @@ async function fetchResponse(request) {
     });
   }
 
+  // Handle anything that is under the /app/ path (including /app)
+  if (/^\/app\/?.*$/.test(pathname)) {
+    request = new Request(url, request);
+    request.headers.set('X-Forwarded-Proto', 'https'); // force ssl
+    request.headers.set('X-Forwarded-Ssl', 'on');
+    return fetch(request, { cf: { resolveOverride: 'gram-2-grandma.herokuapp.com' }});
+  }
+
+  // default to webflow for most pages
+  url.hostname = 'gramgram.webflow.io';
   return fetch(new Request(url, request));
 }
 
