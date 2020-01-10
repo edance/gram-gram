@@ -52,10 +52,16 @@ class BuilderController < ApplicationController
 
   # TODO: add saving of charge
   def update_payment
-    update_user
-    create_charge
+    charge = process_stripe_charge
+    if charge && postcard.update(stripe_charge_id: charge[:id])
+      redirect_to build_success_path
+    else
+      render 'payment'
+    end
+  end
 
-    redirect_to root_path
+  def success
+    @postcard = postcard
   end
 
   private
@@ -79,14 +85,6 @@ class BuilderController < ApplicationController
   def create_charge
     charge = process_stripe_charge
     postcard.update_attribute(:stripe_charge_id, charge[:id])
-    flash[:notice] = 'Your photo has been sent!'
-  rescue StandardError
-    flash[:notice] = "We're having issues processing your payment. Please "\
-      "email us at #{help_email} if the problem persists."
-  end
-
-  def update_user
-    current_user.update(user_params)
   end
 
   def process_stripe_charge

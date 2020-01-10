@@ -98,3 +98,32 @@
     background-color: transparent !important;
   }
 }
+
+.postcard {
+  width: 400px;
+  height: 600px;
+  padding: 60px 30px;
+
+  img {
+    width: 100%;
+
+    margin-bottom: 15px;
+  }
+
+  .date {
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+
+    margin-bottom: 9px;
+  }
+
+  .caption {
+    font-size: 20px;
+    line-height: 25px;
+  }
+}
+
+.tilt-left {
+  transform: rotate(-5deg);
+}

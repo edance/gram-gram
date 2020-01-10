@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/sender/:id/caption', to: 'builder#caption', as: 'build_caption'
   get '/sender/:id/address', to: 'builder#recipient', as: 'build_recipient'
   get '/sender/:id/payment', to: 'builder#payment', as: 'build_payment'
+  get '/sender/:id/success', to: 'builder#success', as: 'build_success'
 
   patch '/sender/:id/caption', to: 'builder#update_caption', as: 'update_caption'
   patch '/sender/:id/address', to: 'builder#update_recipient', as: 'update_recipient'

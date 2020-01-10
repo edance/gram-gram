@@ -1,0 +1,65 @@
+<div class="container pt-5">
+  <div class="row justify-content-center mb-5 pt-5 pb-3">
+    <div class="col-md-7 heading-section text-center fadeInUp">
+      <div class="text-uppercase text-primary mb-3">
+        Success
+      </div>
+      <h2 class="mb-4">
+        Your Photo Has Been Sent
+      </h2>
+      <p class="text-muted">
+        Your photo will arrive in about a week.
+      </p>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-lg-6 order-lg-last">
+      <h3>Sent to:</h3>
+
+      <small class="text-muted">
+        Name
+      </small>
+      <p>
+        <%= @postcard.recipient.name %>
+      </p>
+
+      <small class="text-muted">Address</small>
+      <p>
+        <%= @postcard.recipient.address_line1 %>
+        <%= @postcard.recipient.address_line2 %>
+      </p>
+
+      <div class="row">
+        <div class="col-md-6">
+          <small class="text-muted">City</small>
+          <p><%= @postcard.recipient.address_city %></p>
+        </div>
+        <div class="col-md-4">
+          <small class="text-muted">State</small>
+          <p><%= @postcard.recipient.address_state %></p>
+        </div>
+        <div class="col-md-2">
+          <small class="text-muted">Zip</small>
+          <p><%= @postcard.recipient.address_zip %></p>
+        </div>
+      </div>
+
+      <%= link_to 'Send Another Photo', photos_path, class: 'btn btn-primary mt-4' %>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="postcard shadow rounded tilt-left">
+        <img alt="" src="<%= @postcard.photo.ig_media_url %>" />
+
+        <div class="date">
+          <%= month_year %>
+        </div>
+
+        <div class="caption">
+          <%= @postcard.caption %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
