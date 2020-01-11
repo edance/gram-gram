@@ -21,8 +21,7 @@ class SendPostcardJob < ApplicationJob
 
   def locals
     {
-      :@photo_url => postcard.photo.ig_media_url,
-      :@caption => postcard.caption
+      :@postcard => postcard
     }
   end
 
