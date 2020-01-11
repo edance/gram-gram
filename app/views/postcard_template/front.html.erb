@@ -2,6 +2,7 @@
   <head>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
     <style>
      *, *:before, *:after {
@@ -18,6 +19,8 @@
        height: 4.25in;
 
        border: solid 1px black;
+
+       font-family: 'Poppins', sans-serif;
      }
 
      img {
@@ -32,19 +35,22 @@
      }
 
      .caption {
+       /* background: purple; */
+
        width: 3.875in;
        position: absolute;
+       bottom: 1.56in;
+       left: 3in;
 
        -ms-transform: rotate(-90deg);
        -webkit-transform: rotate(-90deg);
        transform: rotate(-90deg);
 
-       top: 1.35in;
-       left: 3in;
-
        font-size: 16px;
        line-height: 20px;
        font-family: 'PT Mono', monospace;
+
+       padding: 0 0.1in;
      }
 
      .safe-area {
@@ -53,18 +59,42 @@
        height: 3.875in;
        left: 0.1875in;
        top: 0.1875in;
+
+       /* background: aqua; */
      }
 
+     .date {
+       /* background: orange; */
+
+       font-size: 15px;
+       color: rgba(0, 0, 0, 0.2);
+       text-transform: uppercase;
+
+       -ms-transform: rotate(-90deg);
+       -webkit-transform: rotate(-90deg);
+       transform: rotate(-90deg);
+
+       width: 3.875in;
+       position: absolute;
+       bottom: 1.82in;
+       left: 2.5in;
+
+       padding: 0 0.1in;
+     }
     </style>
   </head>
 
   <body>
     <!-- do not put text outside of the safe area -->
     <div class="safe-area">
-      <img alt="" src="<%= @photo_url %>" />
+      <img alt="" src="<%= @postcard.photo.ig_media_url %>" />
+
+      <div class="date">
+        <%= @postcard.photo.ig_timestamp.strftime('%B %Y') %>
+      </div>
 
       <p class="caption">
-        <%= @caption %>
+        <%= @postcard.caption %>
       </p>
     </div>
   </body>
