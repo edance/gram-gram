@@ -1,64 +1,50 @@
 <html>
-<head>
-<meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-<title>Lob.com Thank You 4x6 Postcard Template Back</title>
-<style>
-  *, *:before, *:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
+    <title>Lob.com Thank You 4x6 Postcard Template Back</title>
+    <style>
+     *, *:before, *:after {
+       -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+       box-sizing: border-box;
+     }
 
-  body {
-    width: 6.25in;
-    height: 4.25in;
-    margin: 0;
-    padding: 0;
-    background-color: white;
-    border: 1px solid black;
-  }
+     body {
+       width: 6.25in;
+       height: 4.25in;
+       margin: 0;
+       padding: 0;
+       background-color: white;
+       border: 1px solid black;
+       overflow: hidden;
+       position: relative;
+     }
 
-  /* do not put text outside of the safe area */
-  #safe-area {
-    position: absolute;
-    width: 5.875in;
-    height: 3.875in;
-    left: 0.1875in;
-    top: 0.1875in;
-  }
-  #message {
-    position: absolute;
-    width: 2.2in;
-    height: 2in;
-    top: 1.4in;
-    left: .25in;
-    font-family: 'Lato';
-    font-weight: 400;
-    font-size: .122in;
-  }
+     .brand {
+       font-family: 'Poppins';
+       font-weight: 900;
+       padding: 10px;
+       width: 100%;
+       font-size: .75in;
+       text-align: center;
+     }
 
-  #thanks {
-    font-family: 'Poppins';
-    padding: 10px;
-    width: 100%;
-    font-size: .75in;
-    text-align: center;
-    color: white;
-    background-color: #a2d1f8;
-  }
-</style>
-</head>
+     .svg-blob {
+       position: absolute;
+       top: -2in;
+       right: -1in;
+       z-index: -1;
+     }
+    </style>
+  </head>
 
-<body>
-  <div id="thanks">
-    GramGram
-  </div>
+  <body>
+    <%= image_tag(image_url('blob-shape-3.svg'), class: 'svg-blob') %>
 
-  <!-- do not put text outside of the safe area -->
-  <div id="safe-area">
-  </div>
-</body>
-
+    <div class="brand">
+      GramGram
+    </div>
+  </body>
 </html>
