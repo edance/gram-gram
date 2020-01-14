@@ -16,7 +16,6 @@ function createCardElement(element, stripe) {
 
     base: {
       color: colors.black,
-      lineHeight: '40px',
       fontFamily: fonts.base,
       fontSmoothing: 'antialiased',
       fontSize: '15px',
