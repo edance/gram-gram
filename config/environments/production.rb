@@ -39,8 +39,8 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Mount Action Cable outside main process or domain.
-  # config.action_cable.mount_path = '/app/cable'
-  config.action_cable.url = 'wss://gram-2-grandma.herokuapp.com/app/cable'
+  config.action_cable.mount_path = '/app/cable'
+  # config.action_cable.url = 'wss://gram-2-grandma.herokuapp.com/app/cable'
   config.action_cable.allowed_request_origins = ['https://www.gramgram.app',
                                                  'https://gram-2-grandma.herokuapp.com/']
 
