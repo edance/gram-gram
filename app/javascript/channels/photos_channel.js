@@ -49,7 +49,7 @@ consumer.subscriptions.create('PhotosChannel', {
       setTimeout(() => {
         $loader.addClass('d-none');
 
-        Turbolinks.visit('/photos', {action: 'replace'});
+        Turbolinks.visit(window.location, {action: 'replace'});
       }, 1000);
     }
   }
