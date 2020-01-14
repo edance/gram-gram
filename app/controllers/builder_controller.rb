@@ -33,6 +33,7 @@ class BuilderController < ApplicationController
 
   def recipient
     @postcard = postcard
+    @recipient = current_user.recipients.order(:created_at).last
   end
 
   # TODO: select from dropdown
