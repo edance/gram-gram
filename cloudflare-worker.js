@@ -63,11 +63,7 @@ async function addHeaders(response) {
 	let newHdrs = new Headers(response.headers);
 
   if (!isHTML(newHdrs)) {
-    return new Response(response.body , {
-      status: response.status,
-      statusText: response.statusText,
-      headers: newHdrs
-    });
+    return response;
   }
 
   Object.keys(securityHeaders).map((name, index) => {
