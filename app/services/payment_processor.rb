@@ -6,20 +6,6 @@ class PaymentProcessor
     )
   end
 
-  def self.create_or_update_customer(user)
-    return create_customer(user) if user.payment_customer_id.blank?
-
-    update_customer(user)
-  end
-
-  def self.update_customer(user)
-    Stripe::Customer.update(
-      user.payment_customer_id,
-      name: user.name,
-      email: user.email
-    )
-  end
-
   def self.create_payment_method(user, token)
     payment_method = Stripe::PaymentMethod.create(
       type: 'card',
