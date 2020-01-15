@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :recipients, dependent: :destroy
   has_many :postcards, through: :photos
 
-  after_commit :save_customer
+  after_create :create_payment_customer
 
   def instagram?
     instagram_uid.present?
@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   private
 
-  def save_customer
-    PaymentProcessor.create_or_update_customer(self)
+  def create_payment_customer
+    CreateCustomerJob.perform_later(self)
   end
 end
