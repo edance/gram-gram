@@ -11,4 +11,33 @@ class User < ApplicationRecord
   def instagram?
     instagram_uid.present?
   end
+
+  def stripe_customer
+    @stripe_customer ||=
+      payment_customer_id ? retrieve_stripe_customer : create_stripe_customer
+  end
+
+  def add_default_stripe_source(source)
+    customer = Stripe::Customer.update(
+      stripe_customer.id,
+      source: source
+    )
+    @stripe_customer = customer
+  end
+
+  private
+
+  def create_stripe_customer
+    customer = Stripe::Customer.create(
+      email: email,
+      name: ig_username
+    )
+
+    update(payment_customer_id: customer.id)
+    customer
+  end
+
+  def retrieve_stripe_customer
+    Stripe::Customer.retrieve(payment_customer_id)
+  end
 end
