@@ -53,7 +53,10 @@ class BuilderController < ApplicationController
 
   # TODO: add saving of charge
   def update_payment
-    charge = process_stripe_charge
+    customer_id = create_stripe_customer
+    current_user.update(payment_customer_id: customer_id)
+
+    charge = process_stripe_charge(customer_id)
     if charge && postcard.update(stripe_charge_id: charge[:id])
       redirect_to build_success_path
     else
@@ -83,27 +86,31 @@ class BuilderController < ApplicationController
     params.require(:postcard).permit(:caption)
   end
 
-  def create_charge
-    charge = process_stripe_charge
-    postcard.update_attribute(:stripe_charge_id, charge[:id])
-  end
-
-  def process_stripe_charge
+  def process_stripe_charge(customer_id)
     Stripe::Charge.create(
       amount: Postcard::PRICE,
       currency: 'usd',
       description: STRIPE_CHARGE_DESCRIPTION,
-      source: token,
+      customer: customer_id,
       metadata: stripe_metadata
     )
   end
 
   def stripe_metadata
     {
-      postcard_id: postcard.id,
-      user_id: current_user.id,
-      user_email: current_user.email
+      postcard_id: postcard.id
     }
+  end
+
+  def create_stripe_customer
+    return current_user.payment_customer_id if current_user.payment_customer_id
+
+    customer = Stripe::Customer.create(
+      email: current_user.email,
+      name: current_user.ig_username,
+      source: token
+    )
+    customer.id
   end
 
   def token
