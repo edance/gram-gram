@@ -27,6 +27,8 @@
                 <%= f.label :remember_me, class: "form-check-label" %>
               </div>
             <% end %>
+
+            <%= render "devise/shared/error_messages", resource: resource %>
           </div>
 
           <div class="modal-footer">
@@ -35,3 +37,6 @@
           </div>
         <% end %>
       </div>
+    </div>
+  </div>
+</div>
