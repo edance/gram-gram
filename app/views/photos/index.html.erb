@@ -26,6 +26,14 @@
 
   <div class="row">
     <div class="col-lg-9 pr-lg-4">
+      <% if @photos.empty? && current_user.instagram? %>
+        <p class="text-muted">We couldn't find any photos in your instagram profile.</p>
+      <% end %>
+
+      <% if @photos.empty? && !current_user.instagram? %>
+        <p class="text-muted">Connect your instagram above to load your photos.</p>
+      <% end %>
+
       <div class="row">
         <% @photos.each do |p| %>
           <div class="col-md-6 col-lg-4 fadeInUp">
