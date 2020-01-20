@@ -38,7 +38,7 @@ class BuilderController < ApplicationController
 
   # TODO: select from dropdown
   def update_recipient
-    recipient = current_user.recipients.new(recipient_params)
+    recipient = find_or_initialize_recipient
 
     if recipient.save && postcard.update(recipient: recipient)
       redirect_to build_payment_path
@@ -51,9 +51,8 @@ class BuilderController < ApplicationController
     @postcard = postcard
   end
 
-  # TODO: add saving of charge
   def update_payment
-    current_user.add_default_stripe_source(token)
+    current_user.add_default_stripe_source(token) if token
 
     charge = process_stripe_charge
     if charge && postcard.update(stripe_charge_id: charge[:id])
@@ -113,6 +112,13 @@ class BuilderController < ApplicationController
   end
 
   def token
-    params.require(:token)
+    params[:token]
+  end
+
+  def find_or_initialize_recipient
+    id = params[:recipient_id]
+    return current_user.recipients.find(id) if id
+
+    current_user.recipients.new(recipient_params)
   end
 end

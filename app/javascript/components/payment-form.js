@@ -80,8 +80,9 @@ function addListenersToForm(form, card, errorContainer, stripe) {
 
 document.addEventListener("turbolinks:load", function() {
   const $form = u('.payment-form');
+  const $cardContainer = u('.card-input-group');
 
-  if ($form.length === 0) {
+  if ($form.length === 0 || $cardContainer.length === 0) {
     return;
   }
 
@@ -93,9 +94,8 @@ document.addEventListener("turbolinks:load", function() {
 
   loadScript('//js.stripe.com/v3/').then(() => {
     $form.each(element => {
-      const cardContainer = u(element).find('.card-input-group');
-      const cardElement = cardContainer.find('.credit-card-input').first();
-      const errorContainer = cardContainer.find('.invalid-feedback').first();
+      const cardElement = $cardContainer.find('.credit-card-input').first();
+      const errorContainer = $cardContainer.find('.invalid-feedback').first();
       const stripe = window.Stripe(window.STRIPE_PUBLISHABLE_KEY);
       const card = createCardElement(cardElement, stripe);
       addListenersToCard(card, errorContainer);

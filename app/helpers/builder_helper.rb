@@ -15,4 +15,9 @@ module BuilderHelper
   def payment_sources
     @current_user.stripe_customer.sources
   end
+
+  def exp_date
+    source = default_payment_source
+    "#{source.exp_month}/#{source.exp_year}"
+  end
 end

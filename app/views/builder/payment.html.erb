@@ -44,12 +44,7 @@
     </div>
 
     <div class="col-md-7">
-      <% if default_payment_source %>
-        <%= default_payment_source.brand %>
-        <%= default_payment_source.last4 %>
-      <% else %>
-        <%= render 'payment-form' %>
-      <% end %>
+      <%= render 'payment-form' %>
     </div>
   </div>
 </div>
