@@ -1,10 +1,71 @@
-<h1>My Postcards</h1>
+<section class="hero-wrap" style="background-image: url(<%= image_path('bg.jpg') %>); background-position: 50% 50%;" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
 
-<% if @postcards.empty? %>
-  <p>You have no posts</p>
-<% end %>
+  <div class="container h-100">
+    <div class="row h-100 no-gutters slider-text align-items-end justify-content-start">
+      <div class="col-md-9 pb-4 fadeInUp">
+        <h1 class="mb-3 bread">Postcards</h1>
+        <p class="breadcrumbs"><span class="mr-2">
+          Sent postcards to Gram
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<% @postcards.each do |p| %>
-  <%= link_to(p.id, postcard_path(p)) %>
-  <br/>
-<% end %>
+<div class="container mb-5">
+  <% if @postcards.empty? %>
+    <p>Looks like you haven't created a postcard yet!</p>
+  <% end %>
+
+  <% @postcards.each do |p| %>
+    <div class="row py-4">
+      <div class="col">
+        <div class="mx-auto postcard-sm shadow rounded tilt-left">
+          <img alt="" src="<%= p.photo_url %>" />
+
+          <div class="date">
+            <%= p.month_year %>
+          </div>
+
+          <div class="caption">
+            <%= p.caption %>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="address mt-4">
+          <h5>Sent to:</h5>
+
+          <small class="text-muted">
+            Name
+          </small>
+          <p>
+            <%= p.recipient.name %>
+          </p>
+
+          <small class="text-muted">Address</small>
+          <p>
+            <%= p.recipient.address_line1 %>
+            <%= p.recipient.address_line2 %>
+          </p>
+
+          <div class="row">
+            <div class="col-md-6">
+              <small class="text-muted">City</small>
+              <p><%= p.recipient.address_city %></p>
+            </div>
+            <div class="col-md-4">
+              <small class="text-muted">State</small>
+              <p><%= p.recipient.address_state %></p>
+            </div>
+            <div class="col-md-2">
+              <small class="text-muted">Zip</small>
+              <p><%= p.recipient.address_zip %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -15,6 +15,14 @@ class Postcard < ApplicationRecord
 
   PRICE = 295
 
+  def photo_url
+    photo.ig_media_url
+  end
+
+  def month_year
+    photo.ig_timestamp.strftime('%B %Y')
+  end
+
   def lob_description
     "postcard_id_#{id}"
   end

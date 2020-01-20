@@ -8,7 +8,9 @@ class PostcardsController < ApplicationController
   ].freeze
 
   def index
-    @postcards = current_user.postcards
+    @postcards = current_user
+                 .postcards
+                 .where.not(status: :pending)
   end
 
   def show

@@ -16,6 +16,11 @@
             <% end %>
           </li>
           <li class="nav-item">
+            <%= link_to postcards_path, class: 'nav-link' do %>
+              <span>Sent Postcards</span>
+            <% end %>
+          </li>
+          <li class="nav-item">
             <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
               <span>Log Out</span>
             <% end %>
