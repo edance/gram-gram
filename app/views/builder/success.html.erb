@@ -50,10 +50,10 @@
 
     <div class="col-lg-6">
       <div class="postcard shadow rounded tilt-left">
-        <img alt="" src="<%= @postcard.photo.ig_media_url %>" />
+        <img alt="" src="<%= @postcard.photo_url %>" />
 
         <div class="date">
-          <%= month_year %>
+          <%= @postcard.month_year %>
         </div>
 
         <div class="caption">
