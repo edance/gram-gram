@@ -14,7 +14,21 @@
   </div>
 
   <div class="row mb-5">
-    <div class="col-lg-6 order-lg-last">
+    <div class="col-md-6">
+      <div class="postcard shadow rounded tilt-left mx-auto mb-5">
+        <img alt="" src="<%= @postcard.photo_url %>" />
+
+        <div class="date">
+          <%= @postcard.month_year %>
+        </div>
+
+        <div class="caption">
+          <%= @postcard.caption %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
       <h3>Sent to:</h3>
 
       <small class="text-muted">
@@ -46,20 +60,6 @@
       </div>
 
       <%= link_to 'Send Another Photo', photos_path, class: 'btn btn-primary mt-4' %>
-    </div>
-
-    <div class="col-lg-6">
-      <div class="postcard shadow rounded tilt-left">
-        <img alt="" src="<%= @postcard.photo_url %>" />
-
-        <div class="date">
-          <%= @postcard.month_year %>
-        </div>
-
-        <div class="caption">
-          <%= @postcard.caption %>
-        </div>
-      </div>
     </div>
   </div>
 </div>

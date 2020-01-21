@@ -1,3 +1,74 @@
 // Place all the styles related to the postcards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap/scss/variables";
+
+.postcard {
+  width: 200px;
+  height: 300px;
+  padding: 30px 15px;
+
+  img {
+    width: 100%;
+
+    margin-bottom: 15px;
+  }
+
+  .date {
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 10px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  .caption {
+    font-size: 10px;
+    line-height: 15px;
+  }
+
+  @media(min-width: map-get($grid-breakpoints, "lg")) {
+    width: 400px;
+    height: 600px;
+    padding: 60px 30px;
+
+    .date {
+      font-size: 15px;
+      margin-bottom: 9px;
+    }
+
+    .caption {
+      font-size: 20px;
+      line-height: 25px;
+    }
+  }
+}
+
+.postcard-sm {
+  width: 200px;
+  height: 300px;
+  padding: 30px 15px;
+
+  img {
+    width: 100%;
+
+    margin-bottom: 5px;
+  }
+
+  .date {
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+
+    margin-bottom: 5px;
+  }
+
+  .caption {
+    font-size: 10px;
+    line-height: 15px;
+  }
+}
+
+.tilt-left {
+  transform: rotate(-5deg);
+}
