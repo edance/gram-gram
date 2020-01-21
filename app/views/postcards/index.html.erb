@@ -65,10 +65,28 @@
             </div>
           </div>
 
-          <small class="text-muted">Status</small>
-          <p><%= p.status.humanize %></p>
+          <div class="row">
+            <div class="col">
+              <small class="text-muted">Status</small>
+              <p><%= p.status.humanize %></p>
+            </div>
+            <div class="col">
+              <small class="text-muted">Created</small>
+              <p>
+                <%= time_ago_in_words(p.created_at) %> ago
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   <% end %>
+
+  <div class="row mt-5">
+    <div class="col text-center">
+      <div class="pagination">
+        <%= will_paginate @postcards %>
+      </div>
+    </div>
+  </div>
 </div>
