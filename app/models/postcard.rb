@@ -15,6 +15,8 @@ class Postcard < ApplicationRecord
 
   PRICE = 295
 
+  self.per_page = 15
+
   def photo_url
     photo.ig_media_url
   end
