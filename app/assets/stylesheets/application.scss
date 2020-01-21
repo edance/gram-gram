@@ -54,6 +54,7 @@
 @import "bootstrap/scss/spinners";
 @import "bootstrap/scss/utilities";
 @import "bootstrap/scss/print";
+@import "postcards";
 
 .navbar-brand {
   font-family: Poppins, sans-serif;
@@ -97,60 +98,6 @@
   @media(min-width: map-get($grid-breakpoints, "sm")) {
     background-color: transparent !important;
   }
-}
-
-.postcard {
-  width: 400px;
-  height: 600px;
-  padding: 60px 30px;
-
-  img {
-    width: 100%;
-
-    margin-bottom: 15px;
-  }
-
-  .date {
-    font-size: 15px;
-    color: rgba(0, 0, 0, 0.2);
-    text-transform: uppercase;
-
-    margin-bottom: 9px;
-  }
-
-  .caption {
-    font-size: 20px;
-    line-height: 25px;
-  }
-}
-
-.postcard-sm {
-  width: 200px;
-  height: 300px;
-  padding: 30px 15px;
-
-  img {
-    width: 100%;
-
-    margin-bottom: 5px;
-  }
-
-  .date {
-    font-size: 10px;
-    color: rgba(0, 0, 0, 0.2);
-    text-transform: uppercase;
-
-    margin-bottom: 5px;
-  }
-
-  .caption {
-    font-size: 10px;
-    line-height: 15px;
-  }
-}
-
-.tilt-left {
-  transform: rotate(-5deg);
 }
 
 .pagination {
