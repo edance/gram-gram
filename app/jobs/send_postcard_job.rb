@@ -26,11 +26,11 @@ class SendPostcardJob < ApplicationJob
   end
 
   def front_html
-    controller.render_to_string('postcard_template/front', locals: locals)
+    controller.render_to_string('postcard_template/front2', locals: locals)
   end
 
   def back_html
-    controller.render_to_string('postcard_template/back', locals: locals)
+    controller.render_to_string('postcard_template/back2', locals: locals)
   end
 
   def controller
