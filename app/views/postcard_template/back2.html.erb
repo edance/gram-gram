@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <title>Lob.com Thank You 4x6 Postcard Template Back</title>
+    <style>
+     *, *:before, *:after {
+       -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+       box-sizing: border-box;
+     }
+
+     body {
+       width: 6.25in;
+       height: 4.25in;
+       margin: 0;
+       padding: 0;
+       background-color: white;
+       border: 1px solid black;
+       overflow: hidden;
+       position: relative;
+     }
+
+     #safe-area {
+       position: absolute;
+       width: 5.875in;
+       height: 3.875in;
+       left: 0.1875in;
+       top: 0.1875in;
+     }
+
+     .message {
+       position: absolute;
+       width: 2.3in;
+       height: 2in;
+       top: 0.9in;
+       left: .1in;
+       font-family: 'Poppins';
+       font-weight: 400;
+       font-size: .15in;
+     }
+
+     .brand {
+       font-family: 'Poppins';
+       font-weight: 900;
+       position: absolute;
+       bottom: 0.4in;
+       left: .1in;
+     }
+
+     .svg-blob {
+       position: absolute;
+       top: -2in;
+       right: -1in;
+       z-index: -1;
+     }
+    </style>
+  </head>
+
+  <body>
+    <div id="safe-area">
+      <div class="message">
+        <%= @postcard.caption %>
+      </div>
+
+      <div class="brand">GramGram</div>
+    </div>
+  </body>
+</html>

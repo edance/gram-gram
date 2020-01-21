@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <style>
+     *, *:before, *:after {
+       -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+       box-sizing: border-box;
+     }
+
+     body {
+       margin: 0;
+       padding: 0;
+     }
+
+     .postcard {
+       margin: 0;
+       padding: 0;
+
+       width: 6.25in;
+       height: 4.25in;
+
+       border: solid 1px black;
+
+       font-family: 'Poppins', sans-serif;
+
+       text-align: center;
+      position: relative;
+       overflow: hidden;
+     }
+
+     .safe-area {
+       position: absolute;
+       width: 5.875in;
+       height: 3.875in;
+       left: 0.1875in;
+       top: 0.1875in;
+
+       /* background: aqua; */
+     }
+
+     .main {
+       position: absolute;
+       height: 100%;
+       margin: auto;
+       top: 0;
+       left: 0;
+       right: 0;
+     }
+
+     .background {
+       /* The image used */
+       background-image: url("photographer.jpg");
+
+       /* Add the blur effect */
+       filter: blur(8px);
+       -webkit-filter: blur(8px);
+
+       /* Full height */
+       height: 100%;
+
+       /* Center and scale the image nicely */
+       background-position: center;
+       background-repeat: no-repeat;
+       background-size: cover;
+     }
+    </style>
+  </head>
+
+  <body>
+    <div class="postcard">
+      <!-- do not put text outside of the safe area -->
+      <div class="background" style="background-image: url(<%= @postcard.photo_url %>)"></div>
+
+      <img class="main" alt="" src="<%= @postcard.photo.ig_media_url %>" /> 
+
+      <div class="safe-area">
+      </div>
+    </div>
+  </body>
+</html>
