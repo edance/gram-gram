@@ -1,5 +1,8 @@
 class BuilderController < ApplicationController
+  attr_reader :postcard
+
   before_action :authenticate_user!
+  before_action :set_postcard, except: :new
 
   STRIPE_CHARGE_DESCRIPTION = 'GramGram Photo'.freeze
   USER_PARAMS = %i[name email].freeze
@@ -19,10 +22,6 @@ class BuilderController < ApplicationController
     redirect_to build_caption_path(postcard)
   end
 
-  def caption
-    @postcard = postcard
-  end
-
   def update_caption
     if postcard.update(caption_params)
       redirect_to build_recipient_path
@@ -32,11 +31,9 @@ class BuilderController < ApplicationController
   end
 
   def recipient
-    @postcard = postcard
     @recipient = current_user.recipients.order(:created_at).last
   end
 
-  # TODO: select from dropdown
   def update_recipient
     recipient = find_or_initialize_recipient
 
@@ -45,10 +42,6 @@ class BuilderController < ApplicationController
     else
       render 'recipient'
     end
-  end
-
-  def payment
-    @postcard = postcard
   end
 
   def update_payment
@@ -60,15 +53,14 @@ class BuilderController < ApplicationController
     else
       render 'payment'
     end
-  end
-
-  def success
-    @postcard = postcard
+  rescue Stripe::CardError => e
+    @card_error = e
+    render 'payment'
   end
 
   private
 
-  def postcard
+  def set_postcard
     @postcard = current_user.postcards.find(params[:id])
   end
 
