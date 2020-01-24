@@ -25,6 +25,12 @@
     <%= hidden_field_tag(:token, '', class: 'stripe-token-input') %>
   <% end %>
 
+  <% if @card_error %>
+    <p class="text-danger small">
+      <%= @card_error.message %>
+    </p>
+  <% end %>
+
   <div class="form-group">
     <button type="submit" class="btn btn-primary btn-spinner py-3 px-5">
       Pay and Send
