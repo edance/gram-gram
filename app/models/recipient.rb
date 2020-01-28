@@ -15,4 +15,12 @@ class Recipient < ApplicationRecord
       address_zip: address_zip
     }
   end
+
+  def create_lob_address
+    lob.addresses.create(address)
+  end
+
+  def lob
+    @lob ||= Lob::Client.new(api_key: ENV['LOB_SECRET_API_KEY'])
+  end
 end
