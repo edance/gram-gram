@@ -40,4 +40,8 @@ class User < ApplicationRecord
   def retrieve_stripe_customer
     Stripe::Customer.retrieve(payment_customer_id)
   end
+
+  def after_confirmation
+    UserMailer.with(user: self).welcome_email.deliver_later
+  end
 end
