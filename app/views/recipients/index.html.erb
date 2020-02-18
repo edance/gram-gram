@@ -20,7 +20,7 @@
       Name
     </small>
     <p>
-      <%= r.name %>
+      <%= link_to r.name, recipient_path(r), class: 'nav-link' %>
     </p>
 
     <small class="text-muted">Address</small>

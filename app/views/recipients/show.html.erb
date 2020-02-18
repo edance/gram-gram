@@ -1,0 +1,31 @@
+<div class="pt-5 container">
+  <%= link_to 'Back', recipients_path %>
+  <%= link_to 'Edit', edit_recipient_path(@recipient) %>
+
+  <small class="text-muted">
+    Name
+  </small>
+  <p>
+    <%= @recipient.name %>
+  </p>
+
+  <small class="text-muted">Address</small>
+  <p>
+    <%= @recipient.address_line1 %>
+    <%= @recipient.address_line2 %>
+  </p>
+
+  <div class="row">
+    <div class="col-md-6">
+      <small class="text-muted">City</small>
+      <p><%= @recipient.address_city %></p>
+    </div>
+    <div class="col-md-6">
+      <small class="text-muted">State</small>
+      <p><%= @recipient.address_state %></p>
+    </div>
+  </div>
+
+  <small class="text-muted">Zip</small>
+  <p><%= @recipient.address_zip %></p>
+</div>
