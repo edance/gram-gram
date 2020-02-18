@@ -1,0 +1,33 @@
+<%= form_with model: @recipient, local: true do |form| %>
+  <div class="form-group">
+    <label>Name</label>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <%= form.text_field :address_line1, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Address 2</label>
+    <%= form.text_field :address_line2, class: 'form-control' %>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <%= form.text_field :address_city, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <%= form.text_field :address_state, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <%= form.text_field :address_zip, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-spinner py-3 px-5">
+      Save
+    </button>
+  </div>
+<% end %>
