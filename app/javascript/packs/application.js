@@ -19,3 +19,8 @@ require('components');
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+// Iconify for icons
+import Iconify from '@iconify/iconify';
+Iconify.setConfig('localStorage', true);
+Iconify.scanDOM();
