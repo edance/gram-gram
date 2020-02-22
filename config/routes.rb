@@ -9,10 +9,6 @@ Rails.application.routes.draw do
   get '/auth/:provider', to: 'authentication#authorize', as: 'authentication'
   get '/auth/:provider/callback', to: 'authentication#callback'
 
-  # Payment routes
-  get '/payment' => 'static#payment'
-  post '/charge' => 'payments#charge'
-
   resources :photos, only: %i[index show]
   get '/photos/:photo_id/new', to: 'builder#new', as: 'build_new'
 
