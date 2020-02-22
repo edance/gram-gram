@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/auth/:provider', to: 'authentication#authorize', as: 'authentication'
   get '/auth/:provider/callback', to: 'authentication#callback'
 
+  get '/welcome', to: 'welcome#index'
+
   resources :photos, only: %i[index show]
   get '/photos/:photo_id/new', to: 'builder#new', as: 'build_new'
 

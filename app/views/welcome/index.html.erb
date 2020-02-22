@@ -1,0 +1,22 @@
+<div class="fluid-container bg-primary vh-100">
+  <!-- Header nav with back button -->
+  <nav class="navbar fixed-top navbar-light">
+    <a class="navbar-brand" href="/">
+      <span class="iconify" data-icon="ion:arrow-back" data-inline="false"></span>
+    </a>
+  </nav>
+
+  <div class="container">
+    <div class="py-5 text-center">
+      <%= image_tag('instagram-logo.png', width: 122, class: "mt-4") %>
+
+      <h3 class="mt-4">
+        Connect your Instagram
+      </h3>
+      <p>In order to send your photos, we need to connect to your instagram account.</p>
+    </div>
+
+
+    <%= link_to 'Connect Instagram', authentication_path('instagram'), class: 'mt-5 mb-2 btn btn-block btn-dark' %>
+  </div>
+</div>
