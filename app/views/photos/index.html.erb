@@ -10,23 +10,13 @@
 
 
       <div class="ml-auto">
-        <img src="..." alt="Avatar for user" class="rounded-circle">
+        <img alt="Avatar for user" class="rounded-circle">
       </div>
     </div>
   </div>
 </div>
 
-<div class="container mb-5">
-  <div class="row">
-    <div class="col py-4">
-    <% if current_user.instagram? %>
-      <%= link_to 'Load Recent Images', authentication_path('instagram'), class: 'btn btn-primary' %>
-    <% else %>
-      <%= link_to 'Connect to Instagram', authentication_path('instagram'), class: 'btn btn-primary' %>
-    <% end %>
-    </div>
-  </div>
-
+<div class="container mt-2 mb-5">
   <div class="row">
     <div class="col-lg-9 pr-lg-4">
       <% if @photos.empty? && current_user.instagram? %>
@@ -39,21 +29,11 @@
 
       <div class="row">
         <% @photos.each do |p| %>
-          <div class="col-md-6 col-lg-4 fadeInUp">
+          <div class="col-6 col-lg-4">
             <div class="overflow-hidden rounded">
               <%= link_to(build_new_path(p), class: 'd-block') do %>
                 <%= image_tag(p.ig_media_url, class: 'img-fluid img-zoom') %>
               <% end %>
-            </div>
-
-            <div class="text-muted text-uppercase py-4 mb-2">
-              <% if new?(p) %>
-                <span class="badge badge-secondary">New</span>
-              <% end %>
-
-              <small>
-                <%= time_ago_in_words(p.ig_timestamp) %>
-              </small>
             </div>
           </div>
         <% end %>
