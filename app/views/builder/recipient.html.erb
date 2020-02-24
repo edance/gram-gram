@@ -1,27 +1,78 @@
-<div class="container pt-5">
-  <div class="row justify-content-center mb-5 pt-5 pb-3">
-    <div class="col-md-7 heading-section text-center fadeInUp">
-      <div class="text-uppercase text-primary mb-3">
-        Recipient
-      </div>
-      <h2 class="mb-4">
-        Add a Recipient
-      </h2>
-      <p class="text-muted">
-        Tell us where you want us to send the photo.
+<div class="fluid-container vh-100">
+  <%= form_with model: @postcard, class: 'p-4', url: update_recipient_path(@postcard), local: true do |form| %>
+
+    <!-- Header nav with back button -->
+    <nav class="navbar fixed-top navbar-light bg-primary">
+      <%= link_to photos_path, class: 'ml-0 nav-link text-dark' do %>
+        Cancel
+      <% end %>
+
+      <button type="submit" class="btn btn-dark btn-spinner btn-sm">
+        Next
+      </button>
+    </nav>
+
+    <div class="container py-5">
+      <p class="mb-4">
+        Where do you want us to send the&nbsp;photo?
       </p>
-    </div>
-  </div>
 
-  <div class="row block-9">
-    <div class="col-md-6 order-md-last d-none d-md-block">
-      <div class="row contact-info mb-5">
-        <%= image_tag(@postcard.photo.ig_media_url, class: 'img rounded w-100') %>
-      </div>
-    </div>
 
-    <div class="col-md-6">
-      <%= render 'recipient-form' %>
+      <% if @recipient.present? %>
+        <small class="text-muted">
+          Name
+        </small>
+        <p>
+          <%= @recipient.name %>
+        </p>
+
+        <small class="text-muted">Address</small>
+        <p>
+          <%= @recipient.address_line1 %>
+          <%= @recipient.address_line2 %>
+        </p>
+
+        <div class="row">
+          <div class="col-md-6">
+            <small class="text-muted">City</small>
+            <p><%= @recipient.address_city %></p>
+          </div>
+          <div class="col-md-6">
+            <small class="text-muted">State</small>
+            <p><%= @recipient.address_state %></p>
+          </div>
+        </div>
+
+        <small class="text-muted">Zip</small>
+        <p><%= @recipient.address_zip %></p>
+
+        <%= hidden_field_tag(:recipient_id, @recipient.id) %>
+
+      <% else %>
+
+        <%= form.fields_for :recipient do |recipient| %>
+          <div class="form-group">
+            <%= recipient.text_field :name, placeholder: 'Name', class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= recipient.text_field :address_line1, placeholder: 'Address', class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= recipient.text_field :address_line2, placeholder: 'Address 2 (optional)', class: 'form-control' %>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= recipient.text_field :address_city, placeholder: 'City', class: 'form-control' %>
+            </div>
+            <div class="form-group col-6 col-md-4">
+              <%= recipient.text_field :address_state, placeholder: 'State', class: 'form-control' %>
+            </div>
+            <div class="form-group col-6 col-md-2">
+              <%= recipient.text_field :address_zip, placeholder: 'Zip', class: 'form-control' %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     </div>
-  </div>
+  <% end %>
 </div>
