@@ -1,47 +1,45 @@
-<div class="container pt-5 pb-8">
-  <div class="row justify-content-center mb-5 pt-5 pb-3">
-    <div class="col-md-7 heading-section text-center fadeInUp">
-      <div class="text-uppercase text-primary mb-3">
-        Payment
-      </div>
-      <h2 class="mb-4">
-        Send Your Postcard
-      </h2>
-      <p class="text-muted">
-        Enter your credit card information and click the button. We'll send your photo on its way!
-      </p>
-    </div>
-  </div>
+<div class="fluid-container vh-100">
+  <!-- Header nav with back button -->
+  <nav class="navbar fixed-top navbar-light bg-primary">
+    <%= link_to photos_path, class: 'pl-0 nav-link text-dark' do %>
+      Cancel
+    <% end %>
+  </nav>
 
-  <div class="row block-9">
-    <div class="col-md-5 order-md-last">
-      <table class="table w-100">
-        <thead>
-          <tr>
-            <th scope="col">Checkout</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1 x Photo @ <%= formatted_price %></td>
-            <td><%= formatted_price %></td>
-          </tr>
-          <tr>
-            <td>Tax</td>
-            <td>$0.00</td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Total</strong>
-            </td>
-            <td>
-              <strong><%= formatted_price %></strong>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="container py-5">
+    <p class="mt-5 mb-4">
+      Almost done!
+    </p>
+
+    <table class="table table-sm table-borderless w-100">
+      <tbody>
+        <tr>
+          <td>
+            <div class="d-flex align-items-start mb-4">
+              <%= image_tag(@postcard.photo.ig_media_url, class: 'img rounded w-60') %>
+              <span class="ml-2">1 x Photo</span>
+            </div>
+          </td>
+          <td class="text-right"><%= formatted_price %></td>
+        </tr>
+        <tr class="border-top mb-4">
+          <td class="my-4"></td>
+          <td class="my-4"></td>
+        </tr>
+        <tr>
+          <td>Tax</td>
+          <td class="text-right">$0.00</td>
+        </tr>
+        <tr>
+          <td>
+            Total
+          </td>
+          <td class="text-right">
+            <%= formatted_price %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
     <div class="col-md-7">
       <%= render 'payment-form' %>
