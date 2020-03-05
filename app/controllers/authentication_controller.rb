@@ -37,7 +37,11 @@ class AuthenticationController < ApplicationController
 
   def update_user_information!
     info = InstagramService.new(current_user).user_information
-    current_user.update!(ig_username: info['username'])
+    current_user.update!(
+      ig_username: info['username'],
+      ig_avatar: info['profile_pic_url'],
+      private_profile: info['is_private']
+    )
   end
 
   def fetch_access_token

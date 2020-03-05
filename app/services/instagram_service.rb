@@ -1,7 +1,8 @@
 class InstagramService
   attr_accessor :user
 
-  INSTAGRAM_BASE_URL = 'https://graph.instagram.com'.freeze
+  INSTAGRAM_GRAPH_URL = 'https://graph.instagram.com'.freeze
+  INSTAGRAM_BASE_URL = 'https://www.instagram.com'.freeze
   USER_FIELDS = %w[id username media_count account_type].freeze
   MEDIA_FIELDS = %w[caption id media_type media_url permalink thumbnail_url
                     timestamp username].freeze
@@ -14,15 +15,16 @@ class InstagramService
   end
 
   def user_information
-    client.get(
+    body = graph_client.get(
       'me',
       fields: USER_FIELDS.join(','),
       access_token: user.instagram_access_token
     ).body
+    body.merge(hidden_information(body['username']))
   end
 
   def media
-    client.get(
+    graph_client.get(
       "#{user.instagram_uid}/media",
       fields: MEDIA_FIELDS.join(','),
       access_token: user.instagram_access_token
@@ -45,16 +47,29 @@ class InstagramService
 
   private
 
-  def client
-    @client ||= Faraday.new(url: INSTAGRAM_BASE_URL) do |f|
+  def graph_client
+    client(INSTAGRAM_GRAPH_URL)
+  end
+
+  def base_client
+    client(INSTAGRAM_BASE_URL)
+  end
+
+  def client(url = INSTAGRAM_GRAPH_URL)
+    Faraday.new(url: url) do |f|
       f.response :json
 
       f.adapter Faraday.default_adapter
     end
   end
 
+  def hidden_information(username)
+    body = base_client.get("/#{username}/\?__a\=1").body
+    body.try(:[], 'graphql').try(:[], 'user') || {}
+  end
+
   def photos_from_carousel(media_id)
-    media_resp = client.get(
+    media_resp = graph_client.get(
       "#{media_id}/children",
       fields: CAROUSEL_CHILDREN_FIELDS.join(','),
       access_token: user.instagram_access_token
