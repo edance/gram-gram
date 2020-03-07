@@ -17,16 +17,6 @@
 </div>
 
 <div class="container mt-2 mb-5">
-  <div class="row">
-    <% if @photos.empty? && current_user.instagram? %>
-      <p class="text-muted">We couldn't find any photos in your instagram profile.</p>
-    <% end %>
-
-    <% if @photos.empty? && !current_user.instagram? %>
-      <p class="text-muted">Connect your instagram above to load your photos.</p>
-    <% end %>
-  </div>
-
   <div class="row mx-n1">
     <% @photos.each do |p| %>
       <div class="col-6 col-lg-4 p-1">
