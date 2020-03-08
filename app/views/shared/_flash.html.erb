@@ -1,20 +1,22 @@
 <% info_msg = flash[:notice] %>
 <% error_msg = flash[:error] %>
 
-<% if info_msg %>
-  <div class="alert alert-info alert-dismissible fixed-top container mt-5 fade show" data-auto-hide="true" role="alert">
-    <%= info_msg %>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-<% end %>
+<div class="flash-container container fixed-top mt-4">
+  <% if info_msg %>
+    <div class="alert alert-secondary alert-dismissible fade show" data-auto-hide="true" role="alert">
+      <%= info_msg %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
 
-<% if error_msg %>
-  <div class="alert alert-warning alert-dismissible fixed-top container mt-5 fade show" data-auto-hide="true" role="alert">
-    <%= error_msg %>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-<% end %>
+  <% if error_msg %>
+    <div class="alert alert-secondary alert-dismissible fade show" data-auto-hide="true" role="alert">
+      <%= error_msg %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
+</div>
