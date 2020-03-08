@@ -22,7 +22,7 @@
 
   <% @postcards.each do |p| %>
     <div class="row py-4">
-      <div class="col">
+      <div class="col-12">
         <div class="mx-auto postcard-sm shadow rounded tilt-left">
           <img alt="" src="<%= p.photo_url %>" />
 
@@ -35,37 +35,15 @@
           </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col-12">
         <div class="address mt-4">
           <h5>Sent to:</h5>
 
-          <small class="text-muted">
-            Name
-          </small>
           <p>
             <%= p.recipient.name %>
+            <br/>
+            <%= p.recipient.single_line_address %>
           </p>
-
-          <small class="text-muted">Address</small>
-          <p>
-            <%= p.recipient.address_line1 %>
-            <%= p.recipient.address_line2 %>
-          </p>
-
-          <div class="row">
-            <div class="col-md-6">
-              <small class="text-muted">City</small>
-              <p><%= p.recipient.address_city %></p>
-            </div>
-            <div class="col-md-4">
-              <small class="text-muted">State</small>
-              <p><%= p.recipient.address_state %></p>
-            </div>
-            <div class="col-md-2">
-              <small class="text-muted">Zip</small>
-              <p><%= p.recipient.address_zip %></p>
-            </div>
-          </div>
 
           <div class="row">
             <div class="col">
