@@ -1,48 +1,54 @@
 <div class="fluid-container vh-100">
-  <!-- Header nav with back button -->
-  <nav class="navbar fixed-top navbar-light bg-primary">
-    <%= link_to photos_path, class: 'pl-0 nav-link text-dark' do %>
-      Cancel
-    <% end %>
-  </nav>
+  <%= form_with method: :patch, url: update_payment_path(@postcard), class: 'p-4 p-md-5 payment-form' do |form| %>
 
-  <div class="container py-5">
-    <p class="mt-5 mb-4">
-      Almost done!
-    </p>
+    <!-- Header nav with back button -->
+    <nav class="navbar fixed-top navbar-light bg-primary">
+      <%= link_to photos_path, class: 'pl-0 nav-link text-dark' do %>
+        Cancel
+      <% end %>
 
-    <table class="table table-sm table-borderless w-100">
-      <tbody>
-        <tr>
-          <td>
-            <div class="d-flex align-items-start mb-4">
-              <%= image_tag(@postcard.photo.ig_media_url, class: 'img rounded w-60') %>
-              <span class="ml-2">1 x Photo</span>
-            </div>
-          </td>
-          <td class="text-right"><%= formatted_price %></td>
-        </tr>
-        <tr class="border-top mb-4">
-          <td class="my-4"></td>
-          <td class="my-4"></td>
-        </tr>
-        <tr>
-          <td>Tax</td>
-          <td class="text-right">$0.00</td>
-        </tr>
-        <tr>
-          <td>
-            Total
-          </td>
-          <td class="text-right">
-            <%= formatted_price %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <button type="submit" class="btn btn-dark btn-spinner btn-sm">
+        Send
+      </button>
+    </nav>
 
-    <div class="col-md-7">
+    <div class="container py-5">
+      <p class="mt-5 mb-4">
+        Almost done!
+      </p>
+
+      <table class="table table-sm table-borderless w-100 mb-5">
+        <tbody>
+          <tr>
+            <td>
+              <div class="d-flex align-items-start mb-4">
+                <%= image_tag(@postcard.photo.ig_media_url, class: 'img rounded w-60') %>
+                <span class="ml-2">1 x Photo</span>
+              </div>
+            </td>
+            <td class="text-right"><%= formatted_price %></td>
+          </tr>
+          <tr class="border-top mb-4">
+            <td class="my-4"></td>
+            <td class="my-4"></td>
+          </tr>
+          <tr>
+            <td>Tax</td>
+            <td class="text-right">$0.00</td>
+          </tr>
+          <tr>
+            <td>
+              Total
+            </td>
+            <td class="text-right">
+              <%= formatted_price %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
       <%= render 'payment-form' %>
     </div>
-  </div>
+
+  <% end %>
 </div>
