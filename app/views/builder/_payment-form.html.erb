@@ -1,39 +1,31 @@
-<%= form_with method: :patch, url: update_payment_path(@postcard), class: 'bg-light p-4 p-md-5 payment-form' do |form| %>
-  <% if default_payment_source %>
-    <div class="form-group">
-      <label class="form-control-label">Credit or Debit Card</label>
-
-      <div class="text-muted">
-        <%= default_payment_source.brand %>
-        <div class="float-md-right">
-          ●●●●
-          <%= default_payment_source.last4 %>
-        </div>
-      </div>
-      <small class="text-muted">Expires: <%= exp_date %></small>
-    </div>
-  <% else %>
-
-    <div class="form-group card-input-group">
-      <label class="form-control-label">Credit or Debit Card</label>
-
-      <div class="credit-card-input form-control pt-2">
-      </div>
-      <div class="invalid-feedback"></div>
-    </div>
-
-    <%= hidden_field_tag(:token, '', class: 'stripe-token-input') %>
-  <% end %>
-
-  <% if @card_error %>
-    <p class="text-danger small">
-      <%= @card_error.message %>
-    </p>
-  <% end %>
-
+<% if default_payment_source %>
   <div class="form-group">
-    <button type="submit" class="btn btn-primary btn-spinner py-3 px-5">
-      Pay and Send
-    </button>
+    <label class="form-control-label">Credit or Debit Card</label>
+
+    <div class="text-muted">
+      <%= default_payment_source.brand %>
+      <div class="float-md-right">
+        ●●●●
+        <%= default_payment_source.last4 %>
+      </div>
+    </div>
+    <small class="text-muted">Expires: <%= exp_date %></small>
   </div>
+<% else %>
+
+  <div class="form-group card-input-group">
+    <label class="form-control-label">Credit or Debit Card</label>
+
+    <div class="credit-card-input form-control pt-2">
+    </div>
+    <div class="invalid-feedback"></div>
+  </div>
+
+  <%= hidden_field_tag(:token, '', class: 'stripe-token-input') %>
+<% end %>
+
+<% if @card_error %>
+  <p class="text-danger small">
+    <%= @card_error.message %>
+  </p>
 <% end %>
