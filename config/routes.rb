@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get '/connect', to: 'welcome#connect'
   get '/reconnect', to: 'welcome#reconnect'
+  get '/loading', to: 'welcome#loading'
 
   resources :photos, only: %i[index show]
   get '/photos/:photo_id/new', to: 'builder#new', as: 'build_new'

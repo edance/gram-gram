@@ -1,0 +1,27 @@
+<div class="fluid-container bg-primary vh-100">
+  <!-- Header nav with back button -->
+  <nav class="navbar fixed-top navbar-light">
+    <a class="navbar-brand" href="/">
+      <span class="iconify" data-icon="ion:arrow-back" data-inline="false"></span>
+    </a>
+  </nav>
+
+  <div class="container">
+    <div class="py-5 text-center">
+      <%= image_tag('instagram-logo.png', width: 122, class: "mt-4") %>
+
+      <h3 class="mt-4">
+        Loading your Photos
+      </h3>
+      <p>We are fetching your photos from&nbsp;Instagram.</p>
+
+      <%= link_to 'Photos', photos_path, class: 'photos-link d-none' %>
+
+      <div class="photos-loading-bar w-100 px-5 py-4">
+        <div class="progress">
+          <div class="progress-bar bg-dark" role="progressbar" style="width: 0%" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

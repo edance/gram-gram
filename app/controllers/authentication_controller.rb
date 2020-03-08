@@ -20,19 +20,14 @@ class AuthenticationController < ApplicationController
     current_user.instagram_uid = attrs['user_id']
     current_user.instagram_access_token = attrs['access_token']
     update_user_information!
-    load_recent_photos
 
-    redirect_to photos_path
+    redirect_to loading_path
   end
 
   private
 
   def code
     params.require(:code)
-  end
-
-  def load_recent_photos
-    SaveInstagramPhotosJob.set(wait: 5.seconds).perform_later(current_user)
   end
 
   def update_user_information!
