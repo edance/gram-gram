@@ -23,4 +23,6 @@ require('components');
 // Iconify for icons
 import Iconify from '@iconify/iconify';
 Iconify.setConfig('localStorage', true);
-Iconify.scanDOM();
+document.addEventListener("turbolinks:load", function() {
+  Iconify.scanDOM();
+});
