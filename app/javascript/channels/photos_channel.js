@@ -32,25 +32,28 @@ consumer.subscriptions.create('PhotosChannel', {
   },
 
   received(data) {
-    const $loader = u('.loading-bar');
-    const $bar = $loader.find('.progress-bar');
-
-    // first 70% linear, then wait
-    if (data['started']) {
-      $loader.removeClass('d-none');
-
-      incrementLoader($bar);
-    }
+    const $bar = u('.photos-loading-bar .progress-bar');
 
     if (data['ended']) {
       width = 100;
       setLoaderWidth($bar, 100);
 
       setTimeout(() => {
-        $loader.addClass('d-none');
+        const $link = u('.photos-link');
+        const href = $link.attr('href') || '/app';
 
-        Turbolinks.visit(window.location, {action: 'replace'});
+        Turbolinks.visit(href, {action: 'replace'});
       }, 1000);
     }
   }
+});
+
+document.addEventListener('turbolinks:load', function() {
+  const $bar = u('.photos-loading-bar .progress-bar');
+
+  if ($bar.length === 0) {
+    return;
+  }
+
+  incrementLoader($bar);
 });
