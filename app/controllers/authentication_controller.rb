@@ -40,7 +40,8 @@ class AuthenticationController < ApplicationController
     current_user.update!(
       ig_username: info['username'],
       ig_avatar: info['profile_pic_url'],
-      private_profile: info['is_private']
+      private_profile: info['is_private'],
+      sync_at: DateTime.now
     )
   end
 
