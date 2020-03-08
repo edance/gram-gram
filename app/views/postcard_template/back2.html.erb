@@ -41,12 +41,19 @@
        font-size: .15in;
      }
 
-     .brand {
+     .brand-container {
        font-family: 'Poppins';
-       font-weight: 900;
        position: absolute;
        bottom: 0.4in;
        left: .1in;
+     }
+
+     .brand {
+       font-weight: 900;
+     }
+
+     .url {
+       font-size: 11px;
      }
 
      .svg-blob {
@@ -64,7 +71,14 @@
         <%= @postcard.caption %>
       </div>
 
-      <div class="brand">GramGram</div>
+      <div class="brand-container">
+        <div class="brand">
+          GramGram
+        </div>
+        <div class="url">
+          www.gramgram.app
+        </div>
+      </div>
     </div>
   </body>
 </html>
