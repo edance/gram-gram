@@ -1,3 +1,41 @@
-<h1>New Recipient</h1>
+<div class="fluid-container vh-100 p-4">
+  <%= form_with model: @recipient, local: true do |form| %>
+    <!-- Header nav with back button -->
+    <nav class="navbar fixed-top navbar-light bg-primary">
+      <%= link_to recipients_path, class: 'ml-0 nav-link text-dark' do %>
+        Cancel
+      <% end %>
 
-<%= render 'form' %>
+      <button type="submit" class="btn btn-dark btn-spinner btn-sm">
+        Save
+      </button>
+    </nav>
+
+    <div class="container skinny-container py-5">
+      <p class="mb-4">
+        Where do you want us to send the&nbsp;photo?
+      </p>
+
+      <div class="form-group">
+        <%= form.text_field :name, placeholder: 'Name', class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.text_field :address_line1, placeholder: 'Address', class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.text_field :address_line2, placeholder: 'Address 2 (optional)', class: 'form-control' %>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= form.text_field :address_city, placeholder: 'City', class: 'form-control' %>
+        </div>
+        <div class="form-group col-6 col-md-4">
+          <%= form.text_field :address_state, placeholder: 'State', class: 'form-control' %>
+        </div>
+        <div class="form-group col-6 col-md-2">
+          <%= form.text_field :address_zip, placeholder: 'Zip', class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
