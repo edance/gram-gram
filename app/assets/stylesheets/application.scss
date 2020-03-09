@@ -93,16 +93,6 @@
   }
 }
 
-.navbar-light {
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-
-  @media(min-width: map-get($grid-breakpoints, "sm")) {
-    background-color: transparent !important;
-  }
-}
-
 .pagination {
   a,
   span,
