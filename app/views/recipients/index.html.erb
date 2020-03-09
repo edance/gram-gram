@@ -1,46 +1,42 @@
-<section class="hero-wrap" style="background-image: url(<%= image_path('bg.jpg') %>); background-position: 50% 50%;" data-stellar-background-ratio="0.5">
-  <div class="overlay"></div>
+<div class="fluid-container bg-primary">
+  <div class="container pt-5 pb-4">
+    <div class="d-flex flow-row">
+      <div class="mr-auto">
+        <h2 class="mb-0">
+          Address Book
+        </h2>
+        <small class="text-muted">
+          Probably a list of your grandmas
+        </small>
+      </div>
 
-  <div class="container h-100">
-    <div class="row h-100 no-gutters slider-text align-items-end justify-content-start">
-      <div class="col-md-9 pb-4 fadeInUp">
-        <h1 class="mb-3 bread">
-          Recipients
-        </h1>
-        <p class="breadcrumbs"><span class="mr-2">
-        </p>
+      <div class="ml-auto">
+        <%= render 'shared/user-dropdown' %>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<div class="container mb-5">
+<div class="container vh-100 bg-light skinny-container pt-2 pb-4">
   <% @recipients.map do |r| %>
-    <small class="text-muted">
-      Name
-    </small>
-    <p>
-      <%= link_to r.name, recipient_path(r), class: 'nav-link' %>
-    </p>
 
-    <small class="text-muted">Address</small>
-    <p>
-      <%= r.address_line1 %>
-      <%= r.address_line2 %>
-    </p>
-
-    <div class="row">
-      <div class="col-md-6">
-        <small class="text-muted">City</small>
-        <p><%= r.address_city %></p>
+    <%= link_to edit_recipient_path(r), class: 'text-reset' do %>
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= r.name %>
+          </h5>
+          <p class="card-text">
+            <%= r.address_line1 %> <%= r.address_line2 %>
+            <br/>
+            <%= r.address_city %>, <%= r.address_state %> <%= r.address_zip %>
+          </p>
+        </div>
       </div>
-      <div class="col-md-6">
-        <small class="text-muted">State</small>
-        <p><%= r.address_state %></p>
-      </div>
-    </div>
-
-    <small class="text-muted">Zip</small>
-    <p><%= r.address_zip %></p>
+    <% end %>
   <% end %>
+</div>
+
+<div class="bg-white shadow fixed-bottom p-4 text-center">
+  <%= link_to 'Add Recipient', new_recipient_path, class: 'btn w-100 btn-outline-dark' %>
 </div>

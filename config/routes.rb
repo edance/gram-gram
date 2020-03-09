@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   post '/photos/:photo_id/send', to: 'postcards#create', as: 'postcard_create'
   resources :postcards, only: :index
 
-  resources :recipients
+  resources :recipients, except: %i[show]
 
   get '/template/back', to: 'postcard_template#back'
   get '/template/front', to: 'postcard_template#front'
