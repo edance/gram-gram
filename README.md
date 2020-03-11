@@ -1,5 +1,9 @@
 # GramGram
 
+[![Built with Spacemacs](https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg)](http://spacemacs.org)
+[![Build Status](https://travis-ci.org/edance/gram-gram.svg?branch=master)](https://travis-ci.org/edance/gram-gram)
+[![Coverage Status](https://coveralls.io/repos/github/edance/gram-gram/badge.svg?branch=master)](https://coveralls.io/github/edance/gram-gram?branch=master)
+
 Send your instagram photos to your grandma in the mail.
 
 ## Getting Started
