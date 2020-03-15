@@ -20,20 +20,20 @@
         <%= form.text_field :name, placeholder: 'Name', class: 'form-control' %>
       </div>
       <div class="form-group">
-        <%= form.text_field :address_line1, placeholder: 'Address', class: 'form-control' %>
+        <%= form.text_field :address_line1, autocomplete: 'address-search', placeholder: 'Address', class: 'form-control address-search' %>
       </div>
       <div class="form-group">
         <%= form.text_field :address_line2, placeholder: 'Address 2 (optional)', class: 'form-control' %>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <%= form.text_field :address_city, placeholder: 'City', class: 'form-control' %>
+          <%= form.text_field :address_city, placeholder: 'City', class: 'form-control address-city' %>
         </div>
-        <div class="form-group col-6 col-md-4">
-          <%= form.text_field :address_state, placeholder: 'State', class: 'form-control' %>
+        <div class="form-group col-6 col-md-3">
+          <%= form.text_field :address_state, placeholder: 'State', class: 'form-control address-state' %>
         </div>
-        <div class="form-group col-6 col-md-2">
-          <%= form.text_field :address_zip, placeholder: 'Zip', class: 'form-control' %>
+        <div class="form-group col-6 col-md-3">
+          <%= form.text_field :address_zip, placeholder: 'Zip', class: 'form-control address-zip' %>
         </div>
       </div>
     </div>

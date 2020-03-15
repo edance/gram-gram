@@ -9,3 +9,7 @@ export function loadScript(url) {
   document.body && document.body.appendChild(script);
   return promise;
 }
+
+export function encodeGetParams(params) {
+  return Object.entries(params).map(kv => kv.map(encodeURIComponent).join('=')).join('&');
+}
