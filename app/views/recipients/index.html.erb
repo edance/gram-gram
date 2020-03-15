@@ -17,26 +17,28 @@
   </div>
 </div>
 
-<div class="container vh-100 bg-light skinny-container pt-2 pb-4">
-  <% @recipients.map do |r| %>
+<div class="fluid-container vh-100 bg-light">
+  <div class="container skinny-container pt-2 pb-4">
+    <% @recipients.map do |r| %>
 
-    <%= link_to edit_recipient_path(r), class: 'text-reset' do %>
-      <div class="card mb-2">
-        <div class="card-body">
-          <h5 class="card-title">
-            <%= r.name %>
-          </h5>
-          <p class="card-text">
-            <%= r.address_line1 %> <%= r.address_line2 %>
-            <br/>
-            <%= r.address_city %>, <%= r.address_state %> <%= r.address_zip %>
-          </p>
+      <%= link_to edit_recipient_path(r), class: 'text-reset' do %>
+        <div class="card mb-2">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= r.name %>
+            </h5>
+            <p class="card-text">
+              <%= r.address_line1 %> <%= r.address_line2 %>
+              <br/>
+              <%= r.address_city %>, <%= r.address_state %> <%= r.address_zip %>
+            </p>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
-<div class="bg-white shadow fixed-bottom p-4 text-center">
-  <%= link_to 'Add Recipient', new_recipient_path, class: 'btn w-100 btn-outline-dark' %>
+  <div class="bg-white shadow fixed-bottom p-4 text-center">
+    <%= link_to 'Add Recipient', new_recipient_path, class: 'btn w-100 btn-outline-dark' %>
+  </div>
 </div>

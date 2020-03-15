@@ -2,16 +2,18 @@
   "name": "gram_gram",
   "private": true,
   "dependencies": {
+    "@iconify/iconify": "^1.0.4",
     "@rails/actioncable": "^6.0.0-alpha",
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.0.7",
+    "autocomplete.js": "^0.37.1",
     "bootstrap": "^4.3.1",
-    "@iconify/iconify": "^1.0.4",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
     "turbolinks": "^5.2.0",
-    "umbrellajs": "^3.1.0"
+    "umbrellajs": "^3.1.0",
+    "whatwg-fetch": "^3.0.0"
   },
   "version": "0.1.0",
   "devDependencies": {
