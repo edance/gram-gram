@@ -51,26 +51,7 @@
       <% else %>
 
         <%= form.fields_for :recipient do |recipient| %>
-          <div class="form-group">
-            <%= recipient.text_field :name, placeholder: 'Name', class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= recipient.text_field :address_line1, placeholder: 'Address', class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= recipient.text_field :address_line2, placeholder: 'Address 2 (optional)', class: 'form-control' %>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <%= recipient.text_field :address_city, placeholder: 'City', class: 'form-control' %>
-            </div>
-            <div class="form-group col-6 col-md-4">
-              <%= recipient.text_field :address_state, placeholder: 'State', class: 'form-control' %>
-            </div>
-            <div class="form-group col-6 col-md-2">
-              <%= recipient.text_field :address_zip, placeholder: 'Zip', class: 'form-control' %>
-            </div>
-          </div>
+          <%= render 'recipients/form-fields', form: recipient %>
         <% end %>
       <% end %>
     </div>
