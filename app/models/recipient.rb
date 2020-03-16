@@ -5,6 +5,12 @@ class Recipient < ApplicationRecord
   has_many :postcards
   belongs_to :user
 
+  validates_presence_of :name,
+                        :address_line1,
+                        :address_city,
+                        :address_state,
+                        :address_zip
+
   def address
     {
       name: name,
