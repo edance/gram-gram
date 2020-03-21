@@ -6,5 +6,5 @@ class Photo < ApplicationRecord
   belongs_to :user
   validates_uniqueness_of :ig_id
 
-  self.per_page = 18 # divisible by 2 & 3
+  self.per_page = 48 # divisible by 2, 4, 6
 end
