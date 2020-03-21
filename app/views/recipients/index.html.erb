@@ -1,21 +1,5 @@
-<div class="fluid-container bg-primary">
-  <div class="container pt-5 pb-4">
-    <div class="d-flex flow-row">
-      <div class="mr-auto">
-        <h2 class="mb-0">
-          Address Book
-        </h2>
-        <small class="text-muted">
-          Probably a list of your grandmas
-        </small>
-      </div>
-
-      <div class="ml-auto">
-        <%= render 'shared/user-dropdown' %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'shared/navbar' %>
+<%= render 'shared/banner', title: 'Address Book', small: 'Probably a list of your grandmas' %>
 
 <div class="fluid-container vh-100 bg-light">
   <div class="container skinny-container pt-2 pb-4">

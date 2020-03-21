@@ -1,26 +1,10 @@
 <%= render 'shared/navbar' %>
-
-<div class="fluid-container bg-primary">
-  <div class="container pt-5 pb-4">
-    <div class="d-flex flow-row">
-      <div class="mr-auto">
-        <h2 class="mb-0">Photos</h2>
-        <small class="text-muted">
-          Select an image to get started
-        </small>
-      </div>
-
-      <div class="ml-auto">
-        <%= render 'shared/user-dropdown' %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'shared/banner', title: 'Photos', small: 'Select an image to get started' %>
 
 <div class="container mt-2 mb-5">
   <div class="row mx-n1">
     <% @photos.each do |p| %>
-      <div class="col-6 col-lg-3 p-1">
+      <div class="col-6 col-md-3 col-lg-2 p-1">
         <div class="overflow-hidden rounded">
           <%= link_to(build_new_path(p), class: 'd-block') do %>
             <%= image_tag(p.ig_media_url, class: 'img-fluid img-zoom') %>
