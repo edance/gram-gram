@@ -1,19 +1,5 @@
-<div class="fluid-container bg-primary">
-  <div class="container pt-5 pb-4">
-    <div class="d-flex flow-row">
-      <div class="mr-auto">
-        <h2 class="mb-0">Postcards</h2>
-        <small class="text-muted">
-          Sent postcards to your grandma
-        </small>
-      </div>
-
-      <div class="ml-auto">
-        <%= render 'shared/user-dropdown' %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'shared/navbar' %>
+<%= render 'shared/banner', title: 'Postcards', small: 'Sent postcards to your grandma' %>
 
 <div class="container mb-5">
   <% if @postcards.empty? %>
