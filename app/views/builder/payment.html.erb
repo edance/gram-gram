@@ -1,16 +1,9 @@
+<%= render 'shared/navbar' %>
+
 <div class="fluid-container vh-100">
   <%= form_with method: :patch, url: update_payment_path(@postcard), class: 'p-4 p-md-5 payment-form' do |form| %>
 
-    <!-- Header nav with back button -->
-    <nav class="navbar fixed-top navbar-light bg-primary">
-      <%= link_to photos_path, class: 'pl-0 nav-link text-dark' do %>
-        Cancel
-      <% end %>
-
-      <button type="submit" class="btn btn-dark btn-spinner btn-sm">
-        Send
-      </button>
-    </nav>
+    <%= render 'mobile-nav' %>
 
     <div class="container skinny-container py-5">
       <p class="mt-5 mb-4">
@@ -48,7 +41,8 @@
       </table>
 
       <%= render 'payment-form' %>
-    </div>
 
+      <%= render 'save-btn' %>
+    </div>
   <% end %>
 </div>
