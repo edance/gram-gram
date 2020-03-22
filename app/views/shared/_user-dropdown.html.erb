@@ -1,8 +1,8 @@
 <div class="dropdown">
   <div class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <span class="avatar rounded-circle">
-      <% if @current_user.ig_avatar %>
-        <%= image_tag(@current_user.ig_avatar, alt: 'Avatar') %>
+      <% if current_user.ig_avatar %>
+        <%= image_tag(current_user.ig_avatar, alt: 'Avatar') %>
       <% else %>
         <span class="iconify" data-icon="whh:profile" data-inline="false"></span>
       <% end %>

@@ -1,7 +1,8 @@
+<%= render 'shared/navbar' %>
+
 <div class="fluid-container vh-100 p-4">
   <%= form_with model: @recipient, local: true do |form| %>
-    <!-- Header nav with back button -->
-    <nav class="navbar fixed-top navbar-light bg-primary">
+    <%= render 'shared/mobile-nav' do %>
       <%= link_to recipients_path, class: 'ml-0 nav-link text-dark' do %>
         Cancel
       <% end %>
@@ -9,7 +10,7 @@
       <button type="submit" class="btn btn-dark btn-spinner btn-sm">
         Update
       </button>
-    </nav>
+    <% end %>
 
     <div class="container skinny-container py-5">
       <p class="mb-4">
@@ -17,6 +18,10 @@
       </p>
 
       <%= render 'form-fields', form: form %>
+
+      <button type="submit" class="d-none d-md-block mt-5 mb-2 btn btn-block btn-outline-dark">
+        Update
+      </button>
     </div>
   <% end %>
 </div>
