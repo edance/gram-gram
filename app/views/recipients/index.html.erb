@@ -2,9 +2,8 @@
 <%= render 'shared/banner', title: 'Address Book', small: 'Probably a list of your grandmas' %>
 
 <div class="fluid-container vh-100 bg-light">
-  <div class="container skinny-container pt-2 pb-4">
+  <div class="container pt-2 pt-md-4 pb-4">
     <% @recipients.map do |r| %>
-
       <%= link_to edit_recipient_path(r), class: 'text-reset' do %>
         <div class="card mb-2">
           <div class="card-body">
@@ -23,6 +22,8 @@
   </div>
 
   <div class="bg-white shadow fixed-bottom p-4 text-center">
-    <%= link_to 'Add Recipient', new_recipient_path, class: 'btn w-100 btn-outline-dark' %>
+    <div class="container skinny-container">
+      <%= link_to 'Add Recipient', new_recipient_path, class: 'btn w-100 btn-outline-dark' %>
+    </div>
   </div>
 </div>
