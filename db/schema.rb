@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_08_052825) do
+ActiveRecord::Schema.define(version: 2020_03_22_013329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -39,6 +39,12 @@ ActiveRecord::Schema.define(version: 2020_03_08_052825) do
     t.string "stripe_charge_id"
     t.uuid "photo_id"
     t.uuid "recipient_id"
+    t.string "address_name"
+    t.string "address_line1"
+    t.string "address_line2"
+    t.string "address_city"
+    t.string "address_state"
+    t.string "address_zip"
     t.index ["photo_id"], name: "index_postcards_on_photo_id"
     t.index ["recipient_id"], name: "index_postcards_on_recipient_id"
   end
