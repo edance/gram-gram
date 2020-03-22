@@ -26,9 +26,11 @@
           <h5>Sent to:</h5>
 
           <p>
-            <%= p.recipient.name %>
+            <%= p.address_name %>
             <br/>
-            <%= p.recipient.single_line_address %>
+            <%= p.address_line1 %> <%= p.address_line2 %>
+            <br/>
+            <%= p.address_city %>, <%= p.address_state %> <%= p.address_zip %>
           </p>
 
           <div class="row">

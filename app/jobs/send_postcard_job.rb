@@ -9,14 +9,32 @@ class SendPostcardJob < ApplicationJob
 
     return unless stripe_charge_successful?
 
+    send_lob_postcard
+  end
+
+  private
+
+  def send_lob_postcard
     lob_card = lob.postcards.create(
       description: postcard.lob_description,
       to: postcard.recipient.address,
       front: front_html,
       back: back_html
     )
+    update_postcard(lob_id: lob_card['id'])
+  end
 
-    postcard.update(lob_id: lob_card['id'], status: :processing)
+  def update_postcard(lob_id:)
+    address = postcard.recipient.address
+
+    opts = {
+      **address.except(:name),
+      address_name: address[:name],
+      lob_id: lob_id,
+      status: :processing
+    }
+
+    postcard.update!(opts)
   end
 
   def locals
