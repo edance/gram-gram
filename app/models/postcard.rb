@@ -40,4 +40,8 @@ class Postcard < ApplicationRecord
       photo.present? &&
       stripe_charge_id.present?
   end
+
+  def send_receipt
+    PostcardMailer.with(postcard: self).receipt.deliver_later
+  end
 end
