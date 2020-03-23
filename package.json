@@ -10,6 +10,7 @@
     "autocomplete.js": "^0.37.1",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
+    "masonry-layout": "^4.2.2",
     "popper.js": "^1.16.0",
     "turbolinks": "^5.2.0",
     "umbrellajs": "^3.1.0",

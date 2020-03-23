@@ -5,4 +5,5 @@ require('./alert');
 require('./btn-spinner');
 require('./caption-input');
 require('./payment-form');
+require('./photo-grid');
 require('./success-checkmark');
