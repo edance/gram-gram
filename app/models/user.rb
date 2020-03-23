@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :recipients, dependent: :destroy
   has_many :postcards, through: :photos
 
+  after_create :send_welcome_email
+
   def instagram?
     instagram_uid.present?
   end
@@ -41,7 +43,7 @@ class User < ApplicationRecord
     Stripe::Customer.retrieve(payment_customer_id)
   end
 
-  def after_confirmation
+  def send_welcome_email
     UserMailer.with(user: self).welcome_email.deliver_later
   end
 end
