@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   get '/photos/:photo_id/send', to: 'postcards#new', as: 'postcard_send'
   post '/photos/:photo_id/send', to: 'postcards#create', as: 'postcard_create'
-  resources :postcards, only: :index
+  resources :postcards, only: %i[index show]
 
   resources :recipients, except: %i[show]
 
