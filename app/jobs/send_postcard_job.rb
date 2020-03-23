@@ -22,6 +22,7 @@ class SendPostcardJob < ApplicationJob
       back: back_html
     )
     update_postcard(lob_id: lob_card['id'])
+    postcard.send_receipt
   end
 
   def update_postcard(lob_id:)
