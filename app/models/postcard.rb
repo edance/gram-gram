@@ -44,4 +44,8 @@ class Postcard < ApplicationRecord
   def send_receipt
     PostcardMailer.with(postcard: self).receipt.deliver_later
   end
+
+  def send_out_for_delivery
+    PostcardMailer.with(postcard: self).out_for_delivery.deliver_later
+  end
 end

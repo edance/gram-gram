@@ -40,5 +40,6 @@ class LobWebhookController < ApplicationController
 
   def postcard_processed_for_delivery
     postcard.delivered!
+    postcard.send_out_for_delivery
   end
 end
