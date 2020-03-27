@@ -1,0 +1,27 @@
+<% content_for :title, 'Your photo is out for delivery!' %>
+
+<h2 style="Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: normal;color: #706f70;font-size: 18px;line-height: 26px;font-family: Cabin,Avenir,sans-serif;">
+  <strong>So close, Grandma can taste it!</strong>
+</h2>
+<p style="Margin-top: 16px;Margin-bottom: 20px;">
+  Hi there,
+
+  <br/>
+  <br/>
+
+  Your photo has been processed for delivery and should be hitting the mailbox anytime now.
+  Thanks again for your order! If you have any questions or feedback, please respond to this email.
+</p>
+
+<p style="margin-top: 16px;margin-bottom: 20px;">
+  <%= render 'mailer/button', href: postcard_url(@postcard), text: 'Check Status' %>
+</p>
+
+<p style="Margin-top: 16px;Margin-bottom: 20px;">
+
+  Best,
+
+  <br/>
+
+  The GramGram Team
+</p>
