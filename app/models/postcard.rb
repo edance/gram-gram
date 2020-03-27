@@ -29,6 +29,14 @@ class Postcard < ApplicationRecord
     "postcard_id_#{id}"
   end
 
+  def send_receipt
+    PostcardMailer.with(postcard: self).receipt.deliver_later
+  end
+
+  def send_out_for_delivery
+    PostcardMailer.with(postcard: self).out_for_delivery.deliver_later
+  end
+
   private
 
   def send_with_lob_if_sendable
@@ -39,13 +47,5 @@ class Postcard < ApplicationRecord
     recipient.present? &&
       photo.present? &&
       stripe_charge_id.present?
-  end
-
-  def send_receipt
-    PostcardMailer.with(postcard: self).receipt.deliver_later
-  end
-
-  def send_out_for_delivery
-    PostcardMailer.with(postcard: self).out_for_delivery.deliver_later
   end
 end
