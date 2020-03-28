@@ -14,6 +14,7 @@
     "popper.js": "^1.16.0",
     "turbolinks": "^5.2.0",
     "umbrellajs": "^3.1.0",
+    "vanilla-lazyload": "^14.0.0",
     "whatwg-fetch": "^3.0.0"
   },
   "version": "0.1.0",

@@ -86,7 +86,7 @@
 
 .img-zoom {
   transform: scale(1.2);
-  transition: all 0.6s ease;
+  transition: transform 0.6s ease;
 
   &:hover {
     transform: scale(1);
@@ -144,4 +144,12 @@
 
 .skinny-container {
   max-width: 500px;
+}
+
+.img-lazy {
+  padding-top: 100%;
+
+  &.loaded {
+    padding-top: 0;
+  }
 }
