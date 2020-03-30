@@ -7,3 +7,4 @@ require('./caption-input');
 require('./payment-form');
 require('./photo-grid');
 require('./success-checkmark');
+require('./welcome-tutorial');

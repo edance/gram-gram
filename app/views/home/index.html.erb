@@ -1,0 +1,97 @@
+<div class="position-relative overflow-hidden">
+  <!-- Welcome Screen -->
+  <div class="fluid-container bg-primary vh-100">
+    <nav class="navbar fixed-top navbar-light">
+      <a class="navbar-brand ml-auto mr-auto mt-2" href="/">
+        GramGram
+      </a>
+    </nav>
+
+    <span class='blob-5'></span>
+    <%= image_tag('blob-shape-4.svg', class: 'blob-4') %>
+
+    <div class="fixed-bottom p-4">
+      <div class="container skinny-container">
+        <div class="mb-4">
+          <h3 class="mt-5">
+            Send photos to Grandma through the mail
+          </h3>
+
+          <p class="small">
+            Share your memes, moments, and memories with your offline family. Because a picture’s worth a thousand words, but grandma’s smile is priceless.
+          </p>
+        </div>
+
+        <button class="get-started-btn btn w-100 btn-outline-dark mb-4">
+          Get Started
+          <span class="iconify ml-1 mb-1" data-icon="ion:arrow-forward" data-inline="false"></span>
+        </button>
+
+        <p class="small text-center">
+          Already have an account?
+          <%= link_to "Log in", new_user_session_path, class: 'text-dark' %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tutorial -->
+  <div class="welcome-tutorial fluid-container bg-primary vh-100">
+    <nav class="navbar fixed-top navbar-light">
+      <%= link_to new_user_registration_path, class: 'nav-link text-dark ml-auto' do %>
+        Skip
+      <% end %>
+    </nav>
+
+    <div class="fixed-bottom p-4">
+      <div class="container skinny-container">
+        <div class="step">
+          <div class="mb-4">
+            <h3 class="mt-5">
+              Choose a recent Instagram photo
+            </h3>
+
+            <p class="small">
+              Pick a cherished memory, moment, or meme. Add a caption to the picture if you would like so Grandma has some context.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="mb-4">
+            <h3 class="mt-5">
+              Tell us where to mail&nbsp;it
+            </h3>
+
+            <p class="small">
+              What’s Grandma’s address? Don't worry if you don't have a grandmother, it still works for anyone.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="mb-4">
+            <h3 class="mt-5">
+              Grandma receives your photo in the mail
+            </h3>
+
+            <p class="small">
+              Pick a cherished memory, moment, or meme. Add a caption to the picture if you would like so Grandma has some context.
+            </p>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center mb-4">
+          <div class="bg-dark dot active"></div>
+          <div class="bg-dark dot"></div>
+          <div class="bg-dark dot"></div>
+
+          <%= link_to new_user_registration_path, class: 'float-right next-btn btn btn-dark btn-icon ml-auto mr-0' do %>
+            <span class="d-none">Sign Up</span>
+            <span class="iconify" data-icon="ion:arrow-forward" data-inline="false"></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
