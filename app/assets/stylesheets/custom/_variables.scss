@@ -282,7 +282,7 @@ $font-size-sm:                $font-size-base * .875 !default;
 
 $font-weight-lighter:         lighter !default;
 $font-weight-light:           300 !default;
-$font-weight-normal:          400 !default;
+$font-weight-normal:          500 !default;
 $font-weight-bold:            700 !default;
 $font-weight-bolder:          bolder !default;
 
@@ -318,7 +318,7 @@ $lead-font-weight:            300 !default;
 
 $small-font-size:             80% !default;
 
-$text-muted:                  $gray-600 !default;
+$text-muted:                  rgba($black, .5) !default;
 
 $blockquote-small-color:      $gray-600 !default;
 $blockquote-small-font-size:  $small-font-size !default;
@@ -392,7 +392,7 @@ $input-btn-focus-color:       rgba($component-active-bg, .25) !default;
 $input-btn-focus-box-shadow:  0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
 
 $input-btn-padding-y-sm:      .25rem !default;
-$input-btn-padding-x-sm:      .5rem !default;
+$input-btn-padding-x-sm:      .75rem !default;
 $input-btn-font-size-sm:      $font-size-sm !default;
 $input-btn-line-height-sm:    $line-height-sm !default;
 
@@ -440,7 +440,7 @@ $btn-block-spacing-y:         .5rem !default;
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:           78px !default;
 $btn-border-radius-lg:        78px !default;
-$btn-border-radius-sm:        $border-radius-sm !default;
+$btn-border-radius-sm:        78px !default;
 
 $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
