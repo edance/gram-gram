@@ -40,7 +40,7 @@ consumer.subscriptions.create('PhotosChannel', {
 
       setTimeout(() => {
         const $link = u('.photos-link');
-        const href = $link.attr('href') || '/app';
+        const href = $link.attr('href') || '/';
 
         Turbolinks.visit(href, {action: 'replace'});
       }, 1000);

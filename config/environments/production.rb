@@ -39,10 +39,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Mount Action Cable outside main process or domain.
-  config.action_cable.mount_path = '/app/cable'
-  # config.action_cable.url = 'wss://gram-2-grandma.herokuapp.com/app/cable'
-  config.action_cable.allowed_request_origins = ['https://www.gramgram.app',
-                                                 'https://gram-2-grandma.herokuapp.com/']
+  config.action_cable.allowed_request_origins = ['https://www.gramgram.app']
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -89,9 +86,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  # Production app goes under /app
-  config.relative_url_root = '/app'
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
