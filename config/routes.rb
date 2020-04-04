@@ -35,4 +35,8 @@ Rails.application.routes.draw do
   get '/template/front', to: 'postcard_template#front'
 
   mount ActionCable.server => '/cable'
+
+  # Static routes
+  get '/privacy' => 'static#privacy'
+  get '/terms' => 'static#terms'
 end
