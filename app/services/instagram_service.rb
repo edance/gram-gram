@@ -33,7 +33,7 @@ class InstagramService
 
   def photos
     media_resp = media
-    return unless media_resp['error'].nil?
+    return [] unless media_resp['error'].nil?
 
     media_resp['data'].map do |m|
       case m['media_type']
