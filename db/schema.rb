@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_013329) do
+ActiveRecord::Schema.define(version: 2020_04_04_052840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_013329) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "ig_media_url"
     t.uuid "user_id"
-    t.index ["ig_id"], name: "index_photos_on_ig_id", unique: true
+    t.index ["ig_id", "user_id"], name: "index_photos_on_ig_id_and_user_id", unique: true
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
