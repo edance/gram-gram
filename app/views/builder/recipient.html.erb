@@ -13,7 +13,11 @@
       </p>
 
 
-      <% if @recipient.present? %>
+      <% if @recipient.new_record? %>
+        <%= fields_for :recipient, @postcard.recipient do |recipient| %>
+          <%= render 'recipients/form-fields', form: recipient %>
+        <% end %>
+      <% else %>
         <small class="text-muted">
           Name
         </small>
@@ -43,11 +47,6 @@
 
         <%= hidden_field_tag(:recipient_id, @recipient.id) %>
 
-      <% else %>
-
-        <%= form.fields_for :recipient do |recipient| %>
-          <%= render 'recipients/form-fields', form: recipient %>
-        <% end %>
       <% end %>
 
       <%= render 'save-btn' %>

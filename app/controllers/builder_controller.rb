@@ -31,13 +31,14 @@ class BuilderController < ApplicationController
   end
 
   def recipient
-    @recipient = current_user.recipients.order(:created_at).last
+    @recipient = current_user.recipients.default || current_user.recipients.new
   end
 
   def update_recipient
-    recipient = find_or_initialize_recipient
+    @recipient = find_or_initialize_recipient
+    postcard.recipient = @recipient
 
-    if recipient.save && postcard.update(recipient: recipient)
+    if @recipient.save && postcard.save
       redirect_to build_payment_path
     else
       render 'recipient'
@@ -69,7 +70,7 @@ class BuilderController < ApplicationController
   end
 
   def recipient_params
-    params.require(:postcard).require(:recipient).permit(RECIPIENT_PARAMS)
+    params.require(:recipient).permit(RECIPIENT_PARAMS)
   end
 
   def caption_params

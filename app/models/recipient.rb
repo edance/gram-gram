@@ -11,6 +11,10 @@ class Recipient < ApplicationRecord
                         :address_state,
                         :address_zip
 
+  def self.default
+    order(:created_at).last
+  end
+
   def address
     {
       name: name,
