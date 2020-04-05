@@ -20,9 +20,9 @@ class RecipientsController < ApplicationController
   end
 
   def create
-    recipient = current_user.recipients.new(recipient_params)
+    @recipient = current_user.recipients.new(recipient_params)
 
-    if recipient.save
+    if @recipient.save
       redirect_to recipients_path
     else
       render 'new'
