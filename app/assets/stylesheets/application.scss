@@ -204,3 +204,7 @@
     transform: scale(1.2);
   }
 }
+
+.flash-container {
+  z-index: $zindex-modal;
+}
