@@ -9,7 +9,7 @@ module StaticHelper
     'https://www.gramgram.app'
   end
 
-  def help_email
-    'help@gramgram.app'
+  def team_email
+    'team@gramgram.app'
   end
 end
