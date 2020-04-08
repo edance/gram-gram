@@ -1,4 +1,5 @@
 import { u } from 'umbrellajs';
+import { trackEvent } from '../analytics';
 
 document.addEventListener('turbolinks:load', function() {
   const $tutorial = u('.welcome-tutorial');
@@ -9,10 +10,12 @@ document.addEventListener('turbolinks:load', function() {
     return;
   }
 
-  u('.get-started-btn').on('click', () => {
+  u('.hero-cta-btn').on('click', () => {
     $tutorial.addClass('active');
 
     $steps.eq(stepNum).fadeIn();
+
+    trackEvent('Hero CTA Click');
   });
 
   u('.next-btn').on('click', (e) => {
@@ -21,6 +24,8 @@ document.addEventListener('turbolinks:load', function() {
     }
 
     e.preventDefault();
+
+    trackEvent(`Step ${stepNum + 1} Click`);
 
     // Update the dots
     $('.dot.active').removeClass('active');
