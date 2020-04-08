@@ -22,7 +22,7 @@
     <%= image_tag('blob-shape-4.svg', class: 'blob-4') %>
 
     <!-- Mobile only view -->
-    <div class="fixed-bottom p-4 d-md-none">
+    <div class="absolute-bottom p-4 d-md-none">
       <div class="container skinny-container">
         <div class="mb-4">
           <h3 class="mt-5">
@@ -76,7 +76,7 @@
       <% end %>
     </nav>
 
-    <div class="fixed-bottom p-4 pb-md-8">
+    <div class="absolute-bottom p-4 pb-md-8">
       <div class="container skinny-container pb-4">
         <div class="step">
           <div class="mb-4">
@@ -128,3 +128,30 @@
     </div>
   </div>
 </div>
+
+<footer>
+  <div class="container py-5">
+    <div class="row align-items-center justify-content-xl-between">
+      <div class="col-xl-6">
+        <div class="copyright text-center text-xl-left text-muted">
+          © <%= copyright_year() %> <%= company_name() %>
+        </div>
+      </div>
+      <div class="col-xl-6">
+        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+          <li class="nav-item">
+            <%= link_to "Terms and Conditions", terms_path, class: 'nav-link', target: '_blank' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Privacy Policy", privacy_path, class: 'nav-link', target: '_blank' %>
+          </li>
+          <li class="nav-item">
+            <a href="https://github.com/edance/gram-gram" class="nav-link" target="_blank">
+              Source Code
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
