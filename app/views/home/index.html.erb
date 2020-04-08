@@ -1,16 +1,28 @@
 <div class="position-relative overflow-hidden">
   <!-- Welcome Screen -->
   <div class="fluid-container bg-primary vh-100">
-    <nav class="navbar fixed-top navbar-light">
-      <a class="navbar-brand ml-auto mr-auto mt-2" href="/">
-        GramGram
-      </a>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-light">
+      <div class="container">
+
+        <%= link_to 'GramGram', root_path, class: 'navbar-brand ml-auto mr-auto ml-md-0' %>
+
+        <ul class="d-none d-md-flex navbar-nav nav ml-auto">
+          <li class="nav-item">
+            <%= link_to "Sign Up", new_user_registration_path, class: 'nav-link' %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Log In", new_user_session_path, class: 'nav-link' %>
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <span class='blob-5'></span>
     <%= image_tag('blob-shape-4.svg', class: 'blob-4') %>
 
-    <div class="fixed-bottom p-4">
+    <!-- Mobile only view -->
+    <div class="fixed-bottom p-4 d-md-none">
       <div class="container skinny-container">
         <div class="mb-4">
           <h3 class="mt-5">
@@ -33,17 +45,38 @@
         </p>
       </div>
     </div>
+
+    <!-- Desktop view -->
+    <div class="d-none d-md-block">
+      <div class="jumbotron pt-8 bg-transparent">
+        <div class="container my-5">
+          <div class="col-md-8 col-lg-6 px-0">
+            <h1 class="display-5 mt-5">
+              Send photos to Grandma through the&nbsp;mail
+            </h1>
+            <p class="my-3">
+              Share your memes, moments, and memories with your offline family. Because a picture’s worth a thousand words, but grandma’s smile is&nbsp;priceless.
+            </p>
+
+            <button class="hero-cta-btn btn px-4 btn-outline-dark mb-4">
+              Learn More
+              <span class="iconify ml-1 mb-1" data-icon="ion:arrow-forward" data-inline="false"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Tutorial -->
   <div class="welcome-tutorial fluid-container bg-primary vh-100">
-    <nav class="navbar fixed-top navbar-light">
+    <nav class="d-md-none navbar fixed-top navbar-light">
       <%= link_to new_user_registration_path, class: 'nav-link text-dark ml-auto' do %>
         Skip
       <% end %>
     </nav>
 
-    <div class="fixed-bottom p-4">
+    <div class="fixed-bottom p-4 pb-md-8">
       <div class="container skinny-container pb-4">
         <div class="step">
           <div class="mb-4">

@@ -1,0 +1,21 @@
+.pt-8 {
+  padding-top: 16em !important;
+}
+
+.pb-8 {
+  padding-bottom: 16em !important;
+}
+
+.pb-md-8 {
+  @media (min-width: map-get($grid-breakpoints, "md")) {
+    padding-bottom: 16em !important;
+  }
+}
+
+.vh-100 {
+  min-height: 100vh;
+}
+
+.w-60 {
+  width: 60px;
+}
