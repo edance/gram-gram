@@ -68,3 +68,5 @@ gem 'money'
 gem 'will_paginate'
 
 gem 'devise'
+
+gem 'newrelic_rpm'
