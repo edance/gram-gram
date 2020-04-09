@@ -1,13 +1,15 @@
 <div class="dropdown">
-  <div class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="avatar rounded-circle">
+  <a href="#" class="d-flex" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="avatar rounded-circle border border-white">
       <% if current_user.ig_avatar %>
         <%= image_tag(current_user.ig_avatar, alt: 'Avatar') %>
       <% else %>
         <span class="iconify" data-icon="whh:profile" data-inline="false"></span>
       <% end %>
     </span>
-  </div>
+
+    <span class="iconify align-self-center text-dark dropdown-icon" data-icon="ic:round-arrow-drop-down" data-inline="false"></span>
+  </a>
 
   <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
     <%= link_to 'Send a Photo', photos_path, class: 'dropdown-item' %>
