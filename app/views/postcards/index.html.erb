@@ -5,7 +5,9 @@
 
 <div class="container mt-md-2 mb-5">
   <% if @postcards.empty? %>
-    <p>Looks like you haven't created a postcard yet!</p>
+    <p class="mt-4 text-muted">
+      Looks like you haven't created a postcard yet!
+    </p>
   <% end %>
 
   <% @postcards.each do |p| %>
