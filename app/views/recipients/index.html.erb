@@ -5,6 +5,12 @@
 
 <div class="fluid-container vh-100 bg-light">
   <div class="container pt-2 pt-md-4 pb-4">
+    <% if @recipients.empty? %>
+      <p class="text-muted">
+        Looks like you haven't added your grandma yet!
+      </p>
+    <% end %>
+
     <% @recipients.map do |r| %>
       <%= link_to edit_recipient_path(r), class: 'text-reset' do %>
         <div class="card mb-2">
