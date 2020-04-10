@@ -35,6 +35,7 @@
   <script>
    window.STRIPE_PUBLISHABLE_KEY = '<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>';
    window.MAPBOX_ACCESS_TOKEN = '<%= ENV['MAPBOX_ACCESS_TOKEN'] %>';
+   window.CLOUDINARY_ENABLED = <%= ENV['CLOUDINARY_ENABLED'].present? %>;
   </script>
 
   <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">

@@ -11,11 +11,13 @@ function setImageSrc(el) {
   const $img = u(el);
   let src = $img.data('src');
 
-  // Add cloudinary fetch
-  src = `${CLOUDINARY_FETCH}${encodeURIComponent(src)}`;
+  if (window.CLOUDINARY_ENABLED) {
+    // Add cloudinary fetch
+    src = `${CLOUDINARY_FETCH}${encodeURIComponent(src)}`;
 
-  // Set the pixel ratio
-  src = src.replace('dpr_auto', `dpr_${devicePixelRatio}.0`);
+    // Set the pixel ratio
+    src = src.replace('dpr_auto', `dpr_${devicePixelRatio}.0`);
+  }
 
   $img.data('src', src);
 }
