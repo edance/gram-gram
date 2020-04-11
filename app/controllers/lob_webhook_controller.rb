@@ -1,4 +1,6 @@
 class LobWebhookController < ApplicationController
+  protect_from_forgery with: :null_session
+
   http_basic_authenticate_with name: ENV['LOB_WEBHOOK_NAME'],
                                password: ENV['LOB_WEBHOOK_PASSWORD']
 
