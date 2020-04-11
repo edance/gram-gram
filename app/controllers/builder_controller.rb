@@ -78,13 +78,14 @@ class BuilderController < ApplicationController
   end
 
   def process_stripe_charge
-    Stripe::Charge.create(
+    opts = {
       amount: Postcard::PRICE,
       currency: 'usd',
       description: STRIPE_CHARGE_DESCRIPTION,
       customer: current_user.payment_customer_id,
       metadata: stripe_metadata
-    )
+    }
+    Stripe::Charge.create(opts, idempotency_key: postcard.id)
   end
 
   def stripe_metadata
