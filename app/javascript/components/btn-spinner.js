@@ -1,12 +1,7 @@
 import { u } from 'umbrellajs';
 
-u(document).on('submit', 'form', function(event) {
-  const $form = u(this);
-  const $button = $form.find('button.btn-spinner');
-  if ($button.length === 0) {
-    return;
-  }
-
+function startSpin(button) {
+  const $button = u(button);
   const width = $button.size().width;
   $button.attr('disabled', true);
   $button.attr('style', `width: ${width}px`);
@@ -15,4 +10,12 @@ u(document).on('submit', 'form', function(event) {
       <span class="sr-only">Loading...</span>
     </div>
   `);
+}
+
+document.addEventListener("turbolinks:load", function() {
+  u('form').on('submit', (e) => {
+    u(e.target)
+      .find('button.btn-spinner')
+      .each(el => startSpin(el));
+  });
 });
