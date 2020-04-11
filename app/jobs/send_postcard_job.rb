@@ -62,6 +62,9 @@ class SendPostcardJob < ApplicationJob
   end
 
   def lob
-    @lob ||= Lob::Client.new(api_key: ENV['LOB_SECRET_API_KEY'])
+    @lob ||= Lob::Client.new(
+      api_key: ENV['LOB_SECRET_API_KEY'],
+      api_version: '2020-02-11'
+    )
   end
 end
