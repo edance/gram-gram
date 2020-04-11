@@ -39,4 +39,7 @@ Rails.application.routes.draw do
   # Static routes
   get '/privacy' => 'static#privacy'
   get '/terms' => 'static#terms'
+
+  # Webhooks
+  post '/lob' => 'lob_webhook#webhook'
 end
