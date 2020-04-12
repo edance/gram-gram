@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :photos, only: %i[index show]
   get '/photos/:photo_id/new', to: 'builder#new', as: 'build_new'
 
+  get '/sender/:id/preview', to: 'builder#preview', as: 'build_preview'
   get '/sender/:id/caption', to: 'builder#caption', as: 'build_caption'
   get '/sender/:id/address', to: 'builder#recipient', as: 'build_recipient'
   get '/sender/:id/payment', to: 'builder#payment', as: 'build_payment'
