@@ -12,21 +12,12 @@
 
   <% @postcards.each do |p| %>
     <div class="row py-4">
-      <div class="col-12 col-md-4">
-        <div class="mx-auto postcard-sm shadow rounded tilt-left">
-          <img alt="" src="<%= p.photo_url %>" />
-
-          <div class="date">
-            <%= p.month_year %>
-          </div>
-
-          <div class="caption">
-            <%= p.caption %>
-          </div>
-        </div>
+      <div class="col-12 col-md-4 mb-4">
+        <%= render 'shared/postcard-preview', postcard: p %>
       </div>
+
       <div class="col-12 col-md-8">
-        <div class="address mt-4">
+        <div class="address">
           <h5>Sent to:</h5>
 
           <p>

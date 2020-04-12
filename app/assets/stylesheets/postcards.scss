@@ -4,71 +4,35 @@
 
 @import "bootstrap/scss/variables";
 
-.postcard {
-  width: 200px;
-  height: 300px;
-  padding: 30px 15px;
+// Postcards are 6x4
+.postcard-preview {
+  width: 100%;
+  padding-top: 66.67%;
+  position: relative;
+  overflow: hidden;
 
   img {
+    position: absolute;
+    height: 100%;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .blur {
+    position: absolute;
+    top: 0;
+    bottom: 0;
     width: 100%;
 
-    margin-bottom: 15px;
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
-
-  .date {
-    color: rgba(0, 0, 0, 0.2);
-    font-size: 10px;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-  }
-
-  .caption {
-    font-size: 10px;
-    line-height: 15px;
-  }
-
-  @media(min-width: map-get($grid-breakpoints, "lg")) {
-    width: 400px;
-    height: 600px;
-    padding: 60px 30px;
-
-    .date {
-      font-size: 15px;
-      margin-bottom: 9px;
-    }
-
-    .caption {
-      font-size: 20px;
-      line-height: 25px;
-    }
-  }
-}
-
-.postcard-sm {
-  width: 200px;
-  height: 300px;
-  padding: 30px 15px;
-
-  img {
-    width: 100%;
-
-    margin-bottom: 5px;
-  }
-
-  .date {
-    font-size: 10px;
-    color: rgba(0, 0, 0, 0.2);
-    text-transform: uppercase;
-
-    margin-bottom: 5px;
-  }
-
-  .caption {
-    font-size: 10px;
-    line-height: 15px;
-  }
-}
-
-.tilt-left {
-  transform: rotate(-5deg);
 }
