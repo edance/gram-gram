@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # Authentication routes
   get '/auth/:provider', to: 'authentication#authorize', as: 'authentication'
   get '/auth/:provider/callback', to: 'authentication#callback'
+  post '/auth/:provider/callback', to: 'authentication#callback'
 
   get '/connect', to: 'welcome#connect'
   get '/reconnect', to: 'welcome#reconnect'

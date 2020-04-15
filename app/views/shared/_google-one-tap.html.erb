@@ -1,0 +1,8 @@
+<% if ENV['GOOGLE_CLIENT_ID'] %>
+  <div id="g_id_onload"
+       data-client_id="<%= ENV['GOOGLE_CLIENT_ID'] %>"
+       data-login_uri="<%= ENV['GOOGLE_REDIRECT_URI'] %>">
+  </div>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+<% end %>
