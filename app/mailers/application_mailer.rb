@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'GramGram Team <team@gramgram.app>',
-          bcc: 'GramGram Team <team@gramgram.app>'
+  default from: 'GramGram Team <team@gramgram.app>'
+
   layout 'mailer'
 end
