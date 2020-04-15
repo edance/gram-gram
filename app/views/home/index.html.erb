@@ -46,6 +46,8 @@
           Already have an account?
           <%= link_to "Log in", new_user_session_path, class: 'text-dark' %>
         </p>
+
+        <%= render 'shared/social-share' %>
       </div>
     </div>
 
@@ -65,6 +67,8 @@
               Learn More
               <span class="iconify ml-1 mb-1" data-icon="ion:arrow-forward" data-inline="false"></span>
             </button>
+
+            <%= render 'shared/social-share' %>
           </div>
         </div>
       </div>
