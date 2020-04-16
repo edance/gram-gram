@@ -5,10 +5,9 @@ Rails.application.routes.draw do
   # Home route: redirects to login or photos
   root to: 'home#index'
 
-  # Authentication routes
-  get '/auth/:provider', to: 'authentication#authorize', as: 'authentication'
-  get '/auth/:provider/callback', to: 'authentication#callback'
-  post '/auth/:provider/callback', to: 'authentication#callback'
+  # Instagram Auth Routes
+  get '/auth/instagram', to: 'instagram_auth#authorize', as: 'instagram_auth'
+  get '/auth/instagram/callback', to: 'instagram_auth#callback'
 
   get '/connect', to: 'welcome#connect'
   get '/reconnect', to: 'welcome#reconnect'
