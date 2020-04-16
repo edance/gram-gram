@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get '/auth/instagram', to: 'instagram_auth#authorize', as: 'instagram_auth'
   get '/auth/instagram/callback', to: 'instagram_auth#callback'
 
+  # Google One-tap Auth Route
+  post '/auth/google/callback', to: 'google_auth#callback'
+
   get '/connect', to: 'welcome#connect'
   get '/reconnect', to: 'welcome#reconnect'
   get '/loading', to: 'welcome#loading'
