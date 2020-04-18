@@ -28,6 +28,11 @@ class InstagramService
     body.merge(hidden_information(body['username']))
   end
 
+  def hidden_information(username = nil)
+    body = base_client.get("/#{username || user.ig_username}/\?__a\=1").body
+    body.try(:[], 'graphql').try(:[], 'user') || {}
+  end
+
   def media
     graph_client.get(
       "#{user.instagram_uid}/media",
@@ -66,11 +71,6 @@ class InstagramService
 
       f.adapter Faraday.default_adapter
     end
-  end
-
-  def hidden_information(username)
-    body = base_client.get("/#{username}/\?__a\=1").body
-    body.try(:[], 'graphql').try(:[], 'user') || {}
   end
 
   def photos_from_carousel(media_id)
