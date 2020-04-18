@@ -1,4 +1,9 @@
 class InstagramService
+  include ::NewRelic::Agent::MethodTracer
+
+  add_method_tracer :user_information, 'Instagram/user_information'
+  add_method_tracer :media, 'Instagram/media'
+
   attr_accessor :user
 
   INSTAGRAM_GRAPH_URL = 'https://graph.instagram.com'.freeze
