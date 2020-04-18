@@ -3,6 +3,7 @@
 # A photo that could be featured on a Postcard
 class Photo < ApplicationRecord
   has_many :postcards, dependent: :destroy
+  has_many :orders, dependent: :destroy
   belongs_to :user
 
   validates :user, presence: true

@@ -5,6 +5,8 @@ class Recipient < ApplicationRecord
   has_many :postcards
   belongs_to :user
 
+  has_and_belongs_to_many :orders
+
   validates_presence_of :name,
                         :address_line1,
                         :address_city,

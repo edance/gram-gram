@@ -1,6 +1,10 @@
 module BuilderHelper
   def formatted_price
-    Money.new(Postcard::PRICE, 'USD').format
+    Money.new(@order.price_in_cents, 'USD').format
+  end
+
+  def postcard_count
+    @postcard_count ||= @order.recipients.count
   end
 
   def default_payment_source

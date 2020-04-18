@@ -3,13 +3,13 @@
 <%= render 'shared/navbar' %>
 
 <div class="fluid-container vh-100">
-  <%= form_with model: @postcard, url: update_caption_path(@postcard), local: true do |f| %>
+  <%= form_with model: @order, url: update_caption_path(@order), local: true do |f| %>
 
     <%= render 'mobile-nav' %>
 
     <div class="container skinny-container py-5">
       <div class="shadow mt-4 p-2">
-        <%= image_tag(@postcard.photo.ig_media_url, class: 'img rounded w-100') %>
+        <%= image_tag(@order.photo.ig_media_url, class: 'img rounded w-100') %>
 
         <%= f.text_area :caption, class: 'bg-white form-control caption-input', maxlength: 200, cols: 30, rows: 7, placeholder: 'Add a caption' %>
       </div>

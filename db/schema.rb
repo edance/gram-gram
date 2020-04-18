@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_225926) do
+ActiveRecord::Schema.define(version: 2020_04_18_231826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 2020_04_18_225926) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["photo_id"], name: "index_orders_on_photo_id"
+  end
+
+  create_table "orders_recipients", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "order_id", null: false
+    t.uuid "recipient_id", null: false
+    t.index ["order_id"], name: "index_orders_recipients_on_order_id"
+    t.index ["recipient_id"], name: "index_orders_recipients_on_recipient_id"
   end
 
   create_table "photos", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -94,4 +101,6 @@ ActiveRecord::Schema.define(version: 2020_04_18_225926) do
   end
 
   add_foreign_key "orders", "photos"
+  add_foreign_key "orders_recipients", "orders"
+  add_foreign_key "orders_recipients", "recipients"
 end

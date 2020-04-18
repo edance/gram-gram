@@ -1,8 +1,8 @@
 class BuilderController < ApplicationController
-  attr_reader :postcard
+  attr_reader :order
 
   before_action :authenticate_user!
-  before_action :set_postcard, except: :new
+  before_action :set_order, except: :new
 
   STRIPE_CHARGE_DESCRIPTION = 'GramGram Photo'.freeze
   USER_PARAMS = %i[name email].freeze
@@ -17,31 +17,51 @@ class BuilderController < ApplicationController
 
   def new
     photo = current_user.photos.find(params[:photo_id])
-    postcard = Postcard.create(photo: photo)
+    order = Order.create(photo: photo)
 
-    redirect_to build_caption_path(postcard)
-  end
-
-  def update_caption
-    if postcard.update(caption_params)
-      redirect_to build_recipient_path
+    if current_user.recipients.empty?
+      redirect_to build_new_recipient_path(order)
     else
-      render 'caption'
+      redirect_to build_recipients_path(order)
     end
   end
 
-  def recipient
-    @recipient = current_user.recipients.default || current_user.recipients.new
+  def new_recipient
+    @recipient = current_user.recipients.new
   end
 
-  def update_recipient
-    @recipient = find_or_initialize_recipient
-    postcard.recipient = @recipient
+  def recipients
+    @recipients = current_user.recipients.order(:name)
+  end
 
-    if @recipient.save && postcard.save
-      redirect_to build_payment_path
+  def create_recipient
+    @recipient = current_user.recipients.new(recipient_params)
+    order.recipients << @recipient
+
+    if @recipient.save && order.save
+      redirect_to build_recipients_path
     else
       render 'recipient'
+    end
+  end
+
+  def update_recipients
+    recipient_ids = params.require(:order)[:recipient_ids]
+    @recipients = current_user.recipients.find(recipient_ids)
+    order.recipients = @recipients
+
+    if order.save && order.recipients.count > 0
+      redirect_to build_caption_path
+    else
+      render 'recipients'
+    end
+  end
+
+  def update_caption
+    if order.update(caption_params)
+      redirect_to build_payment_path
+    else
+      render 'caption'
     end
   end
 
@@ -49,7 +69,7 @@ class BuilderController < ApplicationController
     current_user.add_default_stripe_source(token) if token
 
     charge = process_stripe_charge
-    if charge && postcard.update(stripe_charge_id: charge[:id])
+    if charge && order.update(stripe_charge_id: charge[:id])
       redirect_to build_success_path
     else
       render 'payment'
@@ -61,8 +81,8 @@ class BuilderController < ApplicationController
 
   private
 
-  def set_postcard
-    @postcard = current_user.postcards.find(params[:id])
+  def set_order
+    @order = current_user.orders.find(params[:id])
   end
 
   def user_params
@@ -74,23 +94,23 @@ class BuilderController < ApplicationController
   end
 
   def caption_params
-    params.require(:postcard).permit(:caption)
+    params.require(:order).permit(:caption)
   end
 
   def process_stripe_charge
     opts = {
-      amount: Postcard::PRICE,
+      amount: order.price_in_cents,
       currency: 'usd',
       description: STRIPE_CHARGE_DESCRIPTION,
       customer: current_user.payment_customer_id,
       metadata: stripe_metadata
     }
-    Stripe::Charge.create(opts, idempotency_key: postcard.id)
+    Stripe::Charge.create(opts, idempotency_key: order.id)
   end
 
   def stripe_metadata
     {
-      postcard_id: postcard.id
+      order_id: order.id
     }
   end
 

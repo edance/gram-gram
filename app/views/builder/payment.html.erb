@@ -3,7 +3,7 @@
 <%= render 'shared/navbar' %>
 
 <div class="fluid-container vh-100">
-  <%= form_with method: :patch, url: update_payment_path(@postcard), class: 'p-4 p-md-5 payment-form' do |form| %>
+  <%= form_with method: :patch, url: update_payment_path(@order), class: 'p-4 p-md-5 payment-form' do |form| %>
 
     <%= render 'mobile-nav' %>
 
@@ -17,8 +17,13 @@
           <tr>
             <td>
               <div class="d-flex align-items-start mb-4">
-                <%= image_tag(@postcard.photo.ig_media_url, class: 'img rounded w-60') %>
-                <span class="ml-2">1 x Photo</span>
+                <%= image_tag(@order.photo.ig_media_url, class: 'img rounded w-60') %>
+                <div class="ml-2">
+                  <%= postcard_count %> x Postcard
+                  <div class="text-muted">
+                    $2.95 / postcard
+                  </div>
+                </div>
               </div>
             </td>
             <td class="text-right"><%= formatted_price %></td>

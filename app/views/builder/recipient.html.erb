@@ -3,8 +3,7 @@
 <%= render 'shared/navbar' %>
 
 <div class="fluid-container vh-100">
-  <%= form_with model: @postcard, class: 'p-4', url: update_recipient_path(@postcard), local: true do |form| %>
-
+  <%= form_with model: @order, class: 'p-4', url: create_recipient_path(@order), local: true do |form| %>
     <%= render 'mobile-nav' %>
 
     <div class="container skinny-container py-5">
@@ -13,40 +12,8 @@
       </p>
 
 
-      <% if @recipient.new_record? %>
-        <%= fields_for :recipient, @postcard.recipient do |recipient| %>
-          <%= render 'recipients/form-fields', form: recipient %>
-        <% end %>
-      <% else %>
-        <small class="text-muted">
-          Name
-        </small>
-        <p>
-          <%= @recipient.name %>
-        </p>
-
-        <small class="text-muted">Address</small>
-        <p>
-          <%= @recipient.address_line1 %>
-          <%= @recipient.address_line2 %>
-        </p>
-
-        <div class="row">
-          <div class="col-md-6">
-            <small class="text-muted">City</small>
-            <p><%= @recipient.address_city %></p>
-          </div>
-          <div class="col-md-6">
-            <small class="text-muted">State</small>
-            <p><%= @recipient.address_state %></p>
-          </div>
-        </div>
-
-        <small class="text-muted">Zip</small>
-        <p><%= @recipient.address_zip %></p>
-
-        <%= hidden_field_tag(:recipient_id, @recipient.id) %>
-
+      <%= fields_for :recipient, @recipient do |recipient| %>
+        <%= render 'recipients/form-fields', form: recipient %>
       <% end %>
 
       <%= render 'save-btn' %>
