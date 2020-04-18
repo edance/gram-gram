@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :recipients, dependent: :destroy
   has_many :postcards, through: :photos
 
+  has_many :orders, through: :photos
+
   after_create :send_welcome_email
 
   def instagram?

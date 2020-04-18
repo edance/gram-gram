@@ -1,0 +1,34 @@
+<% content_for :title, 'Pick a Recipient' %>
+
+<%= render 'shared/navbar' %>
+
+<div class="fluid-container vh-100">
+  <%= form_with model: @order, class: 'p-4', url: update_recipients_path(@order), local: true do |form| %>
+    <%= render 'mobile-nav' %>
+
+    <div class="container skinny-container py-5">
+      <p class="mb-4">
+        Where do you want us to send the&nbsp;postcard?
+      </p>
+
+      <% @recipients.each do |recipient| %>
+        <div class="custom-control custom-checkbox mr-sm-2">
+          <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+          <%= form.check_box(:recipient_ids, { class: 'custom-control-input', id: recipient.id, multiple: true, checked: @order.recipients.include?(recipient) }, recipient.id, nil) %>
+          <label class="custom-control-label" for="<%= recipient.id %>">
+            <h5 class="mb-0"><%= recipient.name %></h5>
+            <p class="text-muted">
+              <%= recipient.address_line1 %> <%= recipient.address_line2 %>
+              <br/>
+              <%= recipient.address_city %>, <%= recipient.address_state %> <%= recipient.address_zip %>
+            </p>
+          </label>
+        </div>
+      <% end %>
+
+      <%= link_to 'Add Another', build_new_recipient_path %>
+
+      <%= render 'save-btn' %>
+    </div>
+  <% end %>
+</div>

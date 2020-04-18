@@ -21,12 +21,14 @@ Rails.application.routes.draw do
 
   get '/sender/:id/preview', to: 'builder#preview', as: 'build_preview'
   get '/sender/:id/caption', to: 'builder#caption', as: 'build_caption'
-  get '/sender/:id/address', to: 'builder#recipient', as: 'build_recipient'
+  get '/sender/:id/recipients', to: 'builder#recipients', as: 'build_recipients'
+  get '/sender/:id/address', to: 'builder#recipient', as: 'build_new_recipient'
   get '/sender/:id/payment', to: 'builder#payment', as: 'build_payment'
   get '/sender/:id/success', to: 'builder#success', as: 'build_success'
 
   patch '/sender/:id/caption', to: 'builder#update_caption', as: 'update_caption'
-  patch '/sender/:id/address', to: 'builder#update_recipient', as: 'update_recipient'
+  patch '/sender/:id/address', to: 'builder#create_recipient', as: 'create_recipient'
+  patch '/sender/:id/recipients', to: 'builder#update_recipients', as: 'update_recipients'
   patch '/sender/:id/payment', to: 'builder#update_payment', as: 'update_payment'
 
   get '/photos/:photo_id/send', to: 'postcards#new', as: 'postcard_send'
