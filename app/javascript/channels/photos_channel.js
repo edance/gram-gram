@@ -22,6 +22,18 @@ function incrementLoader($bar) {
   }, 400);
 }
 
+function endLoader($bar) {
+  width = 100;
+  setLoaderWidth($bar, 100);
+
+  setTimeout(() => {
+    const $link = u('.photos-link');
+    const href = $link.attr('href') || '/';
+
+    Turbolinks.visit(href, {action: 'replace'});
+  }, 1000);
+}
+
 consumer.subscriptions.create('PhotosChannel', {
   connected() {
     // Called when the subscription is ready for use on the server
@@ -35,15 +47,7 @@ consumer.subscriptions.create('PhotosChannel', {
     const $bar = u('.photos-loading-bar .progress-bar');
 
     if (data['ended']) {
-      width = 100;
-      setLoaderWidth($bar, 100);
-
-      setTimeout(() => {
-        const $link = u('.photos-link');
-        const href = $link.attr('href') || '/';
-
-        Turbolinks.visit(href, {action: 'replace'});
-      }, 1000);
+      endLoader($bar);
     }
   }
 });
@@ -56,4 +60,7 @@ document.addEventListener('turbolinks:load', function() {
   }
 
   incrementLoader($bar);
+
+  // Fallback 8 second timer
+  setTimeout(() => endLoader($bar), 8000);
 });
