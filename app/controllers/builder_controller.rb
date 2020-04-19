@@ -69,7 +69,7 @@ class BuilderController < ApplicationController
     current_user.add_default_stripe_source(token) if token
 
     charge = process_stripe_charge
-    if charge && order.update(stripe_charge_id: charge[:id])
+    if charge && order.update(stripe_charge_id: charge[:id], status: :completed)
       redirect_to build_success_path
     else
       render 'payment'
