@@ -22,8 +22,8 @@ class LobWebhookController < ApplicationController
     params[:body][:id]
   end
 
-  def postcard
-    @postcard ||= Postcard.find_by_lob_id(lob_id)
+  def postcard_receipt
+    @postcard_receipt ||= PostcardReceipt.find_by_lob_id(lob_id)
   end
 
   # Events from lob
@@ -33,15 +33,14 @@ class LobWebhookController < ApplicationController
   # postcard.returned_to_sender
 
   def postcard_mailed
-    postcard.mailed!
+    postcard_receipt.mailed!
   end
 
   def postcard_in_transit
-    postcard.in_transit!
+    postcard_receipt.in_transit!
   end
 
   def postcard_processed_for_delivery
-    postcard.delivered!
-    postcard.send_out_for_delivery
+    postcard_receipt.delivered!
   end
 end
