@@ -1,7 +1,7 @@
 class PostcardTemplateController < ApplicationController
   layout false
 
-  before_action :set_postcard
+  before_action :set_order
 
   def front
     opt = params[:option]
@@ -17,7 +17,7 @@ class PostcardTemplateController < ApplicationController
 
   private
 
-  def set_postcard
-    @postcard = Postcard.order(:created_at).last
+  def set_order
+    @order = Order.order(:created_at).last
   end
 end

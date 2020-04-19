@@ -87,14 +87,14 @@
   <body>
     <!-- do not put text outside of the safe area -->
     <div class="safe-area">
-      <img alt="" src="<%= @postcard.photo.ig_media_url %>" />
+      <img alt="" src="<%= @order.photo_url %>" />
 
       <div class="date">
-        <%= @postcard.photo.ig_timestamp.strftime('%B %Y') %>
+        <%= @order.photo.ig_timestamp.strftime('%B %Y') %>
       </div>
 
       <p class="caption">
-        <%= @postcard.caption %>
+        <%= @order.caption %>
       </p>
     </div>
   </body>

@@ -73,9 +73,9 @@
   <body>
     <div class="postcard">
       <!-- do not put text outside of the safe area -->
-      <div class="background" style="background-image: url(<%= @postcard.photo_url %>)"></div>
+      <div class="background" style="background-image: url(<%= @order.photo_url %>)"></div>
 
-      <img class="main" alt="" src="<%= @postcard.photo.ig_media_url %>" />
+      <img class="main" alt="" src="<%= @order.photo_url %>" />
 
       <div class="safe-area">
       </div>

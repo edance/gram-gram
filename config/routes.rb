@@ -37,9 +37,6 @@ Rails.application.routes.draw do
 
   resources :recipients, except: %i[show]
 
-  get '/template/back', to: 'postcard_template#back'
-  get '/template/front', to: 'postcard_template#front'
-
   mount ActionCable.server => '/cable'
 
   # Static routes
@@ -48,4 +45,10 @@ Rails.application.routes.draw do
 
   # Webhooks
   post '/lob' => 'lob_webhook#webhook'
+
+  # Development only routes
+  if Rails.env.development?
+    get '/template/back', to: 'postcard_template#back'
+    get '/template/front', to: 'postcard_template#front'
+  end
 end
