@@ -1,4 +1,4 @@
-class PostcardsController < ApplicationController
+class OrdersController < ApplicationController
   def index
     @orders = current_user
                  .orders
