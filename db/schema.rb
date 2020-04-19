@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_231826) do
+ActiveRecord::Schema.define(version: 2020_04_19_224143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -44,6 +44,23 @@ ActiveRecord::Schema.define(version: 2020_04_18_231826) do
     t.uuid "user_id"
     t.index ["ig_id", "user_id"], name: "index_photos_on_ig_id_and_user_id", unique: true
     t.index ["user_id"], name: "index_photos_on_user_id"
+  end
+
+  create_table "postcard_receipts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "lob_id"
+    t.integer "status", default: 0, null: false
+    t.string "address_name"
+    t.string "address_line1"
+    t.string "address_line2"
+    t.string "address_city"
+    t.string "address_state"
+    t.string "address_zip"
+    t.uuid "recipient_id", null: false
+    t.uuid "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_postcard_receipts_on_order_id"
+    t.index ["recipient_id"], name: "index_postcard_receipts_on_recipient_id"
   end
 
   create_table "postcards", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -103,4 +120,6 @@ ActiveRecord::Schema.define(version: 2020_04_18_231826) do
   add_foreign_key "orders", "photos"
   add_foreign_key "orders_recipients", "orders"
   add_foreign_key "orders_recipients", "recipients"
+  add_foreign_key "postcard_receipts", "orders"
+  add_foreign_key "postcard_receipts", "recipients"
 end
