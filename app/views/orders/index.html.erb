@@ -3,7 +3,7 @@
 <%= render 'shared/navbar' %>
 <%= render 'shared/banner', title: 'Postcards', small: 'Sent postcards to your grandma' %>
 
-<div class="container mt-md-2 mb-5">
+<div class="container skinny-container mt-md-2 mb-5">
   <% if @orders.empty? %>
     <p class="mt-4 text-muted">
       Looks like you haven't created a postcard yet!
@@ -12,25 +12,29 @@
 
   <% @orders.each do |order| %>
     <div class="row py-4">
-      <div class="col-12 col-md-4 mb-4">
+      <div class="col-12 mb-4">
         <%= render 'shared/postcard-preview', order: order %>
       </div>
 
-      <div class="col-12 col-md-8">
-        <div class="address">
-          <h5>Sent to:</h5>
-
-          <div class="row">
-            <div class="col">
-              <small class="text-muted">Status</small>
-              <p><%= order.status.humanize %></p>
-            </div>
-            <div class="col">
-              <small class="text-muted">Created</small>
-              <p>
-                <%= time_ago_in_words(order.created_at) %> ago
-              </p>
-            </div>
+      <div class="col-12">
+        <div class="row">
+          <div class="col">
+            <small class="text-muted">Sent to:</small>
+            <p>
+              <%= order.recipients.map(&:name).to_sentence %>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <small class="text-muted">Status</small>
+            <p><%= order.status.humanize %></p>
+          </div>
+          <div class="col">
+            <small class="text-muted">Created</small>
+            <p>
+              <%= time_ago_in_words(order.created_at) %> ago
+            </p>
           </div>
         </div>
       </div>

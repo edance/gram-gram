@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
     @orders = current_user
                  .orders
                  .completed
+                 .includes(:recipients)
                  .page(params[:page])
                  .order(created_at: :desc)
   end
