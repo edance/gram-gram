@@ -6,7 +6,7 @@ class Order < ApplicationRecord
   has_many :postcard_receipts
   has_and_belongs_to_many :recipients
 
-  enum status: %i[pending processing mailed in_transit delivered]
+  enum status: %i[pending completed]
 
   validates :caption, length: {
               maximum: 200,
