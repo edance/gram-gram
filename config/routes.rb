@@ -31,8 +31,8 @@ Rails.application.routes.draw do
   patch '/sender/:id/recipients', to: 'builder#update_recipients', as: 'update_recipients'
   patch '/sender/:id/payment', to: 'builder#update_payment', as: 'update_payment'
 
-  get '/postcards', to: 'orders#index'
-  get '/postcards/:id', to: 'orders#show'
+  get '/postcards', to: 'orders#index', as: :orders
+  get '/postcards/:id', to: 'orders#show', as: :order
 
   resources :recipients, except: %i[show]
 

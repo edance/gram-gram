@@ -1,5 +1,44 @@
 <% content_for :title, 'Postcards' %>
 
-<h1>Postcard Show</h1>
+<%= render 'shared/navbar' %>
 
-<%= @postcard.id %>
+<div class="container skinny-container mt-md-2 mb-5">
+  <div class="row py-4">
+    <div class="col-12">
+      <%= render 'shared/postcard-preview', order: @order %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <h4 class="">Caption</h4>
+      <p class="mb-5">
+        <%= @order.caption %>
+      </p>
+    </div>
+
+    <div class="col-12">
+      <h4 class="mb-4">Recipients</h4>
+
+      <div class="row">
+      <% @order.postcard_receipts.each do |r| %>
+        <div class="col-12 col-md-6 mb-4">
+          <h5 class="mb-0">
+            <%= r.address_name %>
+          </h5>
+
+          <p class="text-muted mb-0">
+            <%= r.address_line1 %> <%= r.address_line2 %>
+            <br/>
+            <%= r.address_city %>, <%= r.address_state %> <%= r.address_zip %>
+          </p>
+
+          <span class="badge <%= badge_color(r) %>">
+            <%= r.status.humanize %>
+          </span>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
