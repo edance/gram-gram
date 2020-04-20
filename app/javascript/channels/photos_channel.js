@@ -3,6 +3,7 @@ import consumer from './consumer';
 import { u } from 'umbrellajs';
 
 let width = 0;
+let fallbackTimeout;
 
 function setLoaderWidth($bar) {
   $bar.attr('style', `width: ${width}%`);
@@ -25,6 +26,9 @@ function incrementLoader($bar) {
 function endLoader($bar) {
   width = 100;
   setLoaderWidth($bar, 100);
+
+  // clear the fallback timeout
+  clearTimeout(fallbackTimeout);
 
   setTimeout(() => {
     const $link = u('.photos-link');
@@ -62,5 +66,5 @@ document.addEventListener('turbolinks:load', function() {
   incrementLoader($bar);
 
   // Fallback 8 second timer
-  setTimeout(() => endLoader($bar), 8000);
+  fallbackTimeout = setTimeout(() => endLoader($bar), 8000);
 });
