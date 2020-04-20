@@ -5,10 +5,18 @@
 <div class="fluid-container vh-100">
   <%= form_with method: :patch, url: update_payment_path(@order), class: 'p-4 p-md-5 payment-form' do |form| %>
 
-    <%= render 'mobile-nav' %>
+    <%= render 'shared/mobile-nav' do %>
+      <%= link_to photos_path, class: 'nav-link text-dark' do %>
+        Cancel
+      <% end %>
+
+      <button type="submit" class="btn btn-dark btn-spinner btn-sm">
+        Pay <%= formatted_price %>
+      </button>
+    <% end %>
 
     <div class="container skinny-container py-5">
-      <p class="mt-5 mb-4">
+      <p class="mb-4">
         Almost done!
       </p>
 
@@ -21,7 +29,9 @@
                 <div class="ml-2">
                   <%= postcard_count %> x Postcard
                   <div class="text-muted">
-                    $2.95 / postcard
+                    <small>
+                      $2.95 / postcard
+                    </small>
                   </div>
                 </div>
               </div>
@@ -49,7 +59,9 @@
 
       <%= render 'payment-form' %>
 
-      <%= render 'save-btn' %>
+      <button type="submit" class="d-none d-md-block mt-5 mb-2 btn btn-block btn-outline-dark btn-spinner">
+        Pay <%= formatted_price %>
+      </button>
     </div>
   <% end %>
 </div>
