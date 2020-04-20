@@ -15,6 +15,7 @@ class Order < ApplicationRecord
 
 
   after_commit :send_with_lob_if_sendable
+  after_commit :send_receipt, if: :completed?
 
   def photo_url
     photo.ig_media_url
@@ -36,6 +37,10 @@ class Order < ApplicationRecord
     return nil if stripe_charge_id.nil?
 
     @stripe_charge = Stripe::Charge.retrieve(stripe_charge_id)
+  end
+
+  def send_receipt
+    OrderMailer.with(order: self).receipt.deliver_later
   end
 
   private
