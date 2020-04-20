@@ -47,12 +47,13 @@ class BuilderController < ApplicationController
 
   def update_recipients
     recipient_ids = params.require(:order)[:recipient_ids]
-    @recipients = current_user.recipients.find(recipient_ids)
-    order.recipients = @recipients
+    recipients = current_user.recipients.where(id: recipient_ids)
+    order.recipients = recipients
 
     if order.save && order.recipients.count > 0
       redirect_to build_caption_path
     else
+      @recipients = current_user.recipients.order(:name)
       render 'recipients'
     end
   end
