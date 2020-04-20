@@ -12,6 +12,10 @@
         <%= image_tag(@order.photo.ig_media_url, class: 'img rounded w-100') %>
 
         <%= f.text_area :caption, class: 'bg-white form-control caption-input', maxlength: 200, cols: 30, rows: 7, placeholder: 'Add a caption' %>
+
+        <div class="text-right">
+          <small class="form-text text-muted caption-input-msg"></small>
+        </div>
       </div>
 
       <%= render 'save-btn' %>

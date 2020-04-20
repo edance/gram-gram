@@ -187,3 +187,7 @@
 .turbolinks-progress-bar {
   background-color: darken($primary, 8%);
 }
+
+.caption-input:focus {
+  box-shadow: none;
+}
