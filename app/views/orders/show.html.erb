@@ -2,7 +2,13 @@
 
 <%= render 'shared/navbar' %>
 
-<div class="container skinny-container mt-md-2 mb-5">
+<%= render 'shared/mobile-nav' do %>
+  <%= link_to orders_path, class: 'nav-link text-dark pl-0' do %>
+    <span class="iconify" data-icon="ion:arrow-back" data-inline="false"></span>
+  <% end %>
+<% end %>
+
+<div class="container skinny-container my-5 mt-md-2">
   <div class="row py-4">
     <div class="col-12">
       <%= render 'shared/postcard-preview', order: @order %>
