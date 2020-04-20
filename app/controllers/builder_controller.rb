@@ -20,10 +20,14 @@ class BuilderController < ApplicationController
     order = Order.create(photo: photo)
 
     if current_user.recipients.empty?
-      redirect_to build_new_recipient_path(order)
-    else
-      redirect_to build_recipients_path(order)
+      return redirect_to build_new_recipient_path(order)
     end
+
+    if current_user.recipients.length == 1
+      order.recipients << current_user.recipients.first
+    end
+
+    redirect_to build_recipients_path(order)
   end
 
   def new_recipient
