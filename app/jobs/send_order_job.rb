@@ -10,6 +10,8 @@ class SendOrderJob < ApplicationJob
     return unless order.paid?
 
     send_postcards
+
+    order.completed!
   end
 
   private
