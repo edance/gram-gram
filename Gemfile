@@ -70,3 +70,7 @@ gem 'will_paginate'
 gem 'devise'
 
 gem 'newrelic_rpm'
+
+# For posts
+gem 'contentful'
+gem 'redcarpet'
