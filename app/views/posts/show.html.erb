@@ -1,0 +1,28 @@
+<header class="d-flex p-2 headerbar">
+  <div role="button" on="tap:sidebar1.toggle" tabindex="0" class="hamburger">☰</div>
+  <a href="/" class="navbar-brand mx-auto">
+    GramGram
+  </a>
+</header>
+
+<amp-sidebar id="sidebar1" layout="nodisplay" side="left">
+  <div role="button" aria-label="close sidebar" on="tap:sidebar1.toggle" tabindex="0" class="close-sidebar">✕</div>
+  <ul class="sidebar">
+    <li><a href="#">Example 1</a></li>
+    <li><a href="#">Example 2</a></li>
+    <li><a href="#">Example 3</a></li>
+  </ul>
+</amp-sidebar>
+
+<main class="mx-auto p-2" role="main">
+  <div class="text-center">
+    <p class="text-muted mb-0">
+      <%= author_and_published %>
+    </p>
+    <h1 class="mt-0">
+      <%= title %>
+    </h1>
+  </div>
+
+  <%= raw(body) %>
+</main>

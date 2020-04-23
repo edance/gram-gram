@@ -1,0 +1,83 @@
+@import 'bootstrap/scss/functions';
+
+@import 'custom/variables';
+@import 'bootstrap/scss/variables';
+
+@import 'bootstrap/scss/mixins';
+
+// Dom elements
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  font-family: $font-family-sans-serif;
+  font-weight: 400;
+  color: $gray-900;
+}
+
+h1 {
+  font-weight: 600;
+}
+
+main {
+  max-width: 700px;
+}
+
+// Fix for amp images
+amp-img.contain img {
+  object-fit: contain;
+}
+
+// Utilities
+.d-flex {
+  display: flex;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.p-2 {
+  padding: 1em;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: $gray-600;
+}
+
+
+// Components
+.headerbar {
+  background: $primary;
+  width: 100%;
+}
+
+.hamburger {
+  cursor: pointer;
+  font-size: 1.2em;
+  margin-top: 0.25em;
+  outline: none;
+}
+
+.navbar-brand {
+  color: rgba(0, 0, 0, 0.9);
+  font-family: $font-family-sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  text-decoration: none;
+}
