@@ -9,13 +9,16 @@ class Order < ApplicationRecord
   enum status: %i[pending completed]
 
   validates :caption, length: {
-              maximum: 200,
-              too_long: '200 characters is the maximum allowed'
-            }
-
+    maximum: 200,
+    too_long: '200 characters is the maximum allowed'
+  }
 
   after_commit :send_with_lob_if_sendable
   after_commit :send_receipt, if: :completed?
+
+  def public_id
+    id.last(6).upcase
+  end
 
   def photo_url
     photo.ig_media_url
