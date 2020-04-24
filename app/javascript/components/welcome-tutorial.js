@@ -13,6 +13,9 @@ document.addEventListener('turbolinks:load', function() {
   u('.hero-cta-btn').on('click', () => {
     $tutorial.addClass('active');
 
+    // Hide the footer
+    $('footer').hide();
+
     $steps.eq(stepNum).fadeIn();
 
     trackEvent('Hero CTA Click');
