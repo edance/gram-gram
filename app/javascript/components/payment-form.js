@@ -66,10 +66,15 @@ function addListenersToForm(form, card, errorContainer, stripe) {
   form.addEventListener('submit', function(event) {
     event.preventDefault();
 
+    errorContainer.textContent = '';
+
     stripe.createToken(card).then(function(result) {
       if (result.error) {
         // Inform the user if there was an error.
         errorContainer.textContent = result.error.message;
+
+        // Unset spinner buttons
+        form.dispatchEvent(new CustomEvent('error', { target: form }));
       } else {
         // Send the token to your server.
         stripeTokenHandler(form, result.token);

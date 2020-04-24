@@ -18,14 +18,12 @@
 
     <div class="credit-card-input form-control pt-2">
     </div>
-    <div class="invalid-feedback"></div>
+    <div class="invalid-feedback <%= @card_error ? 'd-block' : '' %>">
+      <% if @card_error %>
+        <%= @card_error.message %>
+      <% end %>
+    </div>
   </div>
 
   <%= hidden_field_tag(:token, '', class: 'stripe-token-input') %>
-<% end %>
-
-<% if @card_error %>
-  <p class="text-danger small">
-    <%= @card_error.message %>
-  </p>
 <% end %>
