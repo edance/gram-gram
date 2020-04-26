@@ -26,6 +26,31 @@ main {
   max-width: 700px;
 }
 
+a {
+  position: relative;
+  color: darken($primary, 25%);
+  text-decoration: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: $primary;
+    opacity: 0.5;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  }
+}
+
+a:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
 // Fix for amp images
 amp-img.contain img {
   object-fit: contain;
@@ -48,6 +73,10 @@ amp-img.contain img {
   margin-bottom: 0;
 }
 
+.pb-1 {
+  padding-bottom: 0.5em;
+}
+
 .p-2 {
   padding: 1em;
 }
@@ -60,6 +89,9 @@ amp-img.contain img {
   color: $gray-600;
 }
 
+.w-100 {
+  width: 100%;
+}
 
 // Components
 .headerbar {
@@ -68,10 +100,7 @@ amp-img.contain img {
 }
 
 .hamburger {
-  cursor: pointer;
-  font-size: 1.2em;
   margin-top: 0.25em;
-  outline: none;
 }
 
 .navbar-brand {
@@ -80,4 +109,21 @@ amp-img.contain img {
   font-size: 24px;
   font-weight: 900;
   text-decoration: none;
+}
+
+.sidebar {
+  background: $white;
+  max-width: 300px;
+}
+
+.hamburger,
+.close-sidebar {
+  cursor: pointer;
+  font-size: 1.2em;
+  outline: none;
+}
+
+.nav {
+  list-style: none;
+  padding-left: 0;
 }
