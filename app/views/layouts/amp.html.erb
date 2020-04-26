@@ -20,7 +20,7 @@
     <link rel="canonical" href="<%= url_for(:only_path => false) %>" />
     <title><%= yield(:title).present? ? "#{yield(:title)} | " : '' %> GramGram</title>
   </head>
-  <body>
+  <body data-turbolinks="false">
     <%= yield %>
 
     <amp-analytics type="gtag" data-credentials="include">

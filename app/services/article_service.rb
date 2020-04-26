@@ -5,6 +5,10 @@ class ArticleService
     @preview = preview
   end
 
+  def all_articles
+    client.entries(content_type: 'post')
+  end
+
   def fetch_article(slug)
     client.entries(
       'fields.slug' => slug,

@@ -7,6 +7,8 @@ class HomeController < ApplicationController
                public: true,
                stale_while_revalidate: 60.seconds,
                stale_if_error: 5.minutes
+
+    @posts = ArticleService.new.all_articles
   end
 
   private
