@@ -52,5 +52,4 @@ Rails.application.routes.draw do
   end
 
   get '/:slug' => 'posts#show'
-
 end
