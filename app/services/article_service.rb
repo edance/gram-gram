@@ -13,6 +13,18 @@ class ArticleService
     ).first
   end
 
+  def next_article(article)
+    client.entries(
+      # Articles created after the current article
+      'sys.createdAt[gt]': article.sys[:created_at].to_s,
+      # Skip the current article
+      'sys.id[nin]': article.id,
+      content_type: 'post',
+      limit: 1,
+      order: 'sys.createdAt'
+    ).first
+  end
+
   def client
     @client ||= preview ? preview_client : base_client
   end

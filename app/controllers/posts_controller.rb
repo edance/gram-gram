@@ -2,8 +2,13 @@ class PostsController < ApplicationController
   layout 'amp'
 
   def show
-    @post = ArticleService
-            .new(preview: params[:preview])
-            .fetch_article(params[:slug])
+    @post = article_service.fetch_article(params[:slug])
+    @next_post = article_service.next_article(@post)
+  end
+
+  private
+
+  def article_service
+    @article_service ||= ArticleService.new(preview: params[:preview])
   end
 end
