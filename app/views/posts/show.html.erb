@@ -37,4 +37,15 @@
   </div>
 
   <%= raw(body) %>
+
+
+  <% if @next_post.present? %>
+    <div class="text-center p-2">
+      <h3 class="text-muted mb-0">
+        Next Article
+      </h3>
+
+      <a href="<%= @next_post.slug %>"><%= @next_post.title %></a>
+    </div>
+  <% end %>
 </main>
