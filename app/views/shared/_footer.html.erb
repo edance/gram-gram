@@ -1,29 +1,33 @@
-<footer class="footer bg-dark mt-5 py-5">
+<div class="bg-white w-100">
   <div class="container">
-    <div class="row align-items-center justify-content-xl-between">
-      <div class="col-xl-6">
-        <div class="text-white text-center text-xl-left">
-          © <%= copyright_year %> GramGram
-        </div>
+  </div>
+</div>
+
+<footer class="footer bg-light pb-5">
+  <div class="container">
+    <div class="row py-5">
+      <div class="col-md-6">
+        <% @posts.map do |post| %>
+          <%= link_to post.title, post.slug, class: 'text-muted' %>
+          <br/>
+        <% end %>
       </div>
-      <div class="col-xl-6">
-        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-          <li class="nav-item">
-            <a href="/terms" class="nav-link" target="_blank">
-              Terms and Conditions
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/privacy" class="nav-link" target="_blank">
-              Privacy Policy
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/edance/gram-gram" class="nav-link" target="_blank">
-              Source Code
-            </a>
-          </li>
-        </ul>
+      <div class="col-md-6">
+        <a href="/terms" target="_blank" class="text-muted">
+          Terms and Conditions
+        </a>
+        <br/>
+        <a href="/privacy" target="_blank" class="text-muted">
+          Privacy Policy
+        </a>
+        <br/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="text-muted">
+          © <%= copyright_year %> <%= company_name %>
+        </p>
       </div>
     </div>
   </div>
