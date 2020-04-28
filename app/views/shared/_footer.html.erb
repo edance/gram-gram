@@ -8,19 +8,22 @@
     <div class="row py-5">
       <div class="col-md-6">
         <% @posts.map do |post| %>
-          <%= link_to post.title, post.slug, class: 'text-muted' %>
-          <br/>
+          <div class="mb-1">
+            <%= link_to post.title, post.slug, class: 'text-muted' %>
+          </div>
         <% end %>
       </div>
       <div class="col-md-6">
-        <a href="/terms" target="_blank" class="text-muted">
-          Terms and Conditions
-        </a>
-        <br/>
-        <a href="/privacy" target="_blank" class="text-muted">
-          Privacy Policy
-        </a>
-        <br/>
+        <div class="mb-1">
+          <a href="/terms" target="_blank" class="text-muted">
+            Terms and Conditions
+          </a>
+        </div>
+        <div class="mb-1">
+          <a href="/privacy" target="_blank" class="text-muted">
+            Privacy Policy
+          </a>
+        </div>
       </div>
     </div>
     <div class="row">
