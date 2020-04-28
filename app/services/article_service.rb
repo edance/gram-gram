@@ -6,7 +6,7 @@ class ArticleService
   end
 
   def all_articles
-    client.entries(content_type: 'post')
+    client.entries(content_type: 'post', order: 'sys.createdAt')
   end
 
   def fetch_article(slug)
