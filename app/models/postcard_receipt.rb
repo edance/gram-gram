@@ -9,12 +9,11 @@ class PostcardReceipt < ApplicationRecord
     return unless pending?
 
     lob_card = send_lob_postcard
-    address = recipient.address
 
     opts = {
-      **address.except(:name),
-      address_name: address[:name],
+      **address_fields,
       lob_id: lob_card['id'],
+      expected_delivery_date: lob_card['expected_delivery_date'],
       status: :processing
     }
 
@@ -22,6 +21,15 @@ class PostcardReceipt < ApplicationRecord
   end
 
   private
+
+  def address_fields
+    address = recipient.address
+
+    {
+      **address.except(:name),
+      address_name: address[:name]
+    }
+  end
 
   def send_lob_postcard
     lob.postcards.create(
