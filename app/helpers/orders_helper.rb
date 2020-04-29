@@ -5,4 +5,8 @@ module OrdersHelper
 
     'badge-secondary'
   end
+
+  def formatted_delivery_date(postcard_receipt)
+    postcard_receipt.expected_delivery_date.strftime('%b %-d, %Y')
+  end
 end

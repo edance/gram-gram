@@ -39,6 +39,12 @@
             <%= r.address_city %>, <%= r.address_state %> <%= r.address_zip %>
           </p>
 
+          <% if r.expected_delivery_date %>
+            <div class="small text-muted">
+              Expected Delivery: <%= formatted_delivery_date(r) %>
+            </div>
+          <% end %>
+
           <span class="badge <%= badge_color(r) %>">
             <%= r.status.humanize %>
           </span>
