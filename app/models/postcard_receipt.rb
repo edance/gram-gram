@@ -3,7 +3,8 @@ class PostcardReceipt < ApplicationRecord
   belongs_to :recipient
   has_one :photo, through: :order
 
-  enum status: %i[pending processing mailed in_transit delivered delivery_failed]
+  enum status: %i[pending processing mailed in_transit processed_for_delivery
+                  returned_to_sender].freeze
 
   def send_postcard!
     return unless pending?
