@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_224143) do
+ActiveRecord::Schema.define(version: 2020_04_29_030019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_04_19_224143) do
     t.uuid "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "expected_delivery_date"
     t.index ["order_id"], name: "index_postcard_receipts_on_order_id"
     t.index ["recipient_id"], name: "index_postcard_receipts_on_recipient_id"
   end
