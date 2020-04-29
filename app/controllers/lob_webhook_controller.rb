@@ -41,10 +41,10 @@ class LobWebhookController < ApplicationController
   end
 
   def postcard_processed_for_delivery
-    postcard_receipt.delivered!
+    postcard_receipt.processed_for_delivery!
   end
 
   def postcard_returned_to_sender
-    postcard_receipt.delivery_failed!
+    postcard_receipt.returned_to_sender!
   end
 end
