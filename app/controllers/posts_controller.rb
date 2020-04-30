@@ -3,6 +3,8 @@ class PostsController < ApplicationController
 
   def show
     @post = article_service.fetch_article(params[:slug])
+    return not_found if @post.nil?
+
     @next_post = article_service.next_article(@post)
   end
 
