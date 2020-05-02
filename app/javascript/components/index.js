@@ -5,6 +5,7 @@ require('./alert');
 require('./btn-spinner');
 require('./caption-input');
 require('./google-onetap');
+require('./homepage-scroll');
 require('./payment-form');
 require('./photo-grid');
 require('./success-checkmark');

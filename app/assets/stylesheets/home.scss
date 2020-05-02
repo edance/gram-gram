@@ -1,0 +1,67 @@
+.phone {
+  margin: auto;
+  max-width: 342px;
+  position: relative;
+
+  .background {
+    width: 100%;
+  }
+}
+
+// 6 x 4
+.preview {
+  $height: 294px;
+
+  background: $white;
+  height: $height;
+  left: 26px;
+  overflow: hidden;
+  perspective: 1000px;
+  position: absolute;
+  top: 132px;
+  transition: transform .6s;
+  width: $height;
+  z-index: 1;
+
+  img {
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .inner {
+    box-shadow: $box-shadow;
+    height: 100%;
+    left: ($height * 1.5 - $height) / 2 * -1;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .6s;
+    width: $height * 1.5;
+  }
+
+  &.active {
+    overflow: visible;
+    transform: scale(1.1);
+  }
+
+  &.flip .inner {
+    transform: rotateY(180deg);
+  }
+
+  .back,
+  .front {
+    backface-visibility: hidden;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+
+  .back {
+    background-color: $white;
+    transform: rotateY(180deg);
+  }
+}
+
+.feature-section {
+  padding: 8rem 0;
+}

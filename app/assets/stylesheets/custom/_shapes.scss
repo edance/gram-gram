@@ -86,3 +86,31 @@ $dark-primary: darken($primary, 8%);
     top: 180px;
   }
 }
+
+.shapes-layout-1 {
+  .circle-3,
+  .line-1 {
+    top: 50px;
+  }
+
+  .line-2 {
+    bottom: 0;
+    top: auto;
+  }
+}
+
+.shapes-layout-2 {
+  .circle-1 {
+    top: 100px;
+  }
+
+  .square-1 {
+    bottom: 50px;
+    top: auto;
+  }
+
+  .triangle-1 {
+    top: 0;
+    transform: rotate(-10deg);
+  }
+}
