@@ -1,0 +1,86 @@
+<!-- Tutorial -->
+<div class="welcome-tutorial fluid-container bg-primary vh-100">
+  <nav class="d-md-none navbar fixed-top navbar-light">
+    <%= link_to new_user_registration_path, class: 'nav-link text-dark ml-auto' do %>
+      Skip
+    <% end %>
+  </nav>
+
+  <!-- Shapes -->
+  <div class="shapes container position-relative">
+    <div class="circle-1"></div>
+    <div class="circle-2"></div>
+    <div class="circle-3"></div>
+
+    <div class="square-1"></div>
+
+    <div class="line-1"></div>
+    <div class="line-2"></div>
+
+    <%= image_tag('triangle-1.svg', class: 'triangle-1') %>
+  </div>
+
+  <div class="absolute-bottom p-4 pb-md-8">
+    <div class="container skinny-container pb-4">
+      <div class="step">
+        <div class="mb-4">
+          <h3 class="mt-5">
+            Choose a recent Instagram&nbsp;photo
+          </h3>
+
+          <p class="small">
+            Pick an image Grandma will like and add a caption for context (or to say&nbsp;hello!)
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="mb-4">
+          <h3 class="mt-5">
+            Tell us where to mail&nbsp;it
+          </h3>
+
+          <p class="small">
+            What’s Grandma’s address? We can send a GramGram anywhere in the United States for&nbsp;just $2.95.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="mb-4">
+          <h3 class="mt-5">
+            We turn your photo into a postcard and&nbsp;deliver it
+          </h3>
+
+          <p class="small">
+            Grandma opens up her mailbox to find a special surprise from you. You're officially grandkid of&nbsp;the year.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="mb-4">
+          <h3 class="mt-5">
+            Stay Home, Stay&nbsp;Safe
+          </h3>
+
+          <p class="small">
+            Now through July, all proceeds will be donated to help COVID-19 victims. Bring joy to friends and family who can't leave the house. <a class="text-dark" href="/supporting-the-fight-against-covid-19">Learn more.</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center pt-2 mb-5">
+        <div class="bg-dark dot active"></div>
+        <div class="bg-dark dot"></div>
+        <div class="bg-dark dot"></div>
+        <div class="bg-dark dot"></div>
+
+        <%= link_to new_user_registration_path, class: 'float-right next-btn btn btn-dark btn-icon ml-auto mr-0' do %>
+          <span class="d-none">Sign Up</span>
+          <span class="iconify" data-icon="ion:arrow-forward" data-inline="false"></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

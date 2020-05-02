@@ -1,0 +1,80 @@
+<section class="feature-section position-relative">
+  <div class="shapes shapes-layout-1">
+    <div class="circle-2"></div>
+    <div class="circle-3"></div>
+
+    <div class="line-1"></div>
+    <div class="line-2"></div>
+  </div>
+
+  <div class="container h-100">
+    <div class="row align-items-center h-100">
+      <div class="col-md-6 d-lg-none">
+        <%= image_tag('postcard_front.png', class: 'img shadow w-100') %>
+      </div>
+
+      <div id="photo-section" class="col-md-6 col-lg-4 py-5">
+        <p class="small text-uppercase text-primary text-bold">
+          Step One
+        </p>
+        <h2 class="display-5">
+          Choose a recent Instagram&nbsp;photo
+        </h2>
+        <p class="my-3">
+          Pick an image Grandma will like and add a caption for context (or to say hello!).
+          We'll turn your photo into a postcard.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature-section position-relative">
+  <div class="shapes shapes-layout-2">
+    <div class="circle-1"></div>
+
+    <div class="square-1"></div>
+
+    <%= image_tag('triangle-1.svg', class: 'triangle-1') %>
+  </div>
+
+  <div class="container h-100">
+    <div class="row align-items-center h-100">
+      <div class="col-md-6 d-lg-none">
+        <%= image_tag('postcard_back.png', class: 'img shadow w-100') %>
+      </div>
+
+      <div id="mail-section" class="col-md-6 col-lg-4 py-5">
+        <p class="small text-uppercase text-primary text-bold">
+          Step Two
+        </p>
+        <h2 class="display-5">
+          Tell us where to mail&nbsp;it
+        </h2>
+        <p class="my-3">
+          What’s Grandma’s address? We can send a GramGram anywhere in the United States for just $2.95. That's it!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container h-100">
+    <div class="row align-items-center h-100">
+      <div class="col col-md-8 offset-md-2 col-lg-5 offset-lg-3 pb-5">
+        <h2 class="display-5 mt-5">
+          Ready to Send a GramGram?
+        </h2>
+        <p class="my-3">
+          Your offline family is waiting! Show them what you've been up to!
+        </p>
+
+        <%= link_to new_user_registration_path, class: 'btn btn-outline-dark mb-4 px-4' do %>
+          Get Started
+          <span class="iconify ml-1 mb-1" data-icon="ion:arrow-forward" data-inline="false"></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
