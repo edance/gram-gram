@@ -1,7 +1,4 @@
 class GoogleAuthController < ApplicationController
-  before_action :verify_g_csrf_token
-  skip_before_action :verify_authenticity_token
-
   BASE_URL = 'https://oauth2.googleapis.com'.freeze
 
   def callback
@@ -13,15 +10,6 @@ class GoogleAuthController < ApplicationController
   end
 
   private
-
-  def verify_g_csrf_token
-    return if cookies[:g_csrf_token].present? &&
-              cookies[:g_csrf_token] == params.require(:g_csrf_token)
-
-    flash[:error] = 'You could not be authenticated'
-
-    redirect_to root_path
-  end
 
   def client
     Faraday.new(url: BASE_URL) do |f|
