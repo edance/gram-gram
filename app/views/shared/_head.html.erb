@@ -34,6 +34,7 @@
   <%= render 'shared/gtm' %>
 
   <script>
+   window.GOOGLE_CLIENT_ID = '<%= ENV['GOOGLE_CLIENT_ID'] %>';
    window.STRIPE_PUBLISHABLE_KEY = '<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>';
    window.MAPBOX_ACCESS_TOKEN = '<%= ENV['MAPBOX_ACCESS_TOKEN'] %>';
    window.CLOUDINARY_ENABLED = <%= ENV['CLOUDINARY_ENABLED'].present? %>;
