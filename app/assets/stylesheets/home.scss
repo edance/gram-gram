@@ -53,6 +53,7 @@
     backface-visibility: hidden;
     height: 100%;
     position: absolute;
+    transform: rotateX(0deg); // required for firefox
     width: 100%;
   }
 
