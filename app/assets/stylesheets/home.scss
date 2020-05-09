@@ -66,3 +66,12 @@
 .feature-section {
   padding: 8rem 0;
 }
+
+.scroll-down {
+  bottom: 20px;
+  font-size: 2rem;
+  left: 50%;
+  margin: auto;
+  position: absolute;
+  transform: translateX(-50%);
+}
