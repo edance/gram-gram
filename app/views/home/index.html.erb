@@ -1,12 +1,13 @@
 <% content_for :title, 'Share Photos with your Offline Family' %>
 <% content_for :meta_description, 'Mail Instagram photos to your family and friends because a picture’s worth a thousand words, but grandma’s smile is priceless.' %>
 
-<div id="main" class="position-relative overflow-hidden">
+<main class="position-relative overflow-hidden">
   <%= render 'tutorial' %>
 
   <%= render 'hero' %>
 
-  <%= render 'preview' %>
-</div>
-
-<%= render 'shared/footer' %>
+  <div class="additional-content">
+    <%= render 'preview' %>
+    <%= render 'shared/footer' %>
+  </div>
+</main>
