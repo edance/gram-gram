@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :postcards, through: :photos
   has_many :orders, through: :photos
 
+  before_validation :generate_password
+
   after_create :send_welcome_email
 
   def instagram?
@@ -46,5 +48,11 @@ class User < ApplicationRecord
 
   def send_welcome_email
     UserMailer.with(user: self).welcome_email.deliver_later
+  end
+
+  def generate_password
+    return if password.present? || !new_record?
+
+    self.password = Devise.friendly_token
   end
 end
