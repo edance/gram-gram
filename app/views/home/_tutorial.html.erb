@@ -1,7 +1,7 @@
 <!-- Tutorial -->
 <div class="welcome-tutorial fluid-container bg-primary vh-100">
   <nav class="d-md-none navbar fixed-top navbar-light">
-    <%= link_to new_user_registration_path, class: 'nav-link text-dark ml-auto' do %>
+    <%= link_to connect_path, class: 'nav-link text-dark ml-auto' do %>
       Skip
     <% end %>
   </nav>
@@ -76,8 +76,8 @@
         <div class="bg-dark dot"></div>
         <div class="bg-dark dot"></div>
 
-        <%= link_to new_user_registration_path, class: 'float-right next-btn btn btn-dark btn-icon ml-auto mr-0' do %>
-          <span class="d-none">Sign Up</span>
+        <%= link_to connect_path, class: 'float-right next-btn btn btn-dark btn-icon ml-auto mr-0' do %>
+          <span class="d-none">Continue</span>
           <span class="iconify" data-icon="ion:arrow-forward" data-inline="false"></span>
         <% end %>
       </div>

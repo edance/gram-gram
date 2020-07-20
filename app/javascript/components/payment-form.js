@@ -18,7 +18,7 @@ function createCardElement(element, stripe) {
       color: colors.black,
       fontFamily: fonts.base,
       fontSmoothing: 'antialiased',
-      fontSize: '15px',
+      fontSize: '16px',
       '::placeholder': {
         color: '#6c757d',
       },
