@@ -13,14 +13,13 @@ class SaveInstagramPhotosJob < ApplicationJob
     broadcast_ended
   end
 
-  def create_photo(photo)
-    Photo.create(
-      user: user,
-      ig_id: photo['id'],
-      ig_media_url: photo['media_url'],
-      ig_permalink: photo['permalink'],
-      ig_caption: photo['caption'],
-      ig_timestamp: photo['timestamp']
+  def create_photo(ig_photo)
+    photo = user.photos.find_or_initialize_by(ig_id: ig_photo['id'])
+    photo.update(
+      ig_caption: ig_photo['caption'],
+      ig_media_url: ig_photo['media_url'],
+      ig_permalink: ig_photo['permalink'],
+      ig_timestamp: ig_photo['timestamp']
     )
   end
 
