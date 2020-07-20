@@ -1,6 +1,6 @@
 import { loadScript } from '../utils';
 
-let photosUploaded = [];
+let photoUrl;
 
 function createWidget() {
   return cloudinary.createUploadWidget({
@@ -10,13 +10,25 @@ function createWidget() {
     resourceType: 'image',
     clientAllowedFormats: ['png', 'gif', 'jpeg'],
   }, function(error, result) {
-    if (result && result.event === 'close') {
+    if (result && result.event === 'close' && photoUrl) {
       // Create photos through api
-      console.log('creating photos', photosUploaded);
+      console.log('creating photos', photoUrl);
+      $.ajax({
+        type: 'POST',
+        url: '/api/photos',
+        data: {
+          photo: {
+            url: photoUrl,
+          },
+        }
+      }).then(function(resp) {
+        const href = `/photos/${resp.id}/new`;
+        Turbolinks.visit(href);
+      });
     }
 
     if (!error && result && result.event === 'success') {
-      photosUploaded.push(result.info.url);
+      photoUrl = result.info.url;
     }
   });
 }
@@ -32,7 +44,7 @@ document.addEventListener("turbolinks:load", function() {
     const widget = createWidget();
 
     $('.btn-upload').click(function() {
-      photosUploaded = [];
+      photoUrl = null;
       widget.open();
     });
   });

@@ -21,7 +21,7 @@ class Order < ApplicationRecord
   end
 
   def photo_url
-    photo.ig_media_url
+    photo.img_src
   end
 
   def price_in_cents
