@@ -4,6 +4,14 @@
 <%= render 'shared/banner', title: 'Photos', small: 'Select an image to get started' %>
 
 <div class="container mt-2 mt-md-4 mb-5">
+  <div class="row">
+    <div class="col-12">
+      <%= link_to loading_path, class: 'btn btn-sm btn-outline-secondary mt-2 mb-4' do %>
+        <span class="iconify" data-icon="heroicons-outline:refresh" data-inline="false"></span>
+        Resync Photos
+      <% end %>
+    </div>
+  </div>
   <div class="photo-grid mx-n1">
     <div class="grid-sizer col-6 col-md-3 col-lg-2"></div>
 
