@@ -30,6 +30,10 @@ class User < ApplicationRecord
     @stripe_customer = customer
   end
 
+  def email_required?
+    false
+  end
+
   private
 
   def create_stripe_customer
@@ -47,6 +51,8 @@ class User < ApplicationRecord
   end
 
   def send_welcome_email
+    return if email.blank?
+
     UserMailer.with(user: self).welcome_email.deliver_later
   end
 
