@@ -4,16 +4,33 @@
 <%= render 'shared/banner', title: 'Photos', small: 'Select an image to get started' %>
 
 <div class="container mt-2 mt-md-4 mb-5">
-  <div class="row">
+  <div class="row mt-2 mb-4">
     <div class="col-12">
-      <%= link_to loading_path, class: 'btn btn-sm btn-outline-secondary mt-2 mb-4' do %>
-        <span class="iconify" data-icon="heroicons-outline:refresh" data-inline="false"></span>
-        Resync Photos
+      <% if @current_user.instagram? %>
+        <%= link_to loading_path, class: 'btn btn-sm btn-outline-secondary' do %>
+          <span class="iconify" data-icon="heroicons-outline:refresh" data-inline="false"></span>
+          Resync Photos
+        <% end %>
+      <% else %>
+        <%= link_to connect_path, class: 'btn btn-sm btn-outline-secondary' do %>
+          <span class="iconify" data-icon="heroicons-outline:refresh" data-inline="false"></span>
+          Sync with Instagram
+        <% end %>
       <% end %>
+
+      <button class="btn btn-sm btn-outline-secondary btn-upload">
+        <span class="iconify" data-icon="heroicons-outline:upload" data-inline="false"></span>
+        Upload Photos
+      </button>
     </div>
   </div>
   <div class="photo-grid mx-n1">
     <div class="grid-sizer col-6 col-md-3 col-lg-2"></div>
+    <% if @photos.empty? %>
+      <p class="text-muted">
+        Looks like you haven't added any photos yet!
+      </p>
+    <% end %>
 
     <% @photos.each do |p| %>
       <div class="grid-item col-6 col-md-3 col-lg-2 p-1">
