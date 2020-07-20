@@ -9,4 +9,5 @@ require('./homepage-scroll');
 require('./payment-form');
 require('./photo-grid');
 require('./success-checkmark');
+require('./upload-widget');
 require('./welcome-tutorial');
