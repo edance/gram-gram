@@ -20,7 +20,7 @@
 
       <button class="btn btn-sm btn-outline-secondary btn-upload">
         <span class="iconify" data-icon="heroicons-outline:upload" data-inline="false"></span>
-        Upload Photos
+        Upload Photo
       </button>
     </div>
   </div>
@@ -36,7 +36,7 @@
       <div class="grid-item col-6 col-md-3 col-lg-2 p-1">
         <div class="overflow-hidden rounded">
           <%= link_to(build_new_path(p), class: 'd-block') do %>
-            <%= lazy_image_tag(p.ig_media_url, class: 'img-fluid img-zoom') %>
+            <%= lazy_image_tag(p.img_src, class: 'img-fluid img-zoom') %>
           <% end %>
         </div>
       </div>

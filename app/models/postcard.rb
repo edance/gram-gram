@@ -18,7 +18,7 @@ class Postcard < ApplicationRecord
   self.per_page = 15
 
   def photo_url
-    photo.ig_media_url
+    photo.img_src
   end
 
   def month_year

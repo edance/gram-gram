@@ -36,6 +36,10 @@ Rails.application.routes.draw do
 
   resources :recipients, except: %i[show]
 
+  namespace :api do
+    resources :photos, only: %i[create]
+  end
+
   mount ActionCable.server => '/cable'
 
   # Static routes
