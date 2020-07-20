@@ -71,6 +71,7 @@ class BuilderController < ApplicationController
   end
 
   def update_payment
+    current_user.update(email: email) if email
     current_user.add_default_stripe_source(token) if token
 
     charge = process_stripe_charge
@@ -132,6 +133,10 @@ class BuilderController < ApplicationController
 
   def token
     params[:token]
+  end
+
+  def email
+    params[:email]
   end
 
   def find_or_initialize_recipient

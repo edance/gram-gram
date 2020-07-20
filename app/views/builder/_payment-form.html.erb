@@ -1,3 +1,11 @@
+<% if @current_user.email.blank? %>
+  <div class="form-group">
+    <label class="form-control-label">Email Address</label>
+
+    <%= email_field_tag :email, '', class: 'form-control', placeholder: 'Email Address', autofocus: true, autocomplete: "email" %>
+  </div>
+<% end %>
+
 <% if default_payment_source %>
   <div class="form-group">
     <label class="form-control-label">Credit or Debit Card</label>
@@ -16,7 +24,7 @@
   <div class="form-group card-input-group">
     <label class="form-control-label">Credit or Debit Card</label>
 
-    <div class="credit-card-input form-control pt-2">
+    <div class="credit-card-input form-control">
     </div>
     <div class="invalid-feedback <%= @card_error ? 'd-block' : '' %>">
       <% if @card_error %>
