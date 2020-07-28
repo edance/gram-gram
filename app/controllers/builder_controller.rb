@@ -120,17 +120,6 @@ class BuilderController < ApplicationController
     }
   end
 
-  def create_stripe_customer
-    return current_user.payment_customer_id if current_user.payment_customer_id
-
-    customer = Stripe::Customer.create(
-      email: current_user.email,
-      name: current_user.ig_username,
-      source: token
-    )
-    customer.id
-  end
-
   def token
     params[:token]
   end
