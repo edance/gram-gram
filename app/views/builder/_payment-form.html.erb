@@ -1,11 +1,3 @@
-<% if @current_user.email.blank? %>
-  <div class="form-group">
-    <label class="form-control-label">Email Address</label>
-
-    <%= email_field_tag :email, '', class: 'form-control', placeholder: 'Email Address', autofocus: true, autocomplete: "email" %>
-  </div>
-<% end %>
-
 <% if default_payment_source %>
   <div class="form-group">
     <label class="form-control-label">Credit or Debit Card</label>
