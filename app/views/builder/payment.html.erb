@@ -3,7 +3,7 @@
 <%= render 'shared/navbar' %>
 
 <div class="fluid-container vh-100">
-  <%= form_with method: :patch, url: update_payment_path(@order), class: 'p-4 p-md-5 payment-form' do |form| %>
+  <%= form_with model: @current_user, method: :patch, url: update_payment_path(@order), class: 'p-4 p-md-5 payment-form' do |form| %>
 
     <%= render 'shared/mobile-nav' do %>
       <%= link_to photos_path, class: 'nav-link text-dark' do %>
@@ -56,6 +56,14 @@
           </tr>
         </tbody>
       </table>
+
+      <% if @current_user.email.blank? %>
+        <div class="form-group mb-4">
+          <label class="form-control-label">Email Address</label>
+
+          <%= form.email_field :email, class: 'form-control', placeholder: 'Email Address', autofocus: true, autocomplete: "email", required: true %>
+        </div>
+      <% end %>
 
       <%= render 'payment-form' %>
 
