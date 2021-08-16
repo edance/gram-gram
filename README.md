@@ -23,4 +23,4 @@ Now you can visit [`localhost:3000`](http://localhost:3000) from your browser.
 
 ### Feedback
 
-Please email me with any ideas, bugs, suggestions at team AT gramgram.app.
+Please email me with any ideas, bugs, suggestions at team AT gramgram.app. Thanks!
